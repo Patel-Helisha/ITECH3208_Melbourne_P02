@@ -22,23 +22,14 @@
 	<!-- Header -->
 
 	<header class="header">
+	<br>
 		<div class="header_content d-flex flex-column align-items-center justify-content-lg-end justify-content-center">
 			
-			<!-- Logo -->
-			<div class="logo"><a href="#"><img class="logo_1" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_2" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_3" src="image/emp_logo.png" alt="" height="150" width="200"></a></div>
+			<center>
+			<div class="logo"><a href="#"><img class="logo_1" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_2" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_3" src="image/emp_logo.png" alt="" height="150" width="200"></a></div></center>
 
-			<!-- Main Nav -->
-			<nav class="main_nav">
-				<ul class="d-flex flex-row align-items-center justify-content-start">
-					<li class="active"><a href="index.html">Home</a></li>
-					<li><a href="about.php">About_Us</a></li>
-					<li><a href="course.php">Courses</a></li>
-					<li><a href="review.php">Reviews</a></li>
-					<li><a href="contact.php">Contact</a></li>
-					<li><a href="faq.php">FAQ</a></li>
-				</ul>
-			</nav>
 			<div>
+			
 			<?php	
 			session_start();
 			$con=mysqli_connect("localhost","root","","employability");
@@ -50,6 +41,7 @@
 				echo "Welcome ".$_SESSION['email'];
 			?>
 			<br>
+			<center>
 			(<a href="logout.php">Logout</a>)
 			<?php
 			}
@@ -59,7 +51,25 @@
 			Welcome Guest, (<a href="log_in.php">Login</a>|<a href="register1.php">Register</a>)
 			<?php
 			}?>
+			</center>
 			</div>
+
+			<!-- Main Nav -->
+			<nav class="main_nav">
+				<ul class="d-flex flex-row align-items-center justify-content-start">
+					<nav class="main_nav">
+				<ul class="d-flex flex-row align-items-center justify-content-start">
+					<li class="active"><a href="index.php">Home</a></li>
+					<li><a href="about.php">About Us</a></li>
+					<li><a href="course1.php">Courses</a></li>
+					<li><a href="review.php">Reviews</a></li>
+					<li><a href="contact.php">Contact</a></li>
+					<li><a href="faq.php">FAQ</a></li>
+				</ul>
+			</nav>
+				</ul>
+			</nav>
+
 
 			<!-- Social -->
 			
@@ -87,11 +97,11 @@
 			<!-- Search Panel -->
 			<div class="search_panel">
 				<div class="search_panel_content d-flex flex-row align-items-center justify-content-start">
-					<img src="image/search.png" alt="">
-					<form action="#" class="search_form">
-						<input type="text" class="search_input" placeholder="Type your search here" required="required">
+					<img src="images/search.png" alt="">
+					<form action="search.php"  method="POST" class="search_form" name="search">
+						<input type="text"  name="search" class="search_input" placeholder="Type your search here" required="required">
 					</form>
-					<div class="search_close ml-auto d-flex flex-column align-items-center justify-content-center"><div></div></div>
+					<div class="search_close ml-auto d-flex flex-column align-items-center justify-content-center" name="search" value="search" id="submit"><div></div></div>
 				</div>
 			</div>
 		</div>
@@ -123,27 +133,7 @@
 		<div class="menu_container d-flex flex-column align-items-center justify-content-center">
 
 			<!-- Menu Navigation -->
-			<nav class="menu_nav text-center">
-				<ul>
-					<li class="active"><a href="index.html">Home</a></li>
-					<li><a href="about.php">About_Us</a></li>
-					<li><a href="course1.php">Courses</a></li>
-					<li><a href="blog1.php">Blog</a></li>
-					<li><a href="contact1.php">Contact</a></li>
-				</ul>
-			</nav>
-			<div class="button menu_button"><a href="#">book now</a></div>
-
-			<!-- Menu Social -->
-			<div class="social menu_social">
-				<ul class="d-flex flex-row align-items-center justify-content-start">
-					<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
-				</ul>
-			</div>
+			
 
 		</div>
 	</div>
@@ -172,9 +162,12 @@
 			<div class="row intro_row">
 				<div class="col-xl-8 col-lg-10 offset-xl-2 offset-lg-1">
 					<div class="intro_text text-center">
-						<p align="justify">The Employability.life being a frontrunner in nationwide education, facilitates a pathway for students worldwide that are looking for higher and proffessional education in the field of Management and Business in Australia and at national platform as well. 
-							The Australian Technical & Management College (ATMC) being a frontrunner in nationwide education, facilitates a pathway for students worldwide that are lookingfor higher and proffessional education in the field of Management and Business in Australia and at national platform as well.
-							We offer a range of degrees that are delivered in a personalized and practical learning environment with a strong focus on global industry connections. ATMC students graduate with the skills, knowledge and relevant industry experience necessary to make a significant impact on the world.</p>
+						<p align="justify">The Employability.life, prepares you to grow and master the art of career progression. It’s the ultimate ‘robot-proof’ preparation for careers in the 
+						21st century — empowering you with self-mastery and enabling you to become a creative leader with the empathy and imagination that our societies need today. With our 
+						programme blending on-campus support centres alongside an online curriculum, we can provide you with an excellent education and the top-tier support you need to 
+						help you jump-start your career success. We take a whole-person approach and prepare learners to become confident professionals. Through Employability.life, you
+						will become self-aware and equipped with essential soft and technical skills — ready not just for an interview, but for the possibilities of a lifelong and 
+						rewarding professional career.</p>
 					</div>
 				</div>
 			</div>
@@ -189,19 +182,19 @@
 				
 				<!-- Slide -->
 				<div class="slide">
-					<div class="background_image" style="background-image:url(image/ca.jpeg)"></div>
+					<div class="background_image" style="background-image:url(image/img4.jpg)"></div>
 					
 				</div>
 
 				<!-- Slide -->
 				<div class="slide">
-					<div class="background_image" style="background-image:url(image/ca1.jpg)"></div>
+					<div class="background_image" style="background-image:url(image/img1.jpg)"></div>
 					
 				</div>
 
 				<!-- Slide -->
 				<div class="slide">
-					<div class="background_image" style="background-image:url(image/ca2.jpeg)"></div>
+					<div class="background_image" style="background-image:url(image/img6.png)"></div>
 					
 				</div>
 
@@ -235,19 +228,19 @@
 									<p>Employability.life is one of the great platform for learning and exploring ones best potential. It provides best support and guidance to all the students.</p>
 								</div>
 								<div class="testimonial_author text-center">
-									<div class="testimonial_author_image"><img src="image/p.jpeg" alt=""></div>
-									<div class="testimonial_author_name"><a href="#">Mark Jones,</a><span> Student</span></div>
+									<div class="testimonial_author_image"><img src="image/t1.png" alt=""></div>
+									<div class="testimonial_author_name"><a href="#">Jesica Jones,</a><span> Student</span></div>
 								</div>
 							</div>
 
 							<!-- Slide -->
 							<div>
 								<div class="testimonial_text text-center">
-									<p>All the faculty members of the college are very supportive and experienced. Students are given chance at this college to explore their inner creativity.</p>
+									<p>All the tutors  of the courses are very supportive and experienced. Students are given chance to explore their inner creativity.</p>
 								</div>
 								<div class="testimonial_author text-center">
-									<div class="testimonial_author_image"><img src="image/p1.jpeg" alt=""></div>
-									<div class="testimonial_author_name"><a href="#">Richard David,</a><span> Student</span></div>
+									<div class="testimonial_author_image"><img src="image/t2.png" alt=""></div>
+									<div class="testimonial_author_name"><a href="#">Donna Specter,</a><span> Student</span></div>
 								</div>
 							</div>
 
@@ -257,8 +250,8 @@
 									<p>Employability.life is one of the great platform for learning and exploring ones best potential. It provides best support and guidance to all the students.</p>
 								</div>
 								<div class="testimonial_author text-center">
-									<div class="testimonial_author_image"><img src="image/p2.jpeg" alt=""></div>
-									<div class="testimonial_author_name"><a href="#">Donna Specter,</a><span> Student</span></div>
+									<div class="testimonial_author_image"><img src="image/t3.png" alt=""></div>
+									<div class="testimonial_author_name"><a href="#">Richard David,</a><span> Student</span></div>
 								</div>
 							</div>
 
@@ -270,6 +263,7 @@
 	</div>
 
 	<!-- Footer -->
+
 	<footer class="footer">
 		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/footer.jpg" data-speed="0.8"></div>
 		<div class="container">

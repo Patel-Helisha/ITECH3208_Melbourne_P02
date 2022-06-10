@@ -14,6 +14,43 @@
 <link href="plugins/jquery-datepicker/jquery-ui.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/contact.css">
 <link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
+<style>
+#submit{
+		color: #fff;
+		background: #BF1677 ;
+		border: none;
+		border: 2px solid #95135E;
+		margin-top: 2em;
+		
+		text-decoration: none;
+	}
+	
+	#submit:hover{
+		background: #F90491;
+		
+	}
+	.calender{
+		background-image: url("image/calender.jpg");
+		margin-left:295px;
+		padding-top: 50px;
+		border: 2px solid grey;
+		border-radius:10px;
+		font-size:16px;
+		align: center;
+		width: 500px;
+		height: 300px;
+	}
+	.inputdate{
+		width: 200px;
+		height: 30px;
+		border: 2px solid #BFC9CA ;
+		border-radius: 3px;
+		margin-bottom: 15px;
+		margin-top: 15px;
+	} 
+	
+	
+</style>
 </head>
 <body>
 
@@ -22,33 +59,52 @@
 	<!-- Header -->
 
 	<header class="header">
+	<br>
 		<div class="header_content d-flex flex-column align-items-center justify-content-lg-end justify-content-center">
 			
-			<!-- Logo -->
-			<div class="logo"><a href="#"><img class="logo_1" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_2" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_3" src="image/emp_logo.png" alt="" height="150" width="200"></a></div>
+			<center>
+			<div class="logo"><a href="#"><img class="logo_1" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_2" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_3" src="image/emp_logo.png" alt="" height="150" width="200"></a></center>
+			<div class="header_side d-flex flex-row justify-content-center align-items-center">
+			<div>
+			<?php	
+			session_start();
+			$con=mysqli_connect("localhost","root","","employability");
+			$res=mysqli_query($con,"select * from courses");
+
+			//session_start();
+			if(isset($_SESSION['email']))
+			{
+				echo "Welcome ".$_SESSION['email'];
+			?>
+			<br>
+			<center>
+			(<a href="logout.php">Logout</a>)
+			<?php
+			}
+			else
+			{
+			?>
+			Welcome Guest, (<a href="log_in.php">Login</a>|<a href="register1.php">Register</a>)
+			<?php
+			}?>
+			</center>
+			</div>
+			</div>
 
 			<!-- Main Nav -->
-			<nav class="main_nav">
+						<nav class="main_nav">
 			
 			
 				<ul class="d-flex flex-row align-items-center justify-content-start">
-					<li class="active"><a href="index.php">Home</a></li>
+					<li><a href="index1.php">Home</a></li>
 					<li><a href="about.php">About_Us</a></li>
-					<li><a href="course1.php">Courses</a></li>
+					<li class="active"><a href="course1.php">Courses</a></li>
 					<li><a href="review.php">Reviews</a></li>
-					<li><a href="contact.php">Contact</a></li>
+					<li><a href="contact1.php">Contact</a></li>
 					<li><a href="faq.php">FAQ</a></li>
-				</ul>
-			</nav>
-
-			<!-- Social -->
-			
-
-			<!-- Header Right -->
-			<div class="header_right d-flex flex-row align-items-center justify-content-start">
-				
-				<!-- Search Activation Button -->
-				<div class="search_button">
+					<li></li>
+					<li>
+					<div class="search_button">
 					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 512 512" enable-background="new 0 0 512 512" width="512px" height="512px">
 						<g>
 							<path d="M495,466.2L377.2,348.4c29.2-35.6,46.8-81.2,46.8-130.9C424,103.5,331.5,11,217.5,11C103.4,11,11,103.5,11,217.5   S103.4,424,217.5,424c49.7,0,95.2-17.5,130.8-46.7L466.1,495c8,8,20.9,8,28.9,0C503,487.1,503,474.1,495,466.2z M217.5,382.9   C126.2,382.9,52,308.7,52,217.5S126.2,52,217.5,52C308.7,52,383,126.3,383,217.5S308.7,382.9,217.5,382.9z" fill="#FFFFFF"></path>
@@ -64,12 +120,25 @@
 			<div class="search_panel">
 				<div class="search_panel_content d-flex flex-row align-items-center justify-content-start">
 					<img src="images/search.png" alt="">
-					<form action="#" class="search_form">
-						<input type="text" class="search_input" placeholder="Type your search here" required="required">
+					<form action="search.php"  method="POST" class="search_form" name="search">
+						<input type="text"  name="search" class="search_input" placeholder="Type your search here" required="required">
 					</form>
-					<div class="search_close ml-auto d-flex flex-column align-items-center justify-content-center"><div></div></div>
+					<div class="search_close ml-auto d-flex flex-column align-items-center justify-content-center" name="search" value="search" id="submit"><div></div></div>
 				</div>
 			</div>
+					
+					</li>
+				</ul>
+			</nav>
+
+			<!-- Social -->
+			
+
+			<!-- Header Right -->
+			<div class="header_right d-flex flex-row align-items-center justify-content-start">
+				
+				<!-- Search Activation Button -->
+				
 		</div>
 			
 	</header>
@@ -102,7 +171,7 @@
 	<div class="home">
 		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/home_bac.jpg" data-speed="0.8"></div>
 		<div class="home_container d-flex flex-column align-items-center justify-content-center">
-			<div class="home_title"><h1>Contact</h1></div>
+		
 		</div>
 	</div>
 
@@ -111,44 +180,102 @@
 	
 	</div>
 
+	<!-- Contact -->
+
 	<div class="contact">
 		<div class="contact_container">
 			<div class="container">
 				<div class="row">
 					<div class="col">
 						<div class="section_title text-center">
-						<div>Get Logged_In</div>
-							<h1>Login</h1>
+							<div>Welcome</div>
+							<h1>Booking Calender</h1>
 						</div>
-						<div class="contact_text text-center">
-							<p>Already registered, then get yourself logged_in for booking the online courses of your preference.</p>
-						</div>
-						<div class="contact_form_container">
-							<form method="POST" action="register.php" name="form" onsubmit="return validateform()">				
-							<center>
-								<div class="col-lg-10">
-									<input class="contact_input" name="name" id="name" type="text" placeholder="Your Name" data-error="Name is required."> <br><span id="msg1"></span>
-								<input class="contact_input" name="password" id="password" type="password" placeholder="Your password" data-error="Name is required."> <br><span id="msg2"></span>
-								<input type="submit" name="submit" value="submit" class="contact_input">
-								</center>
-							</form>
+						<br>
+						<br>
+						<br>
+						<div class="calender">
+						<center>
+							<form name="rentbooking" method="post" action="">
+					                            <?php 
+														error_reporting(0);
+														$lid=$_GET[lid]; 
+														echo "<input type='hidden' name='lid' value='$lid'>";
+													?>
+													
+													<font color="black">Start Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+													<input type="date" name="start" id="start" class="inputdate" required="required">
+													<br>
+													End Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+													<input type="date" name="end" id="end" class="inputdate" required="required">
+													<br>
+													<input type="submit" value="Submit" name="submit" id="submit" align="center">
+													</font>
+												</form>
+												</center>
+												
+												<?php
+	$con=mysqli_connect("localhost","root","","video_renting");
+	if(isset($_POST['submit']))
+	{
+		//session_start();
+		$start=$_POST['start'];
+		$end=$_POST['end']; 
+		$lid=$_POST['lid'];
+		$uid=$_SESSION['uid'];
+		//$s2= $_SESSION['pid'];
+		//echo $s2;
+		$sd= strtotime($start);
+		$ed= strtotime($end);
+		$diff = $ed - $sd;
+		$days = $diff/(60*60*24);
+		$_SESSION['start']=$start;
+		$_SESSION['end']=$end;
+		
+		if($days > 30)
+		{
+			$message="Invalid Number of Days  |   Limit upto 30 days. Thank You";
+			echo "<script type='text/javascript'>alert('$message');</script>";
+		}
+		else
+		{
+			$qry="SELECT * FROM register,lectures WHERE uid='$uid' and lid='$lid'";
+			if(mysqli_query($con,$qry))
+			{
+			 mysqli_query($con,"INSERT INTO `booking_cal`(`id`, `start`, `end`, `days`, `user_id`, `l_id`) VALUES (NULL,'$start','$end','$days','$uid','$lid')");
+			
+				
+?>
+			<script>
+			window.location.href = '/ITECH3208/user/reciept.php';
+			</script>
+<?php
+			}
+			else
+			{
+				echo "Not inserted";
+			}
+		}
+	}
+?>
+
+												
 							</div>
-						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
 		<!-- Map -->
-		
+
+		</div>
 	</div>
 	<br>
 	<br>
 	<br>
 	<br>
-	<br>
-	<br>
-	<!-- Footer -->
+	<!--<br>
+	<br> Footer -->
 
 	<footer class="footer">
 		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/footer.jpg" data-speed="0.8"></div>

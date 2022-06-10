@@ -1,7 +1,7 @@
 <?php
-	$con=mysqli_connect("localhost","root","","video_renting");
+	$con=mysqli_connect("localhost","root","","employability");
 	session_start();
 
 	session_destroy();
-	header("location:index.html");
+	header("location:index.php"); 
 ?>

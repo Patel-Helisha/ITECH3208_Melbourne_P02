@@ -14,6 +14,68 @@
 <link href="plugins/jquery-datepicker/jquery-ui.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/contact.css">
 <link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
+
+<style>
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active1, .collapsible:hover {
+  background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+.collapsible:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: white;
+  float: right;
+  margin-left: 5px;
+}
+
+.active1:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+.submit{
+		color: #fff;
+		background: #5D5458 ;
+		border: none;
+		border: 2px solid #5D5458;
+		margin-top: 2em;
+		 width: 100px;  
+		 height: 55px;
+		text-decoration: none;
+	}
+	
+.submit:hover{
+		background: #808B96;
+
+.messages{
+		border: 1px solid grey; 
+		margin-top: 50px;
+		box-shadow: 0px 0px 5px grey;
+		padding: 10px 10px 10px 10px;
+	}
+</style>
+
+
+
 </head>
 <body>
 
@@ -25,13 +87,11 @@
 	<br>
 		<div class="header_content d-flex flex-column align-items-center justify-content-lg-end justify-content-center">
 			
-			<!-- Logo -->
 			<center>
-			<div class="logo"><a href="#"><img class="logo_1" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_2" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_3" src="image/emp_logo.png" alt="" height="150" width="200"></a></center>
+			<div class="logo"><a href="#"><img class="logo_1" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_2" src="image/emp_logo.png" alt="" height="200" width="270"><img class="logo_3" src="image/emp_logo.png" alt="" height="200" width="270"></a></center>
+			<div class="header_side d-flex flex-row justify-content-center align-items-center">
 			<div>
-			<center>
 			<?php	
-			error_reporting(0);
 			session_start();
 			$con=mysqli_connect("localhost","root","","employability");
 			$res=mysqli_query($con,"select * from courses");
@@ -51,7 +111,9 @@
 			?>
 			Welcome Guest, (<a href="log_in.php">Login</a>|<a href="register1.php">Register</a>)
 			<?php
-			}?></center>
+			}?>
+			</center>
+			</div>
 			</div>
 
 			<!-- Main Nav -->
@@ -61,7 +123,7 @@
 				<ul class="d-flex flex-row align-items-center justify-content-start">
 					<li><a href="index.php">Home</a></li>
 					<li><a href="about.php">About_Us</a></li>
-					<li><a href="course1.php">Courses</a></li>
+					<li class="active"><a href="course1.php">Courses</a></li>
 					<li><a href="review.php">Reviews</a></li>
 					<li><a href="contact1.php">Contact</a></li>
 					<li><a href="faq.php">FAQ</a></li>
@@ -83,16 +145,19 @@
 			<div class="search_panel">
 				<div class="search_panel_content d-flex flex-row align-items-center justify-content-start">
 					<img src="images/search.png" alt="">
-					<form action="search.php"  method="POST" class="search_form" name="search">
+					<form action="#"  method="POST" class="search_form" name="search">
 						<input type="text"  name="search" class="search_input" placeholder="Type your search here" required="required">
 					</form>
-					<div class="search_close ml-auto d-flex flex-column align-items-center justify-content-center" name="search" value="search" id="submit"><div></div></div>
+					<div class="search_close ml-auto d-flex flex-column align-items-center justify-content-center" name="search" value="Search" id="submit"><div></div></div>
 				</div>
 			</div>
 					
 					</li>
 				</ul>
-			</nav>			
+			</nav>
+
+			<!-- Social -->
+			
 
 			<!-- Header Right -->
 			<div class="header_right d-flex flex-row align-items-center justify-content-start">
@@ -131,52 +196,169 @@
 	<div class="home">
 		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/home_bac.jpg" data-speed="0.8"></div>
 		<div class="home_container d-flex flex-column align-items-center justify-content-center">
-			<div class="home_title"><h1>Contact</h1></div>
+			
 		</div>
 	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<!-- Intro -->
 
-	<!-- Booking -->
-
-	
-	</div>
-
-	<!-- Contact -->
-
-	<div class="contact">
-		<div class="contact_container">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						<div class="section_title text-center">
-							<div>Get registered</div>
-							<h1>Register</h1>
+	<div class="intro">
+		<div class="container">
+			<div class="row row-eq-height">
+				<!-- Intro Content -->
+				<div class="col-lg-6">
+					<div class="intro_content">
+						<div class="section_title">
+							<div>Tube Sessions</div>
+							<h1>Lectures for different programming languages</h1>
 						</div>
-						<div class="contact_text text-center">
-							<p>Get yourself registered, for further access of the website.</p>
-						</div>
-						<div class="contact_form_container">
-							<form method="POST" action="register.php" name="form" onsubmit="return validateform()">				
-							<center>
-								<div class="col-lg-10">
-								<input class="contact_input" name="fname" id="fname" type="text" size="40" placeholder="Your First Name"><br><span id="msg1"></span>
-								<input class="contact_input" name="lname" id="lname" type="text" placeholder="Your Last Name"><br><span id="msg2"></span>
-								<input class="contact_input" name="email" id="mail" type="email" placeholder="Your E-mail"><br><span id="message2"></span>
-								<input class="contact_input" name="pno" id="pno" type="text" placeholder="Your Phone Number"><br><span id="msg3"></span>
-								<input class="contact_input" name="password" id="password" type="password" placeholder="Your Password"><br><span id="msg5"></span>
-								<input class="contact_input" name="cpass" id="cpass" type="password" placeholder="Confirm Your Password"><br><span id="msg6"></span>
-								<input type="submit" name="submit" value="SUBMIT" class="contact_input">
-								</center>
-							</form>
-							</div>
+						<div class="intro_text">
+						<p></p>
+							<p align="justify">All the faculty members of the college are very supportive and experienced. Students are given chance at this college to explore their inner creativity.
+							ATMC, has now showcased a platform for their student to attend online lectures.
+							The Australian Technical & Management College (ATMC) being a frontrunner in nationwide education, facilitates a pathway for students worldwide that are looking for higher and proffessional 
+							education in the field of Management and Business in Australia and at national platform as well.</p>
 						</div>
 					</div>
 				</div>
+
+				<!-- Intro Image -->
+				
+
 			</div>
 		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<!-- Offering -->
 
-		<br>
-		<br>
-		<br>
+	<div class="offering">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="section_title text-center">
+						<div>Course</div>
+						<h1><b>Employability.Life</b></h1>
+					</div>
+				</div>
+			</div>
+			<br>
+	<br>
+	<br>
+			<div class="row offering_row">
+			<div class="offer">
+			
+			<?php	
+			//session_start();
+			$con=mysqli_connect("localhost","root","","employability");
+			$keyword=$_POST['search'];
+			
+			$res=mysqli_query($con,"select courses.*, tutor.tname from courses, tutor where tutor.tid = courses.tid and `category` LIKE '%$keyword%';");
+			
+ while ($row=mysqli_fetch_array($res))
+						{
+								 
+								 echo 	"<div class='col-xl-14 col-md-16'>";
+								 echo 	"<div class='offer'>";
+								 echo 	"<div class='offer_image'>";
+								 
+								 echo	"<img src='image/".$row['image']."'height='550' width='1150' >";
+								 echo   "<div class='offer_content text-center'>";
+								 echo 	"<div class='offer_title'>";
+								 echo 	"<h4 class='simpleCart_shelfItem'>";
+								 echo "<br>";
+								 echo "<br>";
+								 echo 	$row["cname"];   
+								 echo 	"</h4>";
+								 echo   "<br>";								 
+								 echo 	$row["c_price"]; echo "</p>";
+									echo "<br>";
+									echo "<br>";
+									echo "<button type='button' class='collapsible' onclick = 'return collapsible()'> Synopsis </button>";
+									echo"<div class='content'>";
+									echo "By".$row['tname'];
+									echo "<br>";
+									echo "<br>";
+									echo $row['synopsis'];
+									echo"<br>";
+									echo "<br>";
+									echo"</div>";
+									echo "<br>";
+									echo "<br>";
+								  if(isset($_SESSION['email']))
+								{
+									echo "<a href=calender.php?cid=".$row['cid']."><input class='submit' type='button' name='book' value='BOOK' /></a>";
+								}
+								else
+							    {
+									echo "<a href=log_in.php><input class='submit' type='button' name='book' value='BOOK' /></a>";
+									echo "<br>";
+									echo "<br>";
+								}
+								 
+								 echo 	"</div>";
+								 echo 	"</div>";
+								 echo 	"</div>";
+								 echo 	"</div>";
+								 echo 	"</div>";
+								 
+								 							?>
+								
+																 								<script>
+								function collapsible()
+								{
+								var coll = document.getElementsByClassName("collapsible");
+								var i;
+
+								for (i = 0; i < coll.length; i++) {
+								  coll[i].addEventListener("click", function() {
+									this.classList.toggle("active1");
+									var content = this.nextElementSibling;
+									if (content.style.display === "block") {
+									  content.style.display = "none";
+									} else {
+									  content.style.display = "block";
+									}
+								  });
+								}
+								}
+								</script>
+								 
+								
+								<?php
+								 
+								 
+							} 
+							 echo "</div>";   	  
+						?> 
+				
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+	<!-- Discover -->
+
+	
+
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
 	<!-- Footer -->
 
 	<footer class="footer">

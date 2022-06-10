@@ -14,6 +14,66 @@
 <link href="plugins/jquery-datepicker/jquery-ui.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/contact.css">
 <link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
+<style>
+span{
+color: red;
+}
+
+.submit{
+		color: #fff;
+		background: #BF1677 ;
+		border: none;
+		border: 2px solid #95135E;
+		margin-top: 2em;
+		 width: 900px;  
+		 height: 55px;
+		text-decoration: none;
+	}
+	
+.submit:hover{
+		background: #F90491;
+
+.messages{
+		border: 1px solid grey; 
+		margin-top: 50px;
+		box-shadow: 0px 0px 5px grey;
+		padding: 10px 10px 10px 10px;
+	}
+
+</style>
+
+<script>	<!-- Starting of the JavaScript -->
+function validateform()
+{    
+		
+	var email = document.forms["form"]["email"].value; //<-----validation for the empty field------>
+	if(email=="")
+		{
+			document.getElementById("msg1").innerHTML = "*Please enter email address";
+			document.form.email.focus();
+			return false;
+		}
+	else
+		{
+			document.getElementById("msg1").innerHTML = "";
+		}
+		
+	
+	
+	var password = document.forms["form"]["password"].value; //<-----validation for the empty field------>
+	if(password=="")
+		{
+			document.getElementById("msg2").innerHTML = "*Please enter your password";
+			document.form.password.focus();
+			return false;
+		}
+		else
+		{
+			document.getElementById("msg2").innerHTML = "";
+		}
+		alert("Welcome, you have been successfully placed order, " + lname + ""  + fname);
+}
+</script>
 </head>
 <body>
 
@@ -22,33 +82,51 @@
 	<!-- Header -->
 
 	<header class="header">
+	<br>
 		<div class="header_content d-flex flex-column align-items-center justify-content-lg-end justify-content-center">
 			
-			<!-- Logo -->
-			<div class="logo"><a href="#"><img class="logo_1" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_2" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_3" src="image/emp_logo.png" alt="" height="150" width="200"></a></div>
+			<center>
+			<div class="logo"><a href="#"><img class="logo_1" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_2" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_3" src="image/emp_logo.png" alt="" height="150" width="200"></a></center>
+			<div class="header_side d-flex flex-row justify-content-center align-items-center">
+			<div>
+			<?php	
+			session_start();
+			$con=mysqli_connect("localhost","root","","employability");
+			$res=mysqli_query($con,"select * from courses");
 
+			//session_start();
+			if(isset($_SESSION['email']))
+			{
+				echo "Welcome ".$_SESSION['email'];
+			?>
+			<br>
+			<center>
+			(<a href="logout.php">Logout</a>)
+			<?php
+			}
+			else
+			{
+			?>
+			Welcome Guest, (<a href="log_in.php">Login</a>|<a href="register1.php">Register</a>)
+			<?php
+			}?>
+			</center>
+			</div>
+			</div>
+			
 			<!-- Main Nav -->
 			<nav class="main_nav">
 			
 			
 				<ul class="d-flex flex-row align-items-center justify-content-start">
-					<li class="active"><a href="index.php">Home</a></li>
+					<li><a href="index.php">Home</a></li>
 					<li><a href="about.php">About_Us</a></li>
 					<li><a href="course1.php">Courses</a></li>
 					<li><a href="review.php">Reviews</a></li>
 					<li><a href="contact.php">Contact</a></li>
 					<li><a href="faq.php">FAQ</a></li>
-				</ul>
-			</nav>
-
-			<!-- Social -->
-			
-
-			<!-- Header Right -->
-			<div class="header_right d-flex flex-row align-items-center justify-content-start">
-				
-				<!-- Search Activation Button -->
-				<div class="search_button">
+					<li>
+					<div class="search_button">
 					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 512 512" enable-background="new 0 0 512 512" width="512px" height="512px">
 						<g>
 							<path d="M495,466.2L377.2,348.4c29.2-35.6,46.8-81.2,46.8-130.9C424,103.5,331.5,11,217.5,11C103.4,11,11,103.5,11,217.5   S103.4,424,217.5,424c49.7,0,95.2-17.5,130.8-46.7L466.1,495c8,8,20.9,8,28.9,0C503,487.1,503,474.1,495,466.2z M217.5,382.9   C126.2,382.9,52,308.7,52,217.5S126.2,52,217.5,52C308.7,52,383,126.3,383,217.5S308.7,382.9,217.5,382.9z" fill="#FFFFFF"></path>
@@ -64,12 +142,25 @@
 			<div class="search_panel">
 				<div class="search_panel_content d-flex flex-row align-items-center justify-content-start">
 					<img src="images/search.png" alt="">
-					<form action="#" class="search_form">
-						<input type="text" class="search_input" placeholder="Type your search here" required="required">
+					<form action="search.php"  method="POST" class="search_form" name="search">
+						<input type="text"  name="search" class="search_input" placeholder="Type your search here" required="required">
 					</form>
-					<div class="search_close ml-auto d-flex flex-column align-items-center justify-content-center"><div></div></div>
+					<div class="search_close ml-auto d-flex flex-column align-items-center justify-content-center" name="search" value="search" id="submit"><div></div></div>
 				</div>
 			</div>
+					
+					</li>
+				</ul>
+			</nav>
+
+			<!-- Social -->
+			
+
+			<!-- Header Right -->
+			<div class="header_right d-flex flex-row align-items-center justify-content-start">
+				
+				<!-- Search Activation Button -->
+				
 		</div>
 			
 	</header>
@@ -102,7 +193,6 @@
 	<div class="home">
 		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/home_bac.jpg" data-speed="0.8"></div>
 		<div class="home_container d-flex flex-column align-items-center justify-content-center">
-			<div class="home_title"><h1>Contact</h1></div>
 		</div>
 	</div>
 
@@ -124,14 +214,15 @@
 							<p>Already registered, then get yourself logged_in for booking the online courses of your preference.</p>
 						</div>
 						<div class="contact_form_container">
-							<form method="POST" action="register.php" name="form" onsubmit="return validateform()">				
+							<form method="POST" action="login.php" name="form" onsubmit="return validateform()">				
 							<center>
 								<div class="col-lg-10">
-									<input class="contact_input" name="name" id="name" type="text" placeholder="Your Name" data-error="Name is required."> <br><span id="msg1"></span>
+									<input class="contact_input" name="email" id="email" type="email" placeholder="Your ID" data-error="Name is required."> <br><span id="msg1"></span>
 								<input class="contact_input" name="password" id="password" type="password" placeholder="Your password" data-error="Name is required."> <br><span id="msg2"></span>
-								<input type="submit" name="submit" value="submit" class="contact_input">
+								<input class='submit' type='submit' name='submit' value='SUBMIT' />
 								</center>
 							</form>
+							<center><p style="color:black" ><a href="register1.php">Don't have an account? Click here to register</a></p></center>
 							</div>
 						</div>
 					</div>
@@ -150,7 +241,7 @@
 	<br>
 	<!-- Footer -->
 
-	<footer class="footer">
+		<footer class="footer">
 		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/footer.jpg" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
