@@ -43,7 +43,7 @@ a {
 
  .collapsible {
   background-color: #eee;
-  font-weight:bold;
+  color: #444;
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -51,14 +51,11 @@ a {
   text-align: left;
   outline: none;
   font-size: 15px;
-     color: #2C3E50;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active1, .collapsible:hover {
-  background-color: #BFC9CA;
-  color:#d33363;
-
+  background-color: #ccc;
 }
 
 /* Style the collapsible content. Note: hidden by default */
@@ -66,21 +63,18 @@ a {
   padding: 0 18px;
   display: none;
   overflow: hidden;
-   color: #566573 ;
   background-color: #f1f1f1;
 }
 .collapsible:after {
   content: '\02795'; /* Unicode character for "plus" sign (+) */
-  font-size: 18px;
+  font-size: 13px;
   color: white;
   float: right;
   margin-left: 5px;
-  
 }
 
 .active1:after {
   content: "\2796"; /* Unicode character for "minus" sign (-) */
-  
 }
 
 .submit{
@@ -89,7 +83,7 @@ a {
 		border: none;
 		border: 2px solid #5D5458;
 		margin-top: 2em;
-		 width: 100px;  
+		 width: 200px;  
 		 height: 55px;
 		text-decoration: none;
 	}
@@ -165,12 +159,12 @@ a {
   <tr>
   	
 
- <td ><center><a href="index.php" style="color:white;">Home</a></center></td>
+    <td ><center><a href="index.php" style="color:white;">Home</a></center></td>
     <td><center><a href="about.php" style="color:white;">About Us</a></center></td>
-    <td><center><a href="course1.php" style="color:white;" "background-color:Tomato;">Courses</a></center></td>
-    <td ><center><a href="review.php" style="color:white;">Reviews</a></center></td>
-    <td ><center><a href="contact1.php" style="color:white;">Contact Us</a></center></td>
-    <td class="active"><center><a href="faq.php" style="color:#F0B90D;">FAQs</a></center></td>
+    <td class="active"><center><a href="course1.php" style="color:#F0B90D;" "background-color:Tomato;">Courses</a></center></td>
+    <td><center><a href="review.php" style="color:white;">Reviews</a></center></td>
+    <td><center><a href="contact.php" style="color:white;">Contact Us</a></center></td>
+    <td><center><a href="faq.php" style="color:white;">FAQs</a></center></td>
   </tr>
  
 </table>
@@ -285,21 +279,13 @@ a {
 
 		<!-- Intro -->
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<!-- Offering -->
-
-<div class="offering">
+	<div class="offering">
 		<div class="container">
 			<div class="row">
 				<div class="col">
 					<div class="section_title text-center">
-						<div style="padding-top:70px;">FAQ</div>
-						<h1><b>Employability.Life</b></h1>
+						<div style="padding-top:70px;">Course</div>
+						<h1 style="font-size:60px"><b>Lecture</b></h1>
 					</div>
 				</div>
 			</div>
@@ -309,10 +295,9 @@ a {
 			<div class="row offering_row">
 			<div class="offer">
 			
-<?php	
-			//session_start();
+			<?php	
 			$con=mysqli_connect("localhost","root","","employability");
-			$res=mysqli_query($con,"select question, answer FROM faq");
+			$res=mysqli_query($con,"select * FROM lec_video WHERE vid=1");
 			
 ?>
 		
@@ -320,82 +305,79 @@ a {
 							<div class='row'>
 							<?php while ($row=mysqli_fetch_array($res))
 							{
-								 
- echo 	"<div class='col-xl-14 col-md-16'>";
+								 echo lid;
+							
+								  echo 	"<div class='col-xl-34 col-md-16'>";
+								  echo   "<div class='offer_content text-center'>";
+								 echo 	"<div class='offer_title' >";
+								 echo 	"<h4 class='simpleCart_shelfItem'>";
+								 echo "<br>";
+								 echo "<br>";
+								 echo "<br>";
+								 echo "<br>";
+								 echo "<br>";
+								 echo "<div style='color:#5D5458; font-size: 36px;'><b>";
+								 echo 	$row["lname"];   
+								 echo "</b></div>";
 								 echo 	"<div class='offer'>";
 								 echo 	"<div class='offer_image'>";
-								 echo "<p align='center' >";
-								// echo	"<img src='image/".$row['image']."'height='550' width='1150' >";
-								 echo   "<div class='offer_content text-center'>";
-								 echo 	"<div class='offer_title'>";
-								 echo 	"<h4 class='simpleCart_shelfItem'>";
-								echo "<br>";
-								 echo 	"<p style='color:#4A235A;'>";
-								  echo 	"<p style='font-size:22px; text-align:left; font-weight:bold;' >";
-								 echo $row['question'];
-								 echo "</p>"; 
-								echo "</p>"; 								 
-								 echo 	"</h4>";
+								 echo "<br>";
+									echo "<br>";
+									
+									
+								echo "<video height='650' width='1350' controls>
+								<source src='videos/lec1_video.mp4' type='video/mp4'>
+								</video>";
+									
+									
 								
-									echo "<button style=' height:50px; width:1150px;  font-size: 18px; padding-bottom:40px;' type='button' class='collapsible' onclick = 'return collapsible()'> View Answer </button>";
-									echo"<div class='content' style='font-size: 18px;'>";
+
+								 echo 	"</h4>";
+								 echo "<div style='color:#5D5458; font-size: 20px;'>";
+
+								 echo "</div>";
+									echo "<br>";
+									echo "<br>";
 									
+
 									
-									echo $row['answer'];
 									echo"<br>";
 									echo "<br>";
 									echo"</div>";
 									echo "<br>";
 									echo "<br>";
-									echo "<br>";
-								
-								 echo 	"</div>";
-								 echo 	"</div>";
-								 echo 	"</div>";
-								 echo 	"</div>";
-								 echo 	"</div>";
-								echo "</p>";
-								 							?>
-								
-																 								<script>
-								function collapsible()
-								{
-								var coll = document.getElementsByClassName("collapsible");
-								var i;
+									
 
-								for (i = 0; i < coll.length; i++) {
-								  coll[i].addEventListener("click", function() {
-									this.classList.toggle("active1");
-									var content = this.nextElementSibling;
-									if (content.style.display === "block") {
-									  content.style.display = "none";
-									} else {
-									  content.style.display = "block";
-									}
-								  });
-								}
-								}
-								</script>
-								 
-								
-								<?php
-								 
-								 
-							} 
-							 echo "</div>";   	  
-						?> 
-						
-						
-						
+?>
+<br>
+	<br>
+
+<div class="intro">
+		<div class="container">
+			<div class="row row-eq-height">
+				<!-- Intro Content -->
+				<div class="col-lg-12">
+					<div class="intro_content">
+						<div class="section_title">
+							
+							<h1 style="text-align:Left">Lecture Overview:</h1>
+						</div>
+						<div class="intro_text">
+						<p></p>
+							<p align="justify" style="font-size:22px;">All the faculty members of the college are very supportive and experienced. Students are given chance at this college to explore their inner creativity.
+							ATMC, has now showcased a platform for their student to attend online lectures.
+							The Australian Technical & Management College (ATMC) being a frontrunner in nationwide education, facilitates a pathway for students worldwide that are looking for higher and proffessional 
+							education in the field of Management and Business in Australia and at national platform as well.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Intro Image -->
 				
-				<!-- Offer Item -->
-				
-				
+
 			</div>
 		</div>
 	</div>
-</div>
-
 	<!-- Discover -->
 
 	
@@ -403,6 +385,48 @@ a {
 	</div>
 	<br>
 	<br>
+	<br>
+
+<p align="center">
+<?php
+									
+								 if(isset($_SESSION['email']))
+								{
+									echo "<a href=lectures.php><input class='submit' type='button' name='back' value='BACK TO COURSE' /></a>";
+								}
+								else
+							    {
+									echo "<a href=log_in.php><input class='submit' type='button' name='back' value='BACK TO COURSE' /></a>";
+									echo "<br>";
+									echo "<br>";
+									echo "<br>";
+									echo "<br>";
+									echo "<br>";
+								}
+								 echo 	"</div>";
+								 echo 	"</div>";
+								 echo 	"</div>";
+								 echo 	"</div>";
+								 echo 	"</div>";
+								 
+								 							?>
+</p>							
+								
+								<?php
+								 
+								 
+							} 
+							 echo "</div>";   	  
+						?> 
+				
+				
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<br>
+<br>
 	<br>
 	<br>
 	<br>

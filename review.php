@@ -14,7 +14,32 @@
 <link href="plugins/jquery-datepicker/jquery-ui.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/contact.css">
 <link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
+
+
+
+
 <style>
+
+td {
+padding: 15px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+}
+
+td, th {
+  
+  text-align: left;
+  padding: 8px;
+}
+
+a {
+	font-size: 20px;
+}
+
 .submit{
 		color: #fff;
 		background: #BF1677 ;
@@ -28,6 +53,7 @@
 	
 .submit:hover{
 		background: #F90491;
+		font-weight:bold;
 
 .messages{
 		border: 1px solid grey; 
@@ -36,6 +62,28 @@
 		padding: 10px 10px 10px 10px;
 	}
 	
+.review{
+
+		
+		
+	  
+	  border-radius: 20px;
+	  background: 
+		linear-gradient(to right, white, white), 
+		linear-gradient(to right, #8c00b1 , #f45106, #ffb300); 
+	  background-clip: padding-box, border-box;
+	  background-origin: padding-box, border-box;
+	 
+				
+	}
+	
+	.review:hover{
+		background-image: linear-gradient(to top, #ffb300, #f9e8bf );
+		opacity: 0.7;	
+		color: #8c00b1;
+		
+	}
+
 </style>
 </head>
 <body>
@@ -46,13 +94,28 @@
 
 	<header class="header">
 	<br>
-		<div class="header_content d-flex flex-column align-items-center justify-content-lg-end justify-content-center">
+	
+		<div class="header_content d-flex flex-column align-items-center justify-content-lg-end justify-content-center" style="height: 145px; ">
 			
-			<center>
-			<div class="logo"><a href="#"><img class="logo_1" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_2" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_3" src="image/emp_logo.png" alt="" height="150" width="200"></a></center>
-			<div class="header_side d-flex flex-row justify-content-center align-items-center">
+			
+			
 			<div>
-			<?php	
+			
+
+			</center>
+			</div>
+
+			<!-- Main Nav -->
+			
+
+	<table>
+			
+  <tr>
+     <td rowspan="2" ><center><a href="index.php"><img src="image/emp_logo.png" alt="Logo" height="90" width="145"></a></center></td>
+
+     <td colspan="6"><center>
+	 <div style="font-size: 20px;">
+	 <?php	
 			session_start();
 			$con=mysqli_connect("localhost","root","","employability");
 			$res=mysqli_query($con,"select * from courses");
@@ -70,33 +133,52 @@
 			else
 			{
 			?>
+			
 			Welcome Guest, (<a href="log_in.php">Login</a>|<a href="register1.php">Register</a>)
 			<?php
 			}?>
-			</center>
-			</div>
-			</div>
+	 </div>
+	 </center></td>
+   	   
+		
+  </tr>
+  <tr>
+  	
 
-			<!-- Main Nav -->
-						<nav class="main_nav">
+    <td ><center><a href="index.php" style="color:white;">Home</a></center></td>
+    <td><center><a href="about.php" style="color:white;">About Us</a></center></td>
+    <td><center><a href="course1.php" style="color:white;" "background-color:Tomato;">Courses</a></center></td>
+    <td class="active"><center><a href="review.php" style="color:#F0B90D;">Reviews</a></center></td>
+    <td><center><a href="contact.php" style="color:white;">Contact Us</a></center></td>
+    <td><center><a href="faq.php" style="color:white;">FAQs</a></center></td>
+  </tr>
+ 
+</table>
+
+				</ul>
+			</nav>
+				</ul>
+			</nav>
+
+
+			<!-- Social -->
 			
-			
-				<ul class="d-flex flex-row align-items-center justify-content-start">
-					<li><a href="index1.php">Home</a></li>
-					<li><a href="about.php">About_Us</a></li>
-					<li><a href="course1.php">Courses</a></li>
-					<li class="active"><a href="review.php">Reviews</a></li>
-					<li><a href="contact1.php">Contact</a></li>
-					<li><a href="faq.php">FAQ</a></li>
-					<li></li>
-					<li>
-					<div class="search_button">
+
+			<!-- Header Right -->
+			<div class="header_right d-flex flex-row align-items-center justify-content-start">
+				
+				<!-- Search Activation Button -->
+				<div class="search_button">
 					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 512 512" enable-background="new 0 0 512 512" width="512px" height="512px">
 						<g>
 							<path d="M495,466.2L377.2,348.4c29.2-35.6,46.8-81.2,46.8-130.9C424,103.5,331.5,11,217.5,11C103.4,11,11,103.5,11,217.5   S103.4,424,217.5,424c49.7,0,95.2-17.5,130.8-46.7L466.1,495c8,8,20.9,8,28.9,0C503,487.1,503,474.1,495,466.2z M217.5,382.9   C126.2,382.9,52,308.7,52,217.5S126.2,52,217.5,52C308.7,52,383,126.3,383,217.5S308.7,382.9,217.5,382.9z" fill="#FFFFFF"></path>
 						</g>
 					</svg>
-				</div>			
+				</div>
+
+				<!-- Header Link -->
+				
+
 				<!-- Hamburger Button -->
 				<div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
 
@@ -112,19 +194,6 @@
 					<div class="search_close ml-auto d-flex flex-column align-items-center justify-content-center" name="search" value="search" id="submit"><div></div></div>
 				</div>
 			</div>
-					
-					</li>
-				</ul>
-			</nav>
-
-			<!-- Social -->
-			
-
-			<!-- Header Right -->
-			<div class="header_right d-flex flex-row align-items-center justify-content-start">
-				
-				<!-- Search Activation Button -->
-				
 		</div>
 			
 	</header>
@@ -133,7 +202,7 @@
 
 	<div class="logo_overlay">
 		<div class="logo_overlay_content d-flex flex-column align-items-center justify-content-center">
-		<div class="logo"><a href="#"><img src="image/bac_logo.jpg" alt=""></a></div>
+			<div class="logo"><a href="#"><img src="image/bac_logo.jpg" alt=""></a></div>
 		</div>
 	</div>
 
@@ -150,16 +219,44 @@
 
 	<!-- Menu -->
 
-	
+	<div class="menu">
+		<div class="menu_container d-flex flex-column align-items-center justify-content-center">
+
+			<!-- Menu Navigation -->
+			<nav class="menu_nav text-center">
+				<ul>
+					<li class="active"><a href="index.php">Home</a></li>
+					<li><a href="about.php">About_Us</a></li>
+					<li><a href="course1.php">Courses</a></li>
+					<li><a href="blog1.php">Blog</a></li>
+					<li><a href="contact1.php">Contact</a></li>
+				</ul>
+			</nav>
+			<div class="button menu_button"><a href="#">book now</a></div>
+
+			<!-- Menu Social -->
+			<div class="social menu_social">
+				<ul class="d-flex flex-row align-items-center justify-content-start">
+					<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
 
 	<!-- Home -->
 
 	<div class="home">
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/home_bac.jpg" data-speed="0.8"></div>
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/home_bac.jpg" data-speed="0.8" height="912px"></div>
 		<div class="home_container d-flex flex-column align-items-center justify-content-center">
-		
+			
 		</div>
 	</div>
+
 
 	<!-- Booking -->
 
@@ -175,21 +272,22 @@
 					<div class="col">
 						<div class="section_title text-center">
 							<div>Welcome</div>
-							<h1>Student Reviews</h1>
+							<h1 style="font-size: 45px;"><b>Student Reviews</b></h1>
 						</div>
+						<br>
 						<br>
 						<br>
 						<br>
 						<center>
 						<div class="calender">
-							<form name="form" method="post" action="review_in.php">
+							<form name="form" method="post" action="review_in.php" >
 									<div class="col-xl-6">
-										<input type="text" name="name" id="name" placeholder="Enter name" class="contact_input" required="required">
+										<input type="text" name="name" id="name" placeholder="Enter Name" class="contact_input" required="required">
 									</div>
 									<div class="col-xl-6">
-										<input type="textarea" name="msg" id="msg" placeholder="message" class="contact_input" required="required">
+										<input type="textarea" name="msg" id="msg" placeholder="Your Message" class="contact_input" required="required">
 									</div>
-								<div class="col-xl-6">
+								<div class="col-xl-6" style="font-size:20px;">
 							<?php
 							if(isset($_SESSION['email']))
 							{
@@ -197,7 +295,7 @@
 							}
 							else
 							{
-								echo "<a href = 'log_in.php'> Please Login First </a>";
+								echo "<a href = 'log_in.php' style='font-weight:bold'><u> Please Login First</u> </a>";
 							}
 							?>
 									</div>
@@ -213,24 +311,95 @@
 		<!-- Map -->
 
 		</div>
+	
 		<div class="messages">
-						<br><br>
-							<h3 class="glow_text">Comments/Feedbacks</h3><hr>
+		
+							
+							
+							
+							
+							
+		<br><br><br><br><br><br><br><br>
+							   <h3 class="glow_text" style="text-align:center; color:black; font-size:32px; font-weight:bold;">Comments/Feedbacks</h3>
+							
+		<br><br>
+						
+							<div class="review">
 							   <?php
 									$res=mysqli_query($con,"select * from review");
 									while($row=mysqli_fetch_array($res))
 									{
 										echo "<h4 class='glow_text'>";
+										
+										
+								?>
+								<center>
+								<table  style="width:70%;   text-align:center; font-size:20px;
+								 border-radius: 5px;
+								  border: 5px solid transparent;
+								  background: 
+									linear-gradient(to right, white, white), 
+									linear-gradient(to right, #8c00b1 , #f45106, #ffb300); 
+								  background-clip: padding-box, border-box;
+								  background-origin: padding-box, border-box;">
+							 
+							  <tr>
+								<th rowspan="3" style="text-align:center; width:25%; background-color: #BF1677; font-weight:bold; color:White;
+								">
+								
+								
+							
+								
+								<?php
 										echo $row["name"]; 
-										echo "</h4>"; 
-										echo "<p>";
-										echo $row["message"]; 
-										echo "</p>";
-										echo $row["date"]; 
-										echo "</p>";
-										echo $row["time"]; 
+								?>
+									</th>
+									
+									<tr>
+								<td colspan="2"  style="text-align:left; border: 1px solid black;  color:black; font-weight:bold; padding-bottom:20px;
+
+								"><br>
+								
+								
+								<?php
+								echo $row["message"]; 
+								?>
+								
+								</td>
+							  </tr></tr>
+							  
+							  
+							  <tr colspan="2" style=" text-align:left; color:black; 
+							  
+							 
+							  ">
+								<td style=" text-align:left;  color:black; 
+							  
+							 
+							  ">Date:
+								
+								<?php
+								
+								echo $row["date"]; 
+								
+								?>
+							  </td>
+							  
+							  <td style=" text-align:left;  color:black; 
+							  
+							 
+							  ">Time:
+							  
+							  <?php
+							  
+							  echo $row["time"]; 
+							  ?>
+							  </td>
+							  </tr>
+							</table></center>
+								<?php
+ 
 										echo "<br>";
-										echo "<hr/>";
 										echo "<br>";
 										
 									}

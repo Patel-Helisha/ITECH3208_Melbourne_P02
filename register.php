@@ -22,9 +22,15 @@ if(isset($_POST['submit']))
 	$h2=$_POST['lname'];
 	$h3=$_POST['email'];  
 	$h4=$_POST['pno'];
-	$h5=$_POST['password'];
+	$password=$_POST['password'];
 	
-	$in="INSERT INTO `register`(`fname`, `lname`, `email`, `pno`, `password`) VALUES ('$h1','$h2','$h3','$h4','$h5')";
+	$pass = password_hash($password, PASSWORD_DEFAULT);
+	
+	
+	
+	
+	
+	$in="INSERT INTO `register`(`fname`, `lname`, `email`, `pno`, `password`) VALUES ('$h1','$h2','$h3','$h4','$pass')";
 if(mysqli_query($conn,$in))
 {
 	header('location:log_in.php');

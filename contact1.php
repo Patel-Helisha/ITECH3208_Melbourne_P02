@@ -14,9 +14,30 @@
 <link href="plugins/jquery-datepicker/jquery-ui.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/contact.css">
 <link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
+
+
+
+
 <style>
-span{
-color: red;
+
+td {
+padding: 15px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+}
+
+td, th {
+  
+  text-align: left;
+  padding: 8px;
+}
+
+a {
+	font-size: 20px;
 }
 
 .submit{
@@ -25,13 +46,14 @@ color: red;
 		border: none;
 		border: 2px solid #95135E;
 		margin-top: 2em;
-		 width: 900px;  
+		 width: 530px;  
 		 height: 55px;
 		text-decoration: none;
 	}
 	
 .submit:hover{
 		background: #F90491;
+		font-weight:bold;
 
 .messages{
 		border: 1px solid grey; 
@@ -39,7 +61,15 @@ color: red;
 		box-shadow: 0px 0px 5px grey;
 		padding: 10px 10px 10px 10px;
 	}
+	
+
+span{
+color: red;
+}
+
+
 </style>
+
 
 <script>	<!-- Starting of the JavaScript -->
 function validateform()
@@ -91,22 +121,36 @@ function validateform()
 </head>
 <body>
 
+<body>
+
 <div class="super_container">
 	
 	<!-- Header -->
 
 	<header class="header">
 	<br>
-		<div class="header_content d-flex flex-column align-items-center justify-content-lg-end justify-content-center">
+	
+		<div class="header_content d-flex flex-column align-items-center justify-content-lg-end justify-content-center" style="height: 145px; ">
 			
-			<center>
-			<div class="logo"><a href="#"><img class="logo_1" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_2" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_3" src="image/emp_logo.png" alt="" height="150" width="200"></a></center>
-			<div class="header_side d-flex flex-row justify-content-center align-items-center">
+			
+			
 			<div>
-			<?php	
 			
 
- 
+			</center>
+			</div>
+
+			<!-- Main Nav -->
+			
+
+	<table>
+			
+  <tr>
+     <td rowspan="2" ><center><a href="index.php"><img src="image/emp_logo.png" alt="Logo" height="90" width="145"></a></center></td>
+
+     <td colspan="6"><center>
+	 <div style="font-size: 20px;">
+	 <?php	
 			session_start();
 			$con=mysqli_connect("localhost","root","","employability");
 			$res=mysqli_query($con,"select * from courses");
@@ -124,33 +168,52 @@ function validateform()
 			else
 			{
 			?>
+			
 			Welcome Guest, (<a href="log_in.php">Login</a>|<a href="register1.php">Register</a>)
 			<?php
 			}?>
-			</center>
-			</div>
-			</div>
+	 </div>
+	 </center></td>
+   	   
+		
+  </tr>
+  <tr>
+  	
 
-			<!-- Main Nav -->
-						<nav class="main_nav">
+    <td ><center><a href="index.php" style="color:white;">Home</a></center></td>
+    <td><center><a href="about.php" style="color:white;">About Us</a></center></td>
+    <td><center><a href="course1.php" style="color:white;" "background-color:Tomato;">Courses</a></center></td>
+    <td ><center><a href="review.php" style="color:white;">Reviews</a></center></td>
+    <td class="active"><center><a href="contact1.php" style="color:#F0B90D;">Contact Us</a></center></td>
+    <td><center><a href="faq.php" style="color:white;">FAQs</a></center></td>
+  </tr>
+ 
+</table>
+
+				</ul>
+			</nav>
+				</ul>
+			</nav>
+
+
+			<!-- Social -->
 			
-			
-				<ul class="d-flex flex-row align-items-center justify-content-start">
-					<li><a href="index1.php">Home</a></li>
-					<li><a href="about.php">About_Us</a></li>
-					<li><a href="course1.php">Courses</a></li>
-					<li><a href="review.php">Reviews</a></li>
-					<li class="active"><a href="contact1.php">Contact</a></li>
-					<li><a href="faq.php">FAQ</a></li>
-					<li></li>
-					<li>
-					<div class="search_button">
+
+			<!-- Header Right -->
+			<div class="header_right d-flex flex-row align-items-center justify-content-start">
+				
+				<!-- Search Activation Button -->
+				<div class="search_button">
 					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 512 512" enable-background="new 0 0 512 512" width="512px" height="512px">
 						<g>
 							<path d="M495,466.2L377.2,348.4c29.2-35.6,46.8-81.2,46.8-130.9C424,103.5,331.5,11,217.5,11C103.4,11,11,103.5,11,217.5   S103.4,424,217.5,424c49.7,0,95.2-17.5,130.8-46.7L466.1,495c8,8,20.9,8,28.9,0C503,487.1,503,474.1,495,466.2z M217.5,382.9   C126.2,382.9,52,308.7,52,217.5S126.2,52,217.5,52C308.7,52,383,126.3,383,217.5S308.7,382.9,217.5,382.9z" fill="#FFFFFF"></path>
 						</g>
 					</svg>
-				</div>			
+				</div>
+
+				<!-- Header Link -->
+				
+
 				<!-- Hamburger Button -->
 				<div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
 
@@ -160,25 +223,12 @@ function validateform()
 			<div class="search_panel">
 				<div class="search_panel_content d-flex flex-row align-items-center justify-content-start">
 					<img src="images/search.png" alt="">
-					<form action="search.php"  method="POST" class="search_form" name="search" >
-						<input type="text"  name="search" class="search_input" placeholder="Type your search here">
+					<form action="search.php"  method="POST" class="search_form" name="search">
+						<input type="text"  name="search" class="search_input" placeholder="Type your search here" required="required">
 					</form>
 					<div class="search_close ml-auto d-flex flex-column align-items-center justify-content-center" name="search" value="search" id="submit"><div></div></div>
 				</div>
 			</div>
-					
-					</li>
-				</ul>
-			</nav>
-
-			<!-- Social -->
-			
-
-			<!-- Header Right -->
-			<div class="header_right d-flex flex-row align-items-center justify-content-start">
-				
-				<!-- Search Activation Button -->
-				
 		</div>
 			
 	</header>
@@ -187,7 +237,7 @@ function validateform()
 
 	<div class="logo_overlay">
 		<div class="logo_overlay_content d-flex flex-column align-items-center justify-content-center">
-			<div class="logo"><a href="#"><img src="image/emp_logo.png" alt=""></a></div>
+			<div class="logo"><a href="#"><img src="image/bac_logo.jpg" alt=""></a></div>
 		</div>
 	</div>
 
@@ -204,21 +254,54 @@ function validateform()
 
 	<!-- Menu -->
 
-	
+	<div class="menu">
+		<div class="menu_container d-flex flex-column align-items-center justify-content-center">
+
+			<!-- Menu Navigation -->
+			<nav class="menu_nav text-center">
+				<ul>
+					<li class="active"><a href="index.php">Home</a></li>
+					<li><a href="about.php">About_Us</a></li>
+					<li><a href="course1.php">Courses</a></li>
+					<li><a href="blog1.php">Blog</a></li>
+					<li><a href="contact1.php">Contact</a></li>
+				</ul>
+			</nav>
+			<div class="button menu_button"><a href="#">book now</a></div>
+
+			<!-- Menu Social -->
+			<div class="social menu_social">
+				<ul class="d-flex flex-row align-items-center justify-content-start">
+					<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
 
 	<!-- Home -->
 
 	<div class="home">
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/logo.jpg" data-speed="0.8"></div>
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/home_bac.jpg" data-speed="0.8" height="912px"></div>
 		<div class="home_container d-flex flex-column align-items-center justify-content-center">
-
+			
 		</div>
 	</div>
+
 
 	<!-- Booking -->
 
 	
 	</div>
+
+
+
+
+
 
 	<!-- Contact -->
 
@@ -229,18 +312,18 @@ function validateform()
 					<div class="col">
 						<div class="section_title text-center">
 							<div>Say Hello</div>
-							<h1>Contact Us</h1>
+							<h1 style="font-size: 45px;"><b>Contact Us</b></h1>
 						</div>
 						<div class="contact_text text-center">
-							<p>Give us your valuable feedback. Employability.Life will admire your response and take accepted actions as your your suggestion and request.</p>
+							<p style="font-size:22px;">Give us your valuable feedback. Employability.Life will admire your response and take accepted actions as your your suggestion and request.</p>
 						</div>
 						<div class="contact_form_container">
 							<form method="POST" action="register.php" name="form" onsubmit="return validateform()">				
 							<center>
-								<div class="col-lg-10">
-								<input class="contact_input" type="text" id="uname" placeholder="Your Name"> <br> <span id="msg1"></span>
+								<div class="col-lg-10" style="font-size:22px;">
+								<input class="contact_input" " type="text" id="uname" placeholder="Your Name"> <br> <span id="msg1"></span>
 								<input class="contact_input"type="email" id="mail" placeholder="Your E-mail"> <br><span id="message"></span>
-								<textarea class="contact_input" name="message" id="message" placeholder="Your Message"></textarea> <br><span id="msg2"></span>
+								<input class="contact_input" type="text" name="message" id="message" placeholder="Your Message"> <br><span id="msg2"></span>
 								
 								<input class='submit' type='button' name='submit' value='SUBMIT' />
 								</center>

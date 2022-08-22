@@ -40,69 +40,29 @@ a {
 	font-size: 20px;
 }
 
-
- .collapsible {
-  background-color: #eee;
-  font-weight:bold;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-     color: #2C3E50;
-}
-
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active1, .collapsible:hover {
-  background-color: #BFC9CA;
-  color:#d33363;
-
-}
-
-/* Style the collapsible content. Note: hidden by default */
-.content {
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
-   color: #566573 ;
-  background-color: #f1f1f1;
-}
-.collapsible:after {
-  content: '\02795'; /* Unicode character for "plus" sign (+) */
-  font-size: 18px;
-  color: white;
-  float: right;
-  margin-left: 5px;
-  
-}
-
-.active1:after {
-  content: "\2796"; /* Unicode character for "minus" sign (-) */
-  
-}
-
 .submit{
 		color: #fff;
-		background: #5D5458 ;
+		background: #BF1677 ;
 		border: none;
-		border: 2px solid #5D5458;
+		border: 2px solid #95135E;
 		margin-top: 2em;
-		 width: 100px;  
+		 width: 530px;  
 		 height: 55px;
 		text-decoration: none;
 	}
 	
 .submit:hover{
-		background: #808B96;
+		background: #F90491;
+		font-weight:bold;
 
 .messages{
 		border: 1px solid grey; 
 		margin-top: 50px;
 		box-shadow: 0px 0px 5px grey;
 		padding: 10px 10px 10px 10px;
-	}	
+	}
+	
+
 
 </style>
 </head>
@@ -165,12 +125,12 @@ a {
   <tr>
   	
 
- <td ><center><a href="index.php" style="color:white;">Home</a></center></td>
+    <td ><center><a href="index.php" style="color:white;">Home</a></center></td>
     <td><center><a href="about.php" style="color:white;">About Us</a></center></td>
     <td><center><a href="course1.php" style="color:white;" "background-color:Tomato;">Courses</a></center></td>
-    <td ><center><a href="review.php" style="color:white;">Reviews</a></center></td>
-    <td ><center><a href="contact1.php" style="color:white;">Contact Us</a></center></td>
-    <td class="active"><center><a href="faq.php" style="color:#F0B90D;">FAQs</a></center></td>
+    <td class="active"><center><a href="review.php" style="color:#F0B90D;">Reviews</a></center></td>
+    <td><center><a href="contact.php" style="color:white;">Contact Us</a></center></td>
+    <td><center><a href="faq.php" style="color:white;">FAQ</a></center></td>
   </tr>
  
 </table>
@@ -283,170 +243,123 @@ a {
 	
 	</div>
 
-		<!-- Intro -->
+	<!-- Contact -->
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<!-- Offering -->
-
-<div class="offering">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title text-center">
-						<div style="padding-top:70px;">FAQ</div>
-						<h1><b>Employability.Life</b></h1>
-					</div>
+	<div class="contact">
+		<div class="contact_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="section_title text-center">
+							<div>Welcome</div>
+							<h1 style="font-size: 45px;"><b>Student Reviews</b></h1>
+						</div>
+						<br>
+						<br>
+						<br>
+						<br>
+						<center>
+						<div class="calender">
+							<form name="form" method="post" action="review_in.php" >
+									<div class="col-xl-6">
+										<input type="text" name="name" id="name" placeholder="Enter Name" class="contact_input" required="required">
+									</div>
+									<div class="col-xl-6">
+										<input type="textarea" name="msg" id="msg" placeholder="Your Message" class="contact_input" required="required">
+									</div>
+								<div class="col-xl-6" style="font-size:20px;">
+							<?php
+							if(isset($_SESSION['email']))
+							{
+								echo "<input class='submit' type='submit' name='ok' value='POST'>";
+							}
+							else
+							{
+								echo "<a href = 'log_in.php' style='font-weight:bold'><u> Please Login First</u> </a>";
+							}
+							?>
+									</div>
+								</form>
+								</div>
+								</center>
+							</div>
+							 
 				</div>
 			</div>
-			<br>
-	<br>
-	<br>
-			<div class="row offering_row">
-			<div class="offer">
-			
-<?php	
-			//session_start();
-			$con=mysqli_connect("localhost","root","","employability");
-			$res=mysqli_query($con,"select question, answer FROM faq");
-			
-?>
-		
-
-							<div class='row'>
-							<?php while ($row=mysqli_fetch_array($res))
-							{
-								 
- echo 	"<div class='col-xl-14 col-md-16'>";
-								 echo 	"<div class='offer'>";
-								 echo 	"<div class='offer_image'>";
-								 echo "<p align='center' >";
-								// echo	"<img src='image/".$row['image']."'height='550' width='1150' >";
-								 echo   "<div class='offer_content text-center'>";
-								 echo 	"<div class='offer_title'>";
-								 echo 	"<h4 class='simpleCart_shelfItem'>";
-								echo "<br>";
-								 echo 	"<p style='color:#4A235A;'>";
-								  echo 	"<p style='font-size:22px; text-align:left; font-weight:bold;' >";
-								 echo $row['question'];
-								 echo "</p>"; 
-								echo "</p>"; 								 
-								 echo 	"</h4>";
-								
-									echo "<button style=' height:50px; width:1150px;  font-size: 18px; padding-bottom:40px;' type='button' class='collapsible' onclick = 'return collapsible()'> View Answer </button>";
-									echo"<div class='content' style='font-size: 18px;'>";
-									
-									
-									echo $row['answer'];
-									echo"<br>";
-									echo "<br>";
-									echo"</div>";
-									echo "<br>";
-									echo "<br>";
-									echo "<br>";
-								
-								 echo 	"</div>";
-								 echo 	"</div>";
-								 echo 	"</div>";
-								 echo 	"</div>";
-								 echo 	"</div>";
-								echo "</p>";
-								 							?>
-								
-																 								<script>
-								function collapsible()
-								{
-								var coll = document.getElementsByClassName("collapsible");
-								var i;
-
-								for (i = 0; i < coll.length; i++) {
-								  coll[i].addEventListener("click", function() {
-									this.classList.toggle("active1");
-									var content = this.nextElementSibling;
-									if (content.style.display === "block") {
-									  content.style.display = "none";
-									} else {
-									  content.style.display = "block";
-									}
-								  });
-								}
-								}
-								</script>
-								 
-								
-								<?php
-								 
-								 
-							} 
-							 echo "</div>";   	  
-						?> 
-						
-						
-						
-				
-				<!-- Offer Item -->
-				
-				
-			</div>
 		</div>
+
+		<!-- Map -->
+
+		</div>
+		<div class="messages">
+						<br><br>
+							<h3 class="glow_text">Comments/Feedbacks</h3><hr>
+							   <?php
+									$res=mysqli_query($con,"select * from review");
+									while($row=mysqli_fetch_array($res))
+									{
+										echo "<h4 class='glow_text'>";
+										echo $row["name"]; 
+										echo "</h4>"; 
+										echo "<p>";
+										echo $row["message"]; 
+										echo "</p>";
+										echo $row["date"]; 
+										echo "</p>";
+										echo $row["time"]; 
+										echo "<br>";
+										echo "<hr/>";
+										echo "<br>";
+										
+									}
+								?>
+						</div>
 	</div>
-</div>
-
-	<!-- Discover -->
-
-	
-
-	</div>
 	<br>
 	<br>
 	<br>
 	<br>
-	<br>
+	<!--<br>
+	<br> Footer -->
 
-	<!-- Footer -->
-
-		<footer class="footer">
+	<footer class="footer">
 		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/footer.jpg" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
 					<div class="footer_logo text-center">
-						<a href="index.php"><img src="image/bac_logo.jpg" alt="" height="150" width="200"></a>
+						<img src="image/bac_logo.jpg" alt="" height="150" width="200">
 					</div>
 					<div class="footer_content">
 						<div class="row">
 							<div class="col-lg-4 footer_col">
 								<div class="footer_info d-flex flex-column align-items-lg-end align-items-center justify-content-start">
 									<div class="text-center" >
-										<div style="color:white;font-size: 19px;" ><b>Phone:</b></div>
-										<div style="color:white; font-size: 18px;">+613 8327 3100</div>
+										<div style="color:white;">Phone:</div>
+										<div style="color:white;">+613 8327 3100</div>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-4 footer_col">
 								<div class="footer_info d-flex flex-column align-items-center justify-content-start">
 									<div class="text-center">
-										<div style="color:white; font-size: 19px;"><b>Address:</b></div>
-										<div style="color:white; font-size: 18px;">399 Lonsdale St, Melbourne VIC 3000, Australia</div>
+										<div style="color:white;">Address:</div>
+										<div style="color:white;">399 Lonsdale St, Melbourne VIC 3000, Australia</div>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-4 footer_col">
 								<div class="footer_info d-flex flex-column align-items-lg-start align-items-center justify-content-start">
 									<div class="text-center">
-										<div style="color:white; font-size: 19px;" ><b>Website</b></div>
-										<div><a href="http://employability.life/" style="color:white; font-size: 18px;">employability.life</a></div>
+										<div style="color:white;">Website</div>
+										<div><a href="http://employability.life/" style="color:white;">employability.life</a></div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="footer_bar text-center"><!-- Link back to ATMC can't be removed. Template is licensed under CC BY 3.0. -->
-<font color="white" style="font-size: 18px;">All rights reserved by Employability.life</font></div>
+<font color="white">All rights reserved by Employability.life</font></div>
 				</div>
 			</div>
 		</div>
@@ -466,6 +379,8 @@ a {
 <script src="plugins/progressbar/progressbar.min.js"></script>
 <script src="plugins/parallax-js-master/parallax.min.js"></script>
 <script src="plugins/jquery-datepicker/jquery-ui.js"></script>
-<script src="js/custom.js"></script>
+<script src="js/about.js"></script>
 </body>
+</html>
+
 </html>

@@ -15,6 +15,32 @@
 <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
 </head>
+
+<style>
+	td {
+padding: 15px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+}
+
+td, th {
+  
+  text-align: left;
+  padding: 8px;
+}
+
+a {
+	font-size: 20px;
+}
+
+  
+
+</style>
+
 <body>
 
 <div class="super_container">
@@ -23,14 +49,28 @@
 
 	<header class="header">
 	<br>
-		<div class="header_content d-flex flex-column align-items-center justify-content-lg-end justify-content-center">
+	
+		<div class="header_content d-flex flex-column align-items-center justify-content-lg-end justify-content-center" >
 			
-			<center>
-			<div class="logo"><a href="#"><img class="logo_1" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_2" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_3" src="image/emp_logo.png" alt="" height="150" width="200"></a></div></center>
-
+			
+			
 			<div>
 			
-			<?php	
+
+			</center>
+			</div>
+
+			<!-- Main Nav -->
+			
+
+	<table>
+			
+  <tr>
+     <td rowspan="2" ><center><a href="index.php"><img src="image/emp_logo.png" alt="Logo" height="90" width="145"></a></center></td>
+
+     <td colspan="6"><center>
+	 <div style="font-size: 20px;">
+	 <?php	
 			session_start();
 			$con=mysqli_connect("localhost","root","","employability");
 			$res=mysqli_query($con,"select * from courses");
@@ -48,21 +88,30 @@
 			else
 			{
 			?>
+			
 			Welcome Guest, (<a href="log_in.php">Login</a>|<a href="register1.php">Register</a>)
 			<?php
 			}?>
-			</center>
-			</div>
+	 </div>
+	 </center></td>
+   	   
+		
+  </tr>
+  <tr>
+  	
 
-			<!-- Main Nav -->
-			<nav class="main_nav">
-				<ul class="d-flex flex-row align-items-center justify-content-start">
-					<li><a href="index.php">Home</a></li>
-					<li class="active"><a href="about.php">About Us</a></li>
-					<li><a href="course1.php">Courses</a></li>
-					<li><a href="review.php">Reviews</a></li>
-					<li><a href="contact.php">Contact</a></li>
-					<li><a href="faq.php">FAQ</a></li>
+    <td ><center><a href="index.php" style="color:white;">Home</a></center></td>
+    <td class="active"><center><a href="about.php" style="color:#F0B90D;">About Us</a></center></td>
+    <td><center><a href="course1.php" style="color:white;" "background-color:Tomato;">Courses</a></center></td>
+    <td><center><a href="review.php" style="color:white;">Reviews</a></center></td>
+    <td><center><a href="contact.php" style="color:white;">Contact Us</a></center></td>
+    <td><center><a href="faq.php" style="color:white;">FAQs</a></center></td>
+  </tr>
+ 
+</table>
+
+				</ul>
+			</nav>
 				</ul>
 			</nav>
 
@@ -171,21 +220,23 @@
 				<div class="col">
 					<div class="section_title text-center">
 						<div>About Us</div>
-						<h1><b>Employability.life</b></h1>
+						<h1 style="font-size: 45px;"><b>Employability.life</b></h1>
 					</div>
 				</div>
 			</div>
 			<div class="row intro_row">
-				<div class="col-xl-8 col-lg-10 offset-xl-2 offset-lg-1">
+				<div class="col-xl-98 col-lg-0 offset-xl-52 offset-lg-">
 					<div class="intro_text text-center">
-						<p align="justify">Unlike typical career services, Employability.life goes beyond the tops and tricks of getting a CV through and landing an interview.
+						<p align="justify" style="font-size: 25px;">Unlike typical career services, Employability.life goes beyond the tops and tricks of getting a CV through and landing an interview.
 Instead of getting the candidates just over the finish line - somehow landing any job, whether or not it's the right one - Employability.life aims to realise candidates' full potential. </p>
 						
-						<p align="justify">Employability.life experience is delivered over 24 weeks, and is devided into two levels.
+						<p align="justify" style="font-size: 25px;">Employability.life experience is delivered over 24 weeks, and is devided into two levels.
 Learners go through an application and assessment process that includes a psychometric and functional skills test, as well as a structured interview to assess their Collaborative 
 Work Aptitude (CWA). This process it to establish each candidate's initial Workplace Readiness Score (i-WRS).  </p>
 
-					<p><img src="image/img3.jpg" alt=""></p>
+					<p> </p>
+
+					<p style=" padding-top: 100px; font-size: 25px;"><img src="image/img3.jpg" alt="" ></p>
 					
 					
 				</div>
@@ -233,7 +284,8 @@ Work Aptitude (CWA). This process it to establish each candidate's initial Workp
 				<div class="col">
 					<div class="section_title text-center">
 						<div>Students</div>
-						<h1>The last mile placement</h1>
+						<h1 style="font-size: 45px;"><b>The last mile placement
+						</b></h1>
 					</div>
 				</div>
 			</div>
@@ -247,12 +299,12 @@ Work Aptitude (CWA). This process it to establish each candidate's initial Workp
 							<!-- Slide -->
 							<div>
 								<div class="testimonial_text text-center">
-									<p>The Employability.life approaches learner placement at scale through three strategic initiatives: </p>
+									<p style="font-size: 25px;"><b>The Employability.life approaches learner placement through three strategic initiatives: </b></p>
 									
 								</div>
 								
 								<div class="intro_text text-center">
-						<p align="center">Partnerships with large corporations to recruit at scale.
+						<p align="center" style="font-size: 22px; padding-top: 30px;">Partnerships with large corporations to recruit at scale.
 									Partnerships with sector-specific (such as IT) employment agencies in individual local markets.
 									Thought-leadership activities in explaining and validating the WRS as a faithful marker of 
 									candidate's ability to perform and lead in digital economy workplace </p>
@@ -280,43 +332,42 @@ Work Aptitude (CWA). This process it to establish each candidate's initial Workp
 			<div class="row">
 				<div class="col">
 					<div class="footer_logo text-center">
-						<img src="image/bac_logo.jpg" alt="" height="150" width="200">
+						<a href="index.php"><img src="image/bac_logo.jpg" alt="" height="150" width="200"></a>
 					</div>
 					<div class="footer_content">
 						<div class="row">
 							<div class="col-lg-4 footer_col">
 								<div class="footer_info d-flex flex-column align-items-lg-end align-items-center justify-content-start">
 									<div class="text-center" >
-										<div style="color:white;">Phone:</div>
-										<div style="color:white;">+613 8327 3100</div>
+										<div style="color:white;font-size: 19px;" ><b>Phone:</b></div>
+										<div style="color:white; font-size: 18px;">+613 8327 3100</div>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-4 footer_col">
 								<div class="footer_info d-flex flex-column align-items-center justify-content-start">
 									<div class="text-center">
-										<div style="color:white;">Address:</div>
-										<div style="color:white;">399 Lonsdale St, Melbourne VIC 3000, Australia</div>
+										<div style="color:white; font-size: 19px;"><b>Address:</b></div>
+										<div style="color:white; font-size: 18px;">399 Lonsdale St, Melbourne VIC 3000, Australia</div>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-4 footer_col">
 								<div class="footer_info d-flex flex-column align-items-lg-start align-items-center justify-content-start">
 									<div class="text-center">
-										<div style="color:white;">Website</div>
-										<div><a href="http://employability.life/" style="color:white;">employability.life</a></div>
+										<div style="color:white; font-size: 19px;" ><b>Website</b></div>
+										<div><a href="http://employability.life/" style="color:white; font-size: 18px;">employability.life</a></div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="footer_bar text-center"><!-- Link back to ATMC can't be removed. Template is licensed under CC BY 3.0. -->
-<font color="white">All rights reserved by Employability.life</font></div>
+<font color="white" style="font-size: 18px;">All rights reserved by Employability.life</font></div>
 				</div>
 			</div>
 		</div>
 	</footer>
-	
 </div>
 
 <script src="js/jquery-3.3.1.min.js"></script>

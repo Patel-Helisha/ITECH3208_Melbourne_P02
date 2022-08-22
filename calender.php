@@ -21,25 +21,60 @@
 		border: none;
 		border: 2px solid #95135E;
 		margin-top: 2em;
+		width: 150px;
+		height: 50px;
+		font-size:22px;	
+		border-radius:10px;
 		
 		text-decoration: none;
 	}
 	
 	#submit:hover{
-		background: #F90491;
+		background-image: linear-gradient(to right, #8c00b1 , #f45106);
+		font-weight:bold;
+		
 		
 	}
 	.calender{
-		background-image: url("image/calender.jpg");
-		margin-left:295px;
+		padding-top:500px;
+		
+		margin-left:165px;
 		padding-top: 50px;
-		border: 2px solid grey;
+		
+		
+		
+		border-width: 10px;
 		border-radius:10px;
-		font-size:16px;
+		font-size:22px;
 		align: center;
-		width: 500px;
-		height: 300px;
+		
+		
+	  border: 10px solid transparent;
+	  border-radius: 20px;
+	  background: 
+		linear-gradient(to right, white, white), 
+		linear-gradient(to right, #8c00b1 , #f45106, #ffb300); 
+	  background-clip: padding-box, border-box;
+	  background-origin: padding-box, border-box;
+	  
+	  /* Other styles */
+	 width: 800px;
+			height: 450px;
+		
+		width: 800px;
+		height: 370px;
+		opacity: 0.8;
+				
 	}
+	
+	.calender:hover{
+		background-image: linear-gradient(to top, #ffb300, #f9e8bf );
+		opacity: 0.7;	
+		color: #8c00b1;
+		
+	}
+	
+
 	.inputdate{
 		width: 200px;
 		height: 30px;
@@ -49,7 +84,25 @@
 		margin-top: 15px;
 	} 
 	
-	
+		td {
+	padding: 15px;
+	}
+
+	table {
+	  font-family: arial, sans-serif;
+	  border-collapse: collapse;
+	  width: 60%;
+	}
+
+	td, th {
+	  
+	  text-align: left;
+	  padding: 8px;
+	}
+
+	a {
+		font-size: 20px;
+	}	
 </style>
 </head>
 <body>
@@ -60,13 +113,28 @@
 
 	<header class="header">
 	<br>
-		<div class="header_content d-flex flex-column align-items-center justify-content-lg-end justify-content-center">
+	
+		<div class="header_content d-flex flex-column align-items-center justify-content-lg-end justify-content-center" style="height: 145px; ">
 			
-			<center>
-			<div class="logo"><a href="#"><img class="logo_1" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_2" src="image/emp_logo.png" alt="" height="150" width="200"><img class="logo_3" src="image/emp_logo.png" alt="" height="150" width="200"></a></center>
-			<div class="header_side d-flex flex-row justify-content-center align-items-center">
+			
+			
 			<div>
-			<?php	
+			
+
+			</center>
+			</div>
+
+			<!-- Main Nav -->
+			
+
+	<table>
+			
+  <tr>
+     <td rowspan="2" ><center><a href="index.php"><img src="image/emp_logo.png" alt="Logo" height="90" width="145"></a></center></td>
+
+     <td colspan="6"><center>
+	 <div style="font-size: 20px;">
+	 <?php	
 			session_start();
 			$con=mysqli_connect("localhost","root","","employability");
 			$res=mysqli_query($con,"select * from courses");
@@ -84,33 +152,52 @@
 			else
 			{
 			?>
+			
 			Welcome Guest, (<a href="log_in.php">Login</a>|<a href="register1.php">Register</a>)
 			<?php
 			}?>
-			</center>
-			</div>
-			</div>
+	 </div>
+	 </center></td>
+   	   
+		
+  </tr>
+  <tr>
+  	
 
-			<!-- Main Nav -->
-						<nav class="main_nav">
+    <td ><center><a href="index.php" style="color:white;">Home</a></center></td>
+    <td><center><a href="about.php" style="color:white;">About Us</a></center></td>
+    <td class="active"><center><a href="course1.php" style="color:#F0B90D;" "background-color:Tomato;">Courses</a></center></td>
+    <td><center><a href="review.php" style="color:white;">Reviews</a></center></td>
+    <td><center><a href="contact.php" style="color:white;">Contact Us</a></center></td>
+    <td><center><a href="faq.php" style="color:white;">FAQs</a></center></td>
+  </tr>
+ 
+</table>
+
+				</ul>
+			</nav>
+				</ul>
+			</nav>
+
+
+			<!-- Social -->
 			
-			
-				<ul class="d-flex flex-row align-items-center justify-content-start">
-					<li><a href="index1.php">Home</a></li>
-					<li><a href="about.php">About_Us</a></li>
-					<li class="active"><a href="course1.php">Courses</a></li>
-					<li><a href="review.php">Reviews</a></li>
-					<li><a href="contact1.php">Contact</a></li>
-					<li><a href="faq.php">FAQ</a></li>
-					<li></li>
-					<li>
-					<div class="search_button">
+
+			<!-- Header Right -->
+			<div class="header_right d-flex flex-row align-items-center justify-content-start">
+				
+				<!-- Search Activation Button -->
+				<div class="search_button">
 					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 512 512" enable-background="new 0 0 512 512" width="512px" height="512px">
 						<g>
 							<path d="M495,466.2L377.2,348.4c29.2-35.6,46.8-81.2,46.8-130.9C424,103.5,331.5,11,217.5,11C103.4,11,11,103.5,11,217.5   S103.4,424,217.5,424c49.7,0,95.2-17.5,130.8-46.7L466.1,495c8,8,20.9,8,28.9,0C503,487.1,503,474.1,495,466.2z M217.5,382.9   C126.2,382.9,52,308.7,52,217.5S126.2,52,217.5,52C308.7,52,383,126.3,383,217.5S308.7,382.9,217.5,382.9z" fill="#FFFFFF"></path>
 						</g>
 					</svg>
-				</div>			
+				</div>
+
+				<!-- Header Link -->
+				
+
 				<!-- Hamburger Button -->
 				<div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
 
@@ -126,19 +213,6 @@
 					<div class="search_close ml-auto d-flex flex-column align-items-center justify-content-center" name="search" value="search" id="submit"><div></div></div>
 				</div>
 			</div>
-					
-					</li>
-				</ul>
-			</nav>
-
-			<!-- Social -->
-			
-
-			<!-- Header Right -->
-			<div class="header_right d-flex flex-row align-items-center justify-content-start">
-				
-				<!-- Search Activation Button -->
-				
 		</div>
 			
 	</header>
@@ -147,7 +221,7 @@
 
 	<div class="logo_overlay">
 		<div class="logo_overlay_content d-flex flex-column align-items-center justify-content-center">
-		<div class="logo"><a href="#"><img src="image/bac_logo.jpg" alt=""></a></div>
+			<div class="logo"><a href="#"><img src="image/bac_logo.jpg" alt=""></a></div>
 		</div>
 	</div>
 
@@ -164,16 +238,44 @@
 
 	<!-- Menu -->
 
-	
+	<div class="menu">
+		<div class="menu_container d-flex flex-column align-items-center justify-content-center">
+
+			<!-- Menu Navigation -->
+			<nav class="menu_nav text-center">
+				<ul>
+					<li class="active"><a href="index.php">Home</a></li>
+					<li><a href="about.php">About_Us</a></li>
+					<li><a href="course1.php">Courses</a></li>
+					<li><a href="blog1.php">Blog</a></li>
+					<li><a href="contact1.php">Contact</a></li>
+				</ul>
+			</nav>
+			<div class="button menu_button"><a href="#">book now</a></div>
+
+			<!-- Menu Social -->
+			<div class="social menu_social">
+				<ul class="d-flex flex-row align-items-center justify-content-start">
+					<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
 
 	<!-- Home -->
 
 	<div class="home">
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/home_bac.jpg" data-speed="0.8"></div>
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/home_bac.jpg" data-speed="0.8" height="912px"></div>
 		<div class="home_container d-flex flex-column align-items-center justify-content-center">
-		
+			
 		</div>
 	</div>
+
 
 	<!-- Booking -->
 
@@ -189,7 +291,7 @@
 					<div class="col">
 						<div class="section_title text-center">
 							<div>Welcome</div>
-							<h1>Booking Calender</h1>
+							<h1 style="font-size: 45px;"><b>Booking Calendar</b></h1>
 						</div>
 						<br>
 						<br>
@@ -202,14 +304,19 @@
 														$lid=$_GET[lid]; 
 														echo "<input type='hidden' name='lid' value='$lid'>";
 													?>
+													<br>
 													
-													<font color="black">Start Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-													<input type="date" name="start" id="start" class="inputdate" required="required">
+													
+													<font color="black" style="font-weight: bold;">Start Date:&nbsp;&nbsp;&nbsp;
+													<input style="padding-left: 10px; " type="date" name="start" id="start" class="inputdate" required="required">
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													End Date:&nbsp;&nbsp;&nbsp;&nbsp;
+													
+													<input style="padding-left: 10px;" type="date" name="end" id="end" class="inputdate" required="required">
 													<br>
-													End Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-													<input type="date" name="end" id="end" class="inputdate" required="required">
+
 													<br>
-													<input type="submit" value="Submit" name="submit" id="submit" align="center">
+													<input  type="submit" style="font-size:22px" value="ENROLL" name="submit" id="submit" align="center">
 													</font>
 												</form>
 												</center>
@@ -274,47 +381,51 @@
 	<br>
 	<br>
 	<br>
+	<br>
+	<br>
+	<br>
+
 	<!--<br>
 	<br> Footer -->
 
-	<footer class="footer">
+		<footer class="footer">
 		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/footer.jpg" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
 					<div class="footer_logo text-center">
-						<img src="image/bac_logo.jpg" alt="" height="150" width="200">
+						<a href="index.php"><img src="image/bac_logo.jpg" alt="" height="150" width="200"></a>
 					</div>
 					<div class="footer_content">
 						<div class="row">
 							<div class="col-lg-4 footer_col">
 								<div class="footer_info d-flex flex-column align-items-lg-end align-items-center justify-content-start">
 									<div class="text-center" >
-										<div style="color:white;">Phone:</div>
-										<div style="color:white;">+613 8327 3100</div>
+										<div style="color:white;font-size: 19px;" ><b>Phone:</b></div>
+										<div style="color:white; font-size: 18px;">+613 8327 3100</div>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-4 footer_col">
 								<div class="footer_info d-flex flex-column align-items-center justify-content-start">
 									<div class="text-center">
-										<div style="color:white;">Address:</div>
-										<div style="color:white;">399 Lonsdale St, Melbourne VIC 3000, Australia</div>
+										<div style="color:white; font-size: 19px;"><b>Address:</b></div>
+										<div style="color:white; font-size: 18px;">399 Lonsdale St, Melbourne VIC 3000, Australia</div>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-4 footer_col">
 								<div class="footer_info d-flex flex-column align-items-lg-start align-items-center justify-content-start">
 									<div class="text-center">
-										<div style="color:white;">Website</div>
-										<div><a href="http://employability.life/" style="color:white;">employability.life</a></div>
+										<div style="color:white; font-size: 19px;" ><b>Website</b></div>
+										<div><a href="http://employability.life/" style="color:white; font-size: 18px;">employability.life</a></div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="footer_bar text-center"><!-- Link back to ATMC can't be removed. Template is licensed under CC BY 3.0. -->
-<font color="white">All rights reserved by Employability.life</font></div>
+<font color="white" style="font-size: 18px;">All rights reserved by Employability.life</font></div>
 				</div>
 			</div>
 		</div>
@@ -334,6 +445,6 @@
 <script src="plugins/progressbar/progressbar.min.js"></script>
 <script src="plugins/parallax-js-master/parallax.min.js"></script>
 <script src="plugins/jquery-datepicker/jquery-ui.js"></script>
-<script src="js/about.js"></script>
+<script src="js/custom.js"></script>
 </body>
 </html>

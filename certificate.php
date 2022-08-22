@@ -12,15 +12,12 @@
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.3.4/owl.theme.default.css">
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.3.4/animate.css">
 <link href="plugins/jquery-datepicker/jquery-ui.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="styles/contact.css">
-<link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
-
-
-
+<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/responsive.css">
+</head>
 
 <style>
-
-td {
+	td {
 padding: 15px;
 }
 
@@ -40,72 +37,22 @@ a {
 	font-size: 20px;
 }
 
-
- .collapsible {
-  background-color: #eee;
-  font-weight:bold;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-     color: #2C3E50;
-}
-
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active1, .collapsible:hover {
-  background-color: #BFC9CA;
-  color:#d33363;
-
-}
-
-/* Style the collapsible content. Note: hidden by default */
-.content {
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
-   color: #566573 ;
-  background-color: #f1f1f1;
-}
-.collapsible:after {
-  content: '\02795'; /* Unicode character for "plus" sign (+) */
-  font-size: 18px;
-  color: white;
-  float: right;
-  margin-left: 5px;
-  
-}
-
-.active1:after {
-  content: "\2796"; /* Unicode character for "minus" sign (-) */
-  
-}
-
 .submit{
 		color: #fff;
 		background: #5D5458 ;
 		border: none;
 		border: 2px solid #5D5458;
 		margin-top: 2em;
-		 width: 100px;  
+		 width: 200px;  
 		 height: 55px;
 		text-decoration: none;
 	}
 	
 .submit:hover{
 		background: #808B96;
-
-.messages{
-		border: 1px solid grey; 
-		margin-top: 50px;
-		box-shadow: 0px 0px 5px grey;
-		padding: 10px 10px 10px 10px;
-	}	
-
+}
 </style>
-</head>
+
 <body>
 
 <div class="super_container">
@@ -115,7 +62,7 @@ a {
 	<header class="header">
 	<br>
 	
-		<div class="header_content d-flex flex-column align-items-center justify-content-lg-end justify-content-center" style="height: 145px; ">
+		<div class="header_content d-flex flex-column align-items-center justify-content-lg-end justify-content-center" >
 			
 			
 			
@@ -165,12 +112,12 @@ a {
   <tr>
   	
 
- <td ><center><a href="index.php" style="color:white;">Home</a></center></td>
-    <td><center><a href="about.php" style="color:white;">About Us</a></center></td>
-    <td><center><a href="course1.php" style="color:white;" "background-color:Tomato;">Courses</a></center></td>
-    <td ><center><a href="review.php" style="color:white;">Reviews</a></center></td>
-    <td ><center><a href="contact1.php" style="color:white;">Contact Us</a></center></td>
-    <td class="active"><center><a href="faq.php" style="color:#F0B90D;">FAQs</a></center></td>
+    <td ><center><a href="index.php" style="color:white;">Home</a></center></td>
+    <td class="active"><center><a href="about.php" style="color:white;">About Us</a></center></td>
+    <td><center><a href="course1.php" style="color:#F0B90D;" "background-color:Tomato;">Courses</a></center></td>
+    <td><center><a href="review.php" style="color:white;">Reviews</a></center></td>
+    <td><center><a href="contact.php" style="color:white;">Contact Us</a></center></td>
+    <td><center><a href="faq.php" style="color:white;">FAQs</a></center></td>
   </tr>
  
 </table>
@@ -271,145 +218,187 @@ a {
 	<!-- Home -->
 
 	<div class="home">
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/home_bac.jpg" data-speed="0.8" height="912px"></div>
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/home_bac.jpg" data-speed="0.8"></div>
 		<div class="home_container d-flex flex-column align-items-center justify-content-center">
 			
 		</div>
 	</div>
 
-
-	<!-- Booking -->
-
-	
-	</div>
-
 		<!-- Intro -->
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<!-- Offering -->
-
-<div class="offering">
+	<div class="intro">
 		<div class="container">
 			<div class="row">
 				<div class="col">
 					<div class="section_title text-center">
-						<div style="padding-top:70px;">FAQ</div>
-						<h1><b>Employability.Life</b></h1>
+						<div>Apply</div>
+						<h1 style="font-size: 45px;"><b>Certificate</b></h1>
 					</div>
 				</div>
 			</div>
-			<br>
-	<br>
-	<br>
-			<div class="row offering_row">
-			<div class="offer">
-			
-<?php	
-			//session_start();
-			$con=mysqli_connect("localhost","root","","employability");
-			$res=mysqli_query($con,"select question, answer FROM faq");
-			
-?>
+			<div class="row intro_row">
+				<div class="col-xl-98 col-lg-0 offset-xl-52 offset-lg-">
+					<div class="intro_text text-center">
+
+
+					
+						<p align="justify" style="font-size: 25px;">The tutor of your course for the employability.life will examine the video assignment uploaded by you
+						and thereby enable the access to the corse certificate, for you to download.</p>
+						<br>
+						<p align="justify" style="font-size: 25px;"><h3 style="color:#F15938; font-weight:bold;"> Get certified for the Influence course.</h3> </p>
+
+
+
+
+					
+<br>
+					
+					<?php
+        include("config.php");
+     
+        if(isset($_POST['but_upload'])){
+            $maxsize = 500000000000; // 5MB
+                       
+            $name = $_FILES['file']['name'];
+            $target_dir = "videos/";
+            $target_file = $target_dir . $_FILES["file"]["name"];
+
+            // Select file type
+            $videoFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+            // Valid file extensions
+            $extensions_arr = array("mp4","avi","3gp","mov","mpeg");
+
+            // Check extension
+            if( in_array($videoFileType,$extensions_arr) ){
+                
+                // Check file size
+                if(($_FILES['file']['size'] >= $maxsize) || ($_FILES["file"]["size"] == 0)) {
+                    echo "File too large. File must be less than 5MB.";
+					//echo $maxsize;
+					//echo gettype($maxsize);
+                }else{
+                    // Upload
+                    if(move_uploaded_file($_FILES['file']['tmp_name'],$target_file)){
+                        // Insert record
+                        $query = "INSERT INTO videos(name,location) VALUES('".$name."','".$target_file."')";
+
+                        mysqli_query($con,$query);
+                        echo "<h3 style='font-size:20px;'>Upload successfully.</h3>";
+						echo "<h3 style='font-size:20px; color:#F15938; font-weight:bold; '><u><a href='view_assignment.php'>View Uploaded Assignment</a></u></h3>";
+                    }
+                }
+
+            }else{
+                echo "Invalid file extension.";
+            }
+        
+        }
+        ?>
 		
+		
+		<form method="post" action="" enctype='multipart/form-data'>
+            <input type='file'  name='file'  />
+            <input type='submit' class="submit" value='Download' name='but_upload'>
+        </form>
+					
+					
 
-							<div class='row'>
-							<?php while ($row=mysqli_fetch_array($res))
-							{
-								 
- echo 	"<div class='col-xl-14 col-md-16'>";
-								 echo 	"<div class='offer'>";
-								 echo 	"<div class='offer_image'>";
-								 echo "<p align='center' >";
-								// echo	"<img src='image/".$row['image']."'height='550' width='1150' >";
-								 echo   "<div class='offer_content text-center'>";
-								 echo 	"<div class='offer_title'>";
-								 echo 	"<h4 class='simpleCart_shelfItem'>";
-								echo "<br>";
-								 echo 	"<p style='color:#4A235A;'>";
-								  echo 	"<p style='font-size:22px; text-align:left; font-weight:bold;' >";
-								 echo $row['question'];
-								 echo "</p>"; 
-								echo "</p>"; 								 
-								 echo 	"</h4>";
-								
-									echo "<button style=' height:50px; width:1150px;  font-size: 18px; padding-bottom:40px;' type='button' class='collapsible' onclick = 'return collapsible()'> View Answer </button>";
-									echo"<div class='content' style='font-size: 18px;'>";
-									
-									
-									echo $row['answer'];
-									echo"<br>";
-									echo "<br>";
-									echo"</div>";
-									echo "<br>";
-									echo "<br>";
-									echo "<br>";
-								
-								 echo 	"</div>";
-								 echo 	"</div>";
-								 echo 	"</div>";
-								 echo 	"</div>";
-								 echo 	"</div>";
-								echo "</p>";
-								 							?>
-								
-																 								<script>
-								function collapsible()
-								{
-								var coll = document.getElementsByClassName("collapsible");
-								var i;
 
-								for (i = 0; i < coll.length; i++) {
-								  coll[i].addEventListener("click", function() {
-									this.classList.toggle("active1");
-									var content = this.nextElementSibling;
-									if (content.style.display === "block") {
-									  content.style.display = "none";
-									} else {
-									  content.style.display = "block";
-									}
-								  });
-								}
-								}
-								</script>
-								 
+
+						
+						
+					<p style=" padding-top: 100px; font-size: 25px;"><img src="image/img3.jpg" alt="" ></p>
+					
+					
+				</div>
+					
+					</div>
+				</div>
+			</div>
+		</div>		
+	</div>
+
+
+
+		<!-- Discover Slider -->
+		<div class="discover_slider_container">
+			<div class="owl-carousel owl-theme discover_slider">
+				
+				<!-- Slide -->
+				<div class="slide">
+					<div class="background_image" style="background-image:url(image/img7.jpg)"></div>
+					
+				</div>
+
+				<!-- Slide -->
+				<div class="slide">
+					<div class="background_image" style="background-image:url(image/img2.jpg)"></div>
+					
+				</div>
+
+				<!-- Slide -->
+				<div class="slide">
+					<div class="background_image" style="background-image:url(image/img6.png)"></div>
+					
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Testimonials -->
+
+	<div class="testimonials">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="section_title text-center">
+						<div>Students</div>
+						<h1 style="font-size: 45px;"><b>Get Certified
+						</b></h1>
+					</div>
+				</div>
+			</div>
+			<div class="row testimonials_row">
+				<div class="col">
+					
+					<!-- Testimonials Slider -->
+					<div class="testimonials_slider_container">
+						<div class="owl-carousel owl-theme testimonials_slider">
+
+							<!-- Slide -->
+							<div>
+								<div class="testimonial_text text-center">
+									<p style="font-size: 25px;"><b>The Employability.life gets you certified for the courses you enroll in! </b></p>
+									
+								</div>
 								
-								<?php
-								 
-								 
-							} 
-							 echo "</div>";   	  
-						?> 
-						
-						
-						
-				
-				<!-- Offer Item -->
-				
-				
+								<div class="intro_text text-center">
+						<p align="center" style="font-size: 22px; padding-top: 30px;">Partnerships with large corporations to recruit at scale.
+									Partnerships with sector-specific (such as IT) employment agencies in individual local markets.
+									Thought-leadership activities in explaining and validating the WRS as a faithful marker of 
+									candidate's ability to perform and lead in digital economy workplace </p>
+												
+									
+					
+					
+								</div>
+							</div>
+
+							
+
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-
-	<!-- Discover -->
-
-	
-
-	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 
 	<!-- Footer -->
 
-		<footer class="footer">
+<footer class="footer">
 		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/footer.jpg" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">

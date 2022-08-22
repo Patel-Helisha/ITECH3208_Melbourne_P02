@@ -41,9 +41,10 @@ a {
 }
 
 
+
  .collapsible {
   background-color: #eee;
-  font-weight:bold;
+  color: #444;
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -51,14 +52,11 @@ a {
   text-align: left;
   outline: none;
   font-size: 15px;
-     color: #2C3E50;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active1, .collapsible:hover {
-  background-color: #BFC9CA;
-  color:#d33363;
-
+  background-color: #ccc;
 }
 
 /* Style the collapsible content. Note: hidden by default */
@@ -66,21 +64,18 @@ a {
   padding: 0 18px;
   display: none;
   overflow: hidden;
-   color: #566573 ;
   background-color: #f1f1f1;
 }
 .collapsible:after {
   content: '\02795'; /* Unicode character for "plus" sign (+) */
-  font-size: 18px;
+  font-size: 13px;
   color: white;
   float: right;
   margin-left: 5px;
-  
 }
 
 .active1:after {
   content: "\2796"; /* Unicode character for "minus" sign (-) */
-  
 }
 
 .submit{
@@ -96,6 +91,11 @@ a {
 	
 .submit:hover{
 		background: #808B96;
+		font-weight:bold;
+		
+		
+
+
 
 .messages{
 		border: 1px solid grey; 
@@ -165,12 +165,12 @@ a {
   <tr>
   	
 
- <td ><center><a href="index.php" style="color:white;">Home</a></center></td>
+    <td ><center><a href="index.php" style="color:white;">Home</a></center></td>
     <td><center><a href="about.php" style="color:white;">About Us</a></center></td>
-    <td><center><a href="course1.php" style="color:white;" "background-color:Tomato;">Courses</a></center></td>
-    <td ><center><a href="review.php" style="color:white;">Reviews</a></center></td>
-    <td ><center><a href="contact1.php" style="color:white;">Contact Us</a></center></td>
-    <td class="active"><center><a href="faq.php" style="color:#F0B90D;">FAQs</a></center></td>
+    <td class="active"><center><a href="course1.php" style="color:#F0B90D;" "background-color:Tomato;">Courses</a></center></td>
+    <td><center><a href="review.php" style="color:white;">Reviews</a></center></td>
+    <td><center><a href="contact.php" style="color:white;">Contact Us</a></center></td>
+    <td><center><a href="faq.php" style="color:white;">FAQs</a></center></td>
   </tr>
  
 </table>
@@ -285,6 +285,42 @@ a {
 
 		<!-- Intro -->
 
+	<div class="intro">
+		<div class="container">
+			<div class="row row-eq-height">
+				<!-- Intro Content -->
+				<div class="col-lg-6">
+					<div class="intro_content">
+						<div class="section_title col-xl-198 col-lg-0 offset-xl-52 offset-lg-8" >
+							<div style="text-align: center; padding-top: 150px;">Tube Courses</div>
+							<h1 style="font-size: 45px;"><b> Influence </b></h1>
+						</div>
+						<div class="col-xl-98 col-lg-0 offset-xl-52 offset-lg-">
+						<div class="intro_text text-center">
+						
+							<p align="justify" style=" padding-top: 50px; font-size: 25px;">In the Influence Course, the lecturer Melvin will talk you through the importance of your working identity and the of importance of influential growth in your career.
+
+Please keep an eye on the icon indicating activities that need to be done at various points.
+</p>
+						</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
+				<!-- Intro Image -->
+				<div class="col-lg-6">
+					<div class="intro_image">
+						
+						<img style=" padding-top: 450px; padding-left: 50px;" src="image/ca.jpeg" alt="image" >
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
 	<br>
 	<br>
 	<br>
@@ -293,13 +329,13 @@ a {
 	<br>
 	<!-- Offering -->
 
-<div class="offering">
+	<div class="offering">
 		<div class="container">
 			<div class="row">
 				<div class="col">
 					<div class="section_title text-center">
-						<div style="padding-top:70px;">FAQ</div>
-						<h1><b>Employability.Life</b></h1>
+						<div>Influence Course</div>
+						<h1 style="font-size: 45px;"><b>Lectures</b></h1>
 					</div>
 				</div>
 			</div>
@@ -309,52 +345,125 @@ a {
 			<div class="row offering_row">
 			<div class="offer">
 			
-<?php	
-			//session_start();
+			<?php	
 			$con=mysqli_connect("localhost","root","","employability");
-			$res=mysqli_query($con,"select question, answer FROM faq");
+			$res=mysqli_query($con,"select lectures.*, tutor.tname from lectures, tutor where tutor.tid = lectures.tid");
 			
 ?>
-		
+
 
 							<div class='row'>
 							<?php while ($row=mysqli_fetch_array($res))
 							{
 								 
- echo 	"<div class='col-xl-14 col-md-16'>";
+								 echo 	"<div class='col-xl-4 col-md-6'>";
 								 echo 	"<div class='offer'>";
 								 echo 	"<div class='offer_image'>";
-								 echo "<p align='center' >";
-								// echo	"<img src='image/".$row['image']."'height='550' width='1150' >";
+								 echo "<br>";
+									echo "<br>";
+									echo "<br>";
+									echo "<br>";
+									echo "<br>";
+									echo "<br>";
+								 echo	"<img src='image/".$row['image']."'height='250' width='350' >";
 								 echo   "<div class='offer_content text-center'>";
 								 echo 	"<div class='offer_title'>";
 								 echo 	"<h4 class='simpleCart_shelfItem'>";
-								echo "<br>";
-								 echo 	"<p style='color:#4A235A;'>";
-								  echo 	"<p style='font-size:22px; text-align:left; font-weight:bold;' >";
-								 echo $row['question'];
-								 echo "</p>"; 
-								echo "</p>"; 								 
+								 echo "<br>";
+								 echo "<br>";
+								 echo "<div style='color:#5D5458; font-size: 20px;'><b>";
+								 echo 	$row["lname"];   
+								 echo "</b></div>";
 								 echo 	"</h4>";
-								
-									echo "<button style=' height:50px; width:1150px;  font-size: 18px; padding-bottom:40px;' type='button' class='collapsible' onclick = 'return collapsible()'> View Answer </button>";
-									echo"<div class='content' style='font-size: 18px;'>";
+								 echo "<div style='color:#5D5458; font-size: 20px; padding-top: 20px;'>";
+
+								 echo "</div>";
+									echo "<br>";
+									echo "<br>";
 									
+									echo "<button style='color:#5D5458; font-weight: bold; font-size: 20px; type='button' class='collapsible' onclick = 'return collapsible()'> Synopsis </button>";
+									echo"<div class='content' style='font-size: 20px;'>";
 									
-									echo $row['answer'];
+									echo "By ".$row['tname'];
+									echo "<br>";
+									echo "<br>";
+									
+									echo $row['synopsis'];
+									
 									echo"<br>";
 									echo "<br>";
 									echo"</div>";
+									echo $row["lid"];   
+									echo "<br>";
+									echo "<br>";
+									
+								 if(isset($_SESSION['email']))
+								{
+									
+									if($row["lid"] == 1)
+									
+																		{
+									echo "<a href=view_lecture.php?lid=".$row['lid']."tid=".$row['tid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
+									}
+										elseif($row["lid"] == 2)
+									{
+										echo "<a href=view_lecture2.php?lid=".$row['lid']."tid=".$row['tid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";	
+									}
+									
+									elseif($row["lid"] == 3)
+									{
+										echo "<a href=view_lecture3.php?lid=".$row['lid']."tid=".$row['tid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
+									}
+									
+									elseif($row["lid"] == 4)
+									{
+										echo "<a href=view_lecture4.php?lid=".$row['lid']."tid=".$row['tid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
+									}
+									
+									elseif($row["lid"] == 5)
+									{
+										echo "<a href=view_lecture5.php?lid=".$row['lid']."tid=".$row['tid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
+									}
+									
+									elseif($row["lid"] == 6)
+									{
+										echo "<a href=view_lecture6.php?lid=".$row['lid']."tid=".$row['tid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
+									}
+									
+									elseif($row["lid"] == 7)
+									{
+										echo "<a href=view_lecture7.php?lid=".$row['lid']."tid=".$row['tid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
+									}
+									
+									elseif($row["lid"] == 8)
+									{
+										echo "<a href=view_lecture8.php?lid=".$row['lid']."tid=".$row['tid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
+									}
+									
+									else{
+										echo "<a href=view_lecture9.php?lid=".$row['lid']."tid=".$row['tid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
+									}
+									
+								}
+								else
+							    {
+									echo "<a href=log_in.php><input class='submit' type='button' name='view' value='VIEW' /></a>";
 									echo "<br>";
 									echo "<br>";
 									echo "<br>";
-								
+									echo "<br>";
+									echo "<br>";
+								}
 								 echo 	"</div>";
 								 echo 	"</div>";
 								 echo 	"</div>";
 								 echo 	"</div>";
 								 echo 	"</div>";
-								echo "</p>";
+								 echo "<br>";
+								 echo "<br>";
+								 echo "<br>";
+								 echo "<br>";
+								 
 								 							?>
 								
 																 								<script>
@@ -382,12 +491,149 @@ a {
 								 
 								 
 							} 
-							 echo "</div>";   	  
+							
+							
+							 echo "</div>";  
+							 
 						?> 
 						
 						
+						<br><br><br><br>
+						<br><br><br><br>
+						<br><br><br><br>
 						
+						
+						
+						
+						
+						<div class="intro">
+		<div class="container">
+			<div class="row row-eq-height">
+				<!-- Intro Content -->
+				<div class="col-lg-12">
+					<div class="intro_content">
+						<div class="section_title">
+							
+							<h1 align="center" style="text-align:Center, font-weight:bold;">Upload Video Assignment!</h1>
+						</div>
+						<div class="intro_text">
+						<p></p>
+							<p align="center" style="font-size:22px;"> Upload your video assignment to get certified for the course.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Intro Image -->
 				
+
+			</div>
+		</div>
+	</div>
+						
+						<br><br><br><br>
+
+						
+						<center>
+						<img src="image/assignment.jpg"  alt="certificate" width="800" height="450">
+						</center>
+						
+						<br><br><br>
+						
+						
+						
+						
+						
+						<p align="center">
+<?php
+									
+								 if(isset($_SESSION['email']))
+								{
+									echo "<a href=assignment.php><input class='submit' style='text-align:center' width='300px; type='button' name='apply' value='APPLY' /></a>";
+								}
+								else
+							    {
+									echo "<a href=log_in.php><input class='submit' style='text-align:center' width='300px;' type='button' name='apply' value='APPLY' /></a>";
+									echo "<br>";
+									echo "<br>";
+									echo "<br>";
+									echo "<br>";
+									echo "<br>";
+								}
+								 echo 	"</div>";
+								 echo 	"</div>";
+								 echo 	"</div>";
+								 echo 	"</div>";
+								 echo 	"</div>";
+								 
+								 							?>
+</p>
+						
+						<br><br><br><br>
+						<br><br><br><br>
+						
+						<div class="intro">
+		<div class="container">
+			<div class="row row-eq-height">
+				<!-- Intro Content -->
+				<div class="col-lg-12">
+					<div class="intro_content">
+						<div class="section_title">
+							
+							<h1 align="center" style="text-align:Center, font-weight:bold;">Get Your Certificate!</h1>
+						</div>
+						<div class="intro_text">
+						<p></p>
+							<p align="center" style="font-size:22px;"> You can get your certificate for the Influence course. You will have to submit your assignment video first
+							to get your certificate. The assignment video submitted by you would be examined by your mentor, and thereby if you pass, then you would be able to get your certificate.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Intro Image -->
+				
+
+			</div>
+		</div>
+	</div>
+						
+						<br><br><br><br>
+						
+						<center>
+						<img src="image/certificate.jpg"  alt="certificate" width="800" height="450">
+						</center>
+						
+						<br><br><br>
+						
+						
+						
+						<p align="center">
+<?php
+									
+								 if(isset($_SESSION['email']))
+								{
+									echo "<a href=certificate.php><input class='submit' style='text-align:center' width='300px; type='button' name='apply' value='APPLY' /></a>";
+								}
+								else
+							    {
+									echo "<a href=log_in.php><input class='submit' style='text-align:center' width='300px;' type='button' name='apply' value='APPLY' /></a>";
+									echo "<br>";
+									echo "<br>";
+									echo "<br>";
+									echo "<br>";
+									echo "<br>";
+								}
+								 echo 	"</div>";
+								 echo 	"</div>";
+								 echo 	"</div>";
+								 echo 	"</div>";
+								 echo 	"</div>";
+								 
+								 							?>
+</p>
+						
+						
+					<br><br><br>	
+						
 				<!-- Offer Item -->
 				
 				
