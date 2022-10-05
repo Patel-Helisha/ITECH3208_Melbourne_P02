@@ -59,7 +59,7 @@
 	  
 	  /* Other styles */
 	 width: 800px;
-			height: 450px;
+	 height: 450px;
 		
 		width: 800px;
 		height: 370px;
@@ -140,9 +140,9 @@
 			$res=mysqli_query($con,"select * from courses");
 
 			//session_start();
-			if(isset($_SESSION['email']))
+			if(isset($_SESSION['fname']))
 			{
-				echo "Welcome ".$_SESSION['email'];
+				echo "Welcome ".$_SESSION['fname'];
 			?>
 			<br>
 			<center>
@@ -301,8 +301,9 @@
 							<form name="rentbooking" method="post" action="">
 					                            <?php 
 														error_reporting(0);
-														$lid=$_GET[lid]; 
-														echo "<input type='hidden' name='lid' value='$lid'>";
+														$cid=$_GET['cid']; 
+														echo "<input type='hidden' name='cid' value='$cid'>";
+														//echo $cid;
 													?>
 													<br>
 													
@@ -322,16 +323,29 @@
 												</center>
 												
 												<?php
-	$con=mysqli_connect("localhost","root","","video_renting");
+	$con=mysqli_connect("localhost","root","","employability");
 	if(isset($_POST['submit']))
 	{
+		
+		
+		 $fname=$_SESSION['fname'];
+	 
+		 $res1=mysqli_query($con,"select * from register WHERE fname='$fname'");
+		while ($row=mysqli_fetch_array($res1))
+									
+		{
+				$uid = $row['uid'];
+				
+					
+		}
+		//echo $uid;
+				
 		//session_start();
 		$start=$_POST['start'];
 		$end=$_POST['end']; 
-		$lid=$_POST['lid'];
-		$uid=$_SESSION['uid'];
-		//$s2= $_SESSION['pid'];
-		//echo $s2;
+		
+		
+		
 		$sd= strtotime($start);
 		$ed= strtotime($end);
 		$diff = $ed - $sd;
@@ -339,18 +353,31 @@
 		$_SESSION['start']=$start;
 		$_SESSION['end']=$end;
 		
+
+		//echo $start;
+		//echo $end;
+		//echo $days;
+		
+		//echo $cid;
+
+		
 		if($days > 30)
 		{
 			$message="Invalid Number of Days  |   Limit upto 30 days. Thank You";
 			echo "<script type='text/javascript'>alert('$message');</script>";
 		}
+		elseif($days < 15)
+		{
+			$message="Invalid Number of Days  |   Please select atleast 15 days. Thank You";
+			echo "<script type='text/javascript'>alert('$message');</script>";
+		}
 		else
 		{
-			$qry="SELECT * FROM register,lectures WHERE uid='$uid' and lid='$lid'";
+			$qry="SELECT * FROM register,courses WHERE uid='$uid' and cid='$cid'";
 			if(mysqli_query($con,$qry))
 			{
-			 mysqli_query($con,"INSERT INTO `booking_cal`(`id`, `start`, `end`, `days`, `user_id`, `l_id`) VALUES (NULL,'$start','$end','$days','$uid','$lid')");
-			
+			 mysqli_query($con,"INSERT INTO `booking_cal`(`start`, `end`, `days`, `uid`, `cid`) VALUES ('$start','$end','$days','$uid','$cid')");
+
 				
 ?>
 			<script>

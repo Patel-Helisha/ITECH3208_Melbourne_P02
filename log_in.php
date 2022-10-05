@@ -14,6 +14,7 @@
 <link href="plugins/jquery-datepicker/jquery-ui.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/contact.css">
 <link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
+<link rel="stylesheet" type="text/css" href="cap.css">
 
 
 
@@ -24,6 +25,18 @@ color: red;
 font-size:20px;
 }
 
+
+.captcha{
+		width: 100%;
+	height: 65px;
+	padding-right: 670px;
+	
+	border: none;
+	outline: none;
+	background: #fff;
+	font-size:20px;
+		
+	}
 
 td {
 padding: 15px;
@@ -68,12 +81,15 @@ a {
 	}
 	
 
-
+	
 
 </style>
 
 
+
 <script>	<!-- Starting of the JavaScript -->
+
+
 function validateform()
 {    
 		
@@ -102,9 +118,59 @@ function validateform()
 		{
 			document.getElementById("msg2").innerHTML = "";
 		}
+		
+	var textinput = document.forms["form"]["textinput"].value; //<-----validation for the empty field------>
+	if(textinput=="")
+		{
+			document.getElementById("msg3").innerHTML = "*Please enter your captcha code!";
+			document.form.textinput.focus();
+			return false;
+		}
+		else
+		{
+			document.getElementById("msg3").innerHTML = "";
+		}
+		
+		
+		
 		alert("Welcome, you have been successfully placed order, " + lname + ""  + fname);
 }
+
+
+		function cap() {
+
+			var alpha=['1','2','3','4','5','6','7','8','9','0','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V'
+			           ,'W','X','Y','Z','a','b','c','d','e','f','g','h','i',
+			           'j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+
+			var a=alpha[Math.floor(Math.random()*62)];
+			var b=alpha[Math.floor(Math.random()*62)];
+			var c=alpha[Math.floor(Math.random()*62)];
+			var d=alpha[Math.floor(Math.random()*62)];
+			var e=alpha[Math.floor(Math.random()*62)];
+			var f=alpha[Math.floor(Math.random()*62)];
+
+			var sum=a + b + c + d + e + f;
+
+			document.getElementById("capt").value=sum;
+		}
+
+		function validcap() {
+			var string1 = document.getElementById('capt').value;
+			var string2 = document.getElementById('textinput').value;
+			if (string1 == string2){
+				alert("Form is validated Succesfully");
+				return true;
+			}
+			else {
+				alert("Please enter a valid captcha");
+				return false;
+			}
+		}
+
+
 </script>
+
 
 
 </head>
@@ -139,28 +205,10 @@ function validateform()
 
      <td colspan="6"><center>
 	 <div style="font-size: 20px;">
-	 <?php	
-			session_start();
-			$con=mysqli_connect("localhost","root","","employability");
-			$res=mysqli_query($con,"select * from courses");
 
-			//session_start();
-			if(isset($_SESSION['email']))
-			{
-				echo "Welcome ".$_SESSION['email'];
-			?>
-			<br>
-			<center>
-			(<a href="logout.php">Logout</a>)
-			<?php
-			}
-			else
-			{
-			?>
 			
 			Welcome Guest, (<a href="log_in.php" style="color:#F0B90D;">Login</a>|<a href="register1.php" style="color:white;">Register</a>)
-			<?php
-			}?>
+			
 	 </div>
 	 </center></td>
    	   
@@ -307,16 +355,35 @@ function validateform()
 							<p style="font-size: 22px;">Already registered, then get yourself logged_in for booking the online courses of your preference.</p>
 						</div>
 						<div class="contact_form_container">
-							<form method="POST" action="login.php" name="form" onsubmit="return validateform()">				
-							<center>
-								<div class="col-lg-10" style="font-size:22px;">
-									<input class="contact_input" name="email" id="email" type="email" placeholder="Your ID" data-error="Name is required."> <br><span id="msg1"></span>
+							<form  method="POST" action="login.php" name="form" style="text-align:left;" onsubmit="return validateform()">				
+							<center>                   
+								<div class="col-lg-10" style="font-size:28px;">
+								<input class="contact_input" name="email" id="email" type="email" placeholder="Your ID"  data-error="Name is required."> <br><span id="msg1"></span>
 								<input class="contact_input" name="password" id="password" type="password" placeholder="Your password" data-error="Password is required."> <br><span id="msg2"></span>
-								<input class='submit' type='submit' name='submit' value='SUBMIT' />
+
+								
+								<div class="contain">
+								<input type="text"   id="capt" name="capt" readonly="readonly" placeholder=" Please Refresh!" style="padding-top:5px;">
+								<div id="refresh"> <img  src="image/refresh.png" width="50px" onclick="cap()"></div>
+
+								<input  type="text"  id="textinput" name="textinput" style="font-color:#f4f5fa;" placeholder="Enter Captcha.."><span id="msg3"></span> </div>
+														
+								<button class='submit' name='submit' style="font-size:22px;" >SUBMIT</button>
+
+								
+								
+
+
+								
+								
 								</center>
 							</form>
 							<br>
 							<center><p style="color:black" ><a href="register1.php" style="font-size:20px;">Don't have an account? Click here to register</a></p></center>
+							<br>
+							
+						
+							
 							</div>
 						</div>
 					</div>

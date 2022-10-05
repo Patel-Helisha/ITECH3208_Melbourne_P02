@@ -16,16 +16,21 @@ if (isset($_POST['submit']))
 	session_start();
 	$email=$_POST['email'];
 	$plaintext_password=$_POST['password'];
-	$sel2=mysqli_query($con,"SELECT `uid`, `password` FROM `register` WHERE email='$email'");
+	$sel2=mysqli_query($con,"SELECT * FROM `register` WHERE email='$email'");
 	$row2 = mysqli_fetch_assoc($sel2);
-	$uid =$row2['uid'];
+	$fname =$row2['fname'];
 	$pwd =$row2['password'];
-	$_SESSION['uid']=$uid;
+	$_SESSION['fname']=$fname;
+	$_SESSION['email']=$email;
 	
+	$digit = $_SESSION['digit'];
+
 	
-	
-	echo $plaintext_password;
-	echo $pwd;
+	$capt = $_POST['capt'];
+	//echo $capt;
+	//echo "<br>";
+	$textinput = $_POST['textinput'];
+	//echo $textinput;
 	
 	$verify = password_verify($plaintext_password, $pwd);
 	
@@ -38,19 +43,28 @@ if (isset($_POST['submit']))
 	$result=mysqli_num_rows($row);
 	//$_SESSION['email']=$email;
 	//$result1=mysqli_num_rows($row1);
-	if($result > 0)
+	if($result > 0 && $capt == $textinput)
 	{
 	
 		$_SESSION['email']=$email;
 		header("location:index1.php");
 	}
 	
-	else
+	elseif($result > 0 && $capt != $textinput)
 	{
+		$message="Invalid  captcha code  | Enter valid code";
+		
+		echo "<script type='text/javascript'>alert('$message');";
+		echo "window.location.href = '/ITECH3208/user/log_in.php'</script>";
+	}
+	
+	else{
+		
 		$message="Invalid Details  | Enter valid details";
 		
 		echo "<script type='text/javascript'>alert('$message');";
 		echo "window.location.href = '/ITECH3208/user/log_in.php'</script>";
+		
 	}
 	
 }

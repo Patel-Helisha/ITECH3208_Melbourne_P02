@@ -121,9 +121,9 @@ a {
 			$res=mysqli_query($con,"select * from courses");
 
 			//session_start();
-			if(isset($_SESSION['email']))
+			if(isset($_SESSION['fname']))
 			{
-				echo "Welcome ".$_SESSION['email'];
+				echo "Welcome ".$_SESSION['fname'];
 			?>
 			<br>
 			<center>
@@ -289,7 +289,7 @@ a {
 									</div>
 								<div class="col-xl-6" style="font-size:20px;">
 							<?php
-							if(isset($_SESSION['email']))
+							if(isset($_SESSION['fname']))
 							{
 								echo "<input class='submit' type='submit' name='ok' value='POST'>";
 							}
@@ -326,7 +326,7 @@ a {
 						
 							<div class="review">
 							   <?php
-									$res=mysqli_query($con,"select * from review");
+									$res=mysqli_query($con,"select * from review ORDER BY b_id DESC");
 									while($row=mysqli_fetch_array($res))
 									{
 										echo "<h4 class='glow_text'>";

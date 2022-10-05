@@ -101,9 +101,9 @@ a {
 			$res=mysqli_query($con,"select * from courses");
 
 			//session_start();
-			if(isset($_SESSION['email']))
+			if(isset($_SESSION['fname']))
 			{
-				echo "Welcome ".$_SESSION['email'];
+				echo "Welcome ".$_SESSION['fname'];
 			?>
 			<br>
 			<center>

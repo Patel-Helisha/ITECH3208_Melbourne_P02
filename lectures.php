@@ -94,7 +94,7 @@ a {
 		font-weight:bold;
 		
 		
-
+}
 
 
 .messages{
@@ -103,6 +103,28 @@ a {
 		box-shadow: 0px 0px 5px grey;
 		padding: 10px 10px 10px 10px;
 	}	
+	
+	
+.button{
+		color: #fff;
+		background: #5D5458 ;
+		border: none;
+		border: 2px solid #5D5458;
+		margin-top: 2em;
+		 width: 180px;  
+		 height: 65px;
+		text-decoration: none;
+	}
+	
+.button:hover{
+		background: #808B96;
+		font-weight:bold;
+		
+		
+}
+
+
+
 
 </style>
 </head>
@@ -141,9 +163,9 @@ a {
 			$res=mysqli_query($con,"select * from courses");
 
 			//session_start();
-			if(isset($_SESSION['email']))
+			if(isset($_SESSION['fname']))
 			{
-				echo "Welcome ".$_SESSION['email'];
+				echo "Welcome ".$_SESSION['fname'];
 			?>
 			<br>
 			<center>
@@ -164,13 +186,29 @@ a {
   </tr>
   <tr>
   	
+<?php
 
-    <td ><center><a href="index.php" style="color:white;">Home</a></center></td>
-    <td><center><a href="about.php" style="color:white;">About Us</a></center></td>
-    <td class="active"><center><a href="course1.php" style="color:#F0B90D;" "background-color:Tomato;">Courses</a></center></td>
-    <td><center><a href="review.php" style="color:white;">Reviews</a></center></td>
-    <td><center><a href="contact.php" style="color:white;">Contact Us</a></center></td>
-    <td><center><a href="faq.php" style="color:white;">FAQs</a></center></td>
+if(isset($_SESSION['fname']))
+								{
+									echo " <td ><center><a href='index.php' style='color:white;'>Home</a></center></td>";
+									echo " <td ><center><a href='about.php' style='color:white;'>About Us</a></center></td>";
+									echo " <td class='active'><center><a href='course1.php' style='color:white;'>Courses</a></center></td>";
+									echo " <td ><center><a href='bot.php' style='color:white;'>Chat</a></center></td>";
+									echo " <td ><center><a href='review.php' style='color:white;'>Reviews</a></center></td>";
+									echo " <td ><center><a href='contact.php' style='color:white;'>Contact Us</a></center></td>";
+									echo " <td ><center><a href='faq.php' style='color:white;'>FAQs</a></center></td>";
+								}
+								else
+							    {
+									echo " <td ><center><a href='index.php' style='color:white;'>Home</a></center></td>";
+									echo " <td ><center><a href='about.php' style='color:white;'>About Us</a></center></td>";
+									echo " <td class='active'><center><a href='course1.php' style='color:white;'>Courses</a></center></td>";
+									echo " <td ><center><a href='review.php' style='color:white;'>Reviews</a></center></td>";
+									echo " <td ><center><a href='contact.php' style='color:white;'>Contact Us</a></center></td>";
+									echo " <td ><center><a href='faq.php' style='color:white;'>FAQs</a></center></td>";
+								}
+?>
+  
   </tr>
  
 </table>
@@ -393,55 +431,56 @@ Please keep an eye on the icon indicating activities that need to be done at var
 									echo"<br>";
 									echo "<br>";
 									echo"</div>";
-									echo $row["lid"];   
+									 
 									echo "<br>";
 									echo "<br>";
 									
-								 if(isset($_SESSION['email']))
+								 if(isset($_SESSION['fname']))
 								{
 									
 									if($row["lid"] == 1)
 									
 																		{
-									echo "<a href=view_lecture.php?lid=".$row['lid']."tid=".$row['tid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
+									echo "<a href=view_lecture1.php?lid=".$row['lid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
 									}
 										elseif($row["lid"] == 2)
 									{
-										echo "<a href=view_lecture2.php?lid=".$row['lid']."tid=".$row['tid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";	
+										
+										echo"<a href=view_lecture2.php?lid=".$row['lid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
 									}
 									
 									elseif($row["lid"] == 3)
 									{
-										echo "<a href=view_lecture3.php?lid=".$row['lid']."tid=".$row['tid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
+										echo "<a href=view_lecture3.php?lid=".$row['lid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
 									}
 									
 									elseif($row["lid"] == 4)
 									{
-										echo "<a href=view_lecture4.php?lid=".$row['lid']."tid=".$row['tid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
+										echo "<a href=view_lecture4.php?lid=".$row['lid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
 									}
 									
 									elseif($row["lid"] == 5)
 									{
-										echo "<a href=view_lecture5.php?lid=".$row['lid']."tid=".$row['tid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
+										echo "<a href=view_lecture5.php?lid=".$row['lid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
 									}
 									
 									elseif($row["lid"] == 6)
 									{
-										echo "<a href=view_lecture6.php?lid=".$row['lid']."tid=".$row['tid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
+										echo "<a href=view_lecture6.php?lid=".$row['lid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
 									}
 									
 									elseif($row["lid"] == 7)
 									{
-										echo "<a href=view_lecture7.php?lid=".$row['lid']."tid=".$row['tid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
+										echo "<a href=view_lecture7.php?lid=".$row['lid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
 									}
 									
 									elseif($row["lid"] == 8)
 									{
-										echo "<a href=view_lecture8.php?lid=".$row['lid']."tid=".$row['tid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
+										echo "<a href=view_lecture8.php?lid=".$row['lid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
 									}
 									
 									else{
-										echo "<a href=view_lecture9.php?lid=".$row['lid']."tid=".$row['tid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
+										echo "<a href=view_lecture9.php?lid=".$row['lid']."><input class='submit' type='button' name='view' value='VIEW' /></a>";
 									}
 									
 								}
@@ -503,7 +542,7 @@ Please keep an eye on the icon indicating activities that need to be done at var
 						<br><br><br><br>
 						
 						
-						
+					
 						
 						
 						<div class="intro">
@@ -514,12 +553,16 @@ Please keep an eye on the icon indicating activities that need to be done at var
 					<div class="intro_content">
 						<div class="section_title">
 							
-							<h1 align="center" style="text-align:Center, font-weight:bold;">Upload Video Assignment!</h1>
+							<h1 align="center" style="text-align:Center, font-weight:bold;">Upload Assessment and appear for quiz!</h1>
 						</div>
 						<div class="intro_text">
 						<p></p>
-							<p align="center" style="font-size:22px;"> Upload your video assignment to get certified for the course.</p>
+							<p align="center" style="font-size:22px;"> Appear for the Influence course final quiz, as well as assessment in order to get certified for the course.</p>
 						</div>
+						
+						
+						
+						
 					</div>
 				</div>
 
@@ -532,33 +575,65 @@ Please keep an eye on the icon indicating activities that need to be done at var
 						
 						<br><br><br><br>
 
-						
-						<center>
-						<img src="image/assignment.jpg"  alt="certificate" width="800" height="450">
-						</center>
-						
-						<br><br><br>
-						
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+						<img src="image/assignment.jpg"  alt="certificate" width="500" height="400">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<img src="image/quiz.jpg"  alt="certificate" width="500" height="400">
 						
 						
+						<br><br>
 						
 						
-						<p align="center">
+						
+						<div class="intro">
+
+	</div>
+						
+					
+
+						
+						
+						
+						
+						
+						
+						
+						
+						<p style="align:center;">
 <?php
-									
-								 if(isset($_SESSION['email']))
+								echo"<table>";
+								echo"<tr>";
+								echo"<td style='padding-left:170px;'>";
+								echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+								
+								if(isset($_SESSION['fname']))
 								{
-									echo "<a href=assignment.php><input class='submit' style='text-align:center' width='300px; type='button' name='apply' value='APPLY' /></a>";
+									echo "<a href=assignment.php><input class='button' style='text-align:center;  width='300px; type='button' name='apply' value='APPLY' /></a>";
 								}
 								else
 							    {
-									echo "<a href=log_in.php><input class='submit' style='text-align:center' width='300px;' type='button' name='apply' value='APPLY' /></a>";
+									echo "<a href=log_in.php><input class='button' style='text-align:center' width='300px;' type='button' name='apply' value='APPLY' /></a>";
+									
+								}echo"</td>";
+								echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+								echo"<td style='padding-left:380px;'>";								
+								if(isset($_SESSION['fname']))
+								{
+									echo "<a href=final_quiz.php><input class='button' style='text-align:center' width='300px; type='button' name='apply' value='APPLY' /></a>";
+								}
+								else
+							    {
+									echo "<a href=log_in.php><input class='button' style='text-align:center' width='300px;' type='button' name='apply' value='APPLY' /></a>";
 									echo "<br>";
 									echo "<br>";
 									echo "<br>";
 									echo "<br>";
 									echo "<br>";
 								}
+								echo"</td>";
+								echo"</tr>";
+								echo"</table>";
 								 echo 	"</div>";
 								 echo 	"</div>";
 								 echo 	"</div>";
@@ -567,9 +642,12 @@ Please keep an eye on the icon indicating activities that need to be done at var
 								 
 								 							?>
 </p>
+			
+
+				
+			
+						<br><br><br><br>
 						
-						<br><br><br><br>
-						<br><br><br><br>
 						
 						<div class="intro">
 		<div class="container">
@@ -609,13 +687,13 @@ Please keep an eye on the icon indicating activities that need to be done at var
 						<p align="center">
 <?php
 									
-								 if(isset($_SESSION['email']))
+								 if(isset($_SESSION['fname']))
 								{
-									echo "<a href=certificate.php><input class='submit' style='text-align:center' width='300px; type='button' name='apply' value='APPLY' /></a>";
+									echo "<a href=certi.php><input class='button' style='text-align:center' width='300px; type='button' name='apply' value='APPLY' /></a>";
 								}
 								else
 							    {
-									echo "<a href=log_in.php><input class='submit' style='text-align:center' width='300px;' type='button' name='apply' value='APPLY' /></a>";
+									echo "<a href=log_in.php><input class='button' style='text-align:center' width='300px;' type='button' name='apply' value='APPLY' /></a>";
 									echo "<br>";
 									echo "<br>";
 									echo "<br>";

@@ -141,9 +141,9 @@ a {
 			$res=mysqli_query($con,"select * from courses");
 
 			//session_start();
-			if(isset($_SESSION['email']))
+			if(isset($_SESSION['fname']))
 			{
-				echo "Welcome ".$_SESSION['email'];
+				echo "Welcome ".$_SESSION['fname'];
 			?>
 			<br>
 			<center>
@@ -337,8 +337,8 @@ a {
 								echo "</p>"; 								 
 								 echo 	"</h4>";
 								
-									echo "<button style=' height:50px; width:1150px;  font-size: 18px; padding-bottom:40px;' type='button' class='collapsible' onclick = 'return collapsible()'> View Answer </button>";
-									echo"<div class='content' style='font-size: 18px;'>";
+									echo "<button style=' height:50px; width:1150px;  font-size: 18px;  padding-bottom:40px;' type='button' class='collapsible' onclick = 'return collapsible()'> View Answer </button>";
+									echo"<div class='content' style='font-size: 18px; text-align:left;'>";
 									
 									
 									echo $row['answer'];

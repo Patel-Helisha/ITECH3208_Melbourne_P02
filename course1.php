@@ -89,7 +89,27 @@ a {
 	}
 	
 .submit:hover{
-		background: #808B96;
+		background-image: linear-gradient(to right, #8c00b1 , #f45106);
+		font-weight:bold;
+
+}
+
+
+.book{
+		color: #fff;
+		background: #5D5458 ;
+		border: none;
+		border: 2px solid #5D5458;
+		margin-top: 2em;
+		 width: 190px;  
+		 height: 75px;
+		text-decoration: none;
+	}
+	
+.book:hover{
+	background-image: linear-gradient(to right, #8c00b1 , #f45106);
+		font-weight:bold;
+}
 
 .messages{
 		border: 1px solid grey; 
@@ -135,9 +155,9 @@ a {
 			$res=mysqli_query($con,"select * from courses");
 
 			//session_start();
-			if(isset($_SESSION['email']))
+			if(isset($_SESSION['fname']))
 			{
-				echo "Welcome ".$_SESSION['email'];
+				echo "Welcome ".$_SESSION['fname'];
 			?>
 			<br>
 			<center>
@@ -391,7 +411,9 @@ a {
 									
 								 if(isset($_SESSION['email']))
 								{
-									echo "<a href=calender.php?cid=".$row['cid']."tid=".$row['tid']."><input class='submit' type='button' name='book' value='BOOK' /></a>";
+									echo "<a href=calender.php?cid=".$row['cid']."><input class='submit' type='button' name='book' value='BOOK' /></a>";
+									//echo "<a href=calender.php?cid=".$row['cid']."tid=".$row['tid']."><input class='submit' type='button' name='book' value='BOOK' /></a>";
+									 
 								}
 								else
 							    {
@@ -436,6 +458,69 @@ a {
 						?> 
 						
 						
+						<br><br><br><br><br><br><br><br><br><br>
+						
+						
+						<div class="intro">
+		<div class="container">
+			<div class="row row-eq-height">
+				<!-- Intro Content -->
+				<div class="col-lg-12">
+					<div class="intro_content">
+						<div class="section_title">
+							
+							<h1 align="center" style="text-align:Center, font-weight:bold;">Book a Consultation!</h1>
+						</div>
+						<div class="intro_text">
+						<p></p>
+							<p align="center" style="font-size:22px;"> Feel free to consult with your course tutor!</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Intro Image -->
+				
+
+			</div>
+		</div>
+	</div>
+						
+						<br>
+
+						
+						
+						
+						<p align="center">
+<?php
+									
+								 if(isset($_SESSION['fname']))
+								{
+									echo "<a href=consultation1.php><input class='book' style='text-align:center' width='300px; type='button' name='book' value='BOOK' /></a>";
+								}
+								else
+							    {
+									echo "<a href=log_in.php><input class='book' style='text-align:center' width='300px;' type='button' name='book' value='BOOK' /></a>";
+									echo "<br>";
+									echo "<br>";
+									echo "<br>";
+									echo "<br>";
+									echo "<br>";
+								}
+								 echo 	"</div>";
+								 echo 	"</div>";
+								 echo 	"</div>";
+								 echo 	"</div>";
+								 echo 	"</div>";
+								 
+								 							?>
+</p>
+						
+						
+					<br><br><br>	
+						
+				<!-- Offer Item -->
+				
+				
 						
 				
 				<!-- Offer Item -->

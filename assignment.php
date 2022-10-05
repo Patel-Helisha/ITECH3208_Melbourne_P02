@@ -12,9 +12,9 @@
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.3.4/owl.theme.default.css">
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.3.4/animate.css">
 <link href="plugins/jquery-datepicker/jquery-ui.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
-<link rel="stylesheet" type="text/css" href="styles/responsive.css">
-</head>
+<link rel="stylesheet" type="text/css" href="styles/contact.css">
+<link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
+
 
 <style>
 	td {
@@ -44,14 +44,68 @@ a {
 		border: 2px solid #5D5458;
 		margin-top: 2em;
 		 width: 200px;  
-		 height: 55px;
+		 height: 55px; 
+		 font-size: 22px;
+		 font-weight:bold;
 		text-decoration: none;
 	}
 	
 .submit:hover{
 		background: #808B96;
 }
+
+
+.quiz{
+		color: #fff;
+		background: #D35400 ;
+		border: none;
+		border: 2px solid #D35400;
+		margin-top: 2em;
+		 width: 250px;  
+		 height: 75px;
+		  font-size: 26px;
+		  font-weight:bold;
+		text-decoration: none;
+	}
+	
+.quiz:hover{
+		background: #E59866;
+		
+		font-size: 28px;
+}
+
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #b30047;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41;
+    color: #fff;
+}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
 </style>
+
+
+
+
+</head>
+<body>
 
 <body>
 
@@ -62,7 +116,7 @@ a {
 	<header class="header">
 	<br>
 	
-		<div class="header_content d-flex flex-column align-items-center justify-content-lg-end justify-content-center" >
+		<div class="header_content d-flex flex-column align-items-center justify-content-lg-end justify-content-center" style="height: 145px; ">
 			
 			
 			
@@ -88,9 +142,9 @@ a {
 			$res=mysqli_query($con,"select * from courses");
 
 			//session_start();
-			if(isset($_SESSION['email']))
+			if(isset($_SESSION['fname']))
 			{
-				echo "Welcome ".$_SESSION['email'];
+				echo "Welcome ".$_SESSION['fname'];
 			?>
 			<br>
 			<center>
@@ -113,10 +167,10 @@ a {
   	
 
     <td ><center><a href="index.php" style="color:white;">Home</a></center></td>
-    <td class="active"><center><a href="about.php" style="color:white;">About Us</a></center></td>
-    <td><center><a href="course1.php" style="color:#F0B90D;" "background-color:Tomato;">Courses</a></center></td>
-    <td><center><a href="review.php" style="color:white;">Reviews</a></center></td>
-    <td><center><a href="contact.php" style="color:white;">Contact Us</a></center></td>
+    <td><center><a href="about.php" style="color:white;">About Us</a></center></td>
+    <td><center><a href="course1.php" style="color:white;" "background-color:Tomato;">Courses</a></center></td>
+    <td ><center><a href="review.php" style="color:white;">Reviews</a></center></td>
+    <td class="active"><center><a href="contact.php" style="color:#F0B90D;">Contact Us</a></center></td>
     <td><center><a href="faq.php" style="color:white;">FAQs</a></center></td>
   </tr>
  
@@ -218,21 +272,34 @@ a {
 	<!-- Home -->
 
 	<div class="home">
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/home_bac.jpg" data-speed="0.8"></div>
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/home_bac.jpg" data-speed="0.8" height="912px"></div>
 		<div class="home_container d-flex flex-column align-items-center justify-content-center">
 			
 		</div>
 	</div>
 
-		<!-- Intro -->
+
+	<!-- Booking -->
+
+	
+	</div>
+
+
+
+
+
+
+	<!-- Contact -->
 
 	<div class="intro">
 		<div class="container">
 			<div class="row">
 				<div class="col">
 					<div class="section_title text-center">
-						<div>Upload</div>
-						<h1 style="font-size: 45px;"><b>Video Assignment</b></h1>
+					<br><br><br><br>
+						<div>Final Assessment</div>
+						<h1 style="font-size: 45px;"><b>Upload your Video!</b></h1>
+						<br><br><br><br>
 					</div>
 				</div>
 			</div>
@@ -245,7 +312,7 @@ a {
 						<p align="justify" style="font-size: 25px;">Unlike typical career services, Employability.life goes beyond the tops and tricks of getting a CV through and landing an interview.
 Instead of getting the candidates just over the finish line - somehow landing any job, whether or not it's the right one - Employability.life aims to realise candidates' full potential. </p>
 						
-						<p align="justify" style="font-size: 25px;"><h3 style="color:#F15938; font-weight:bold;"> Upload your video submission here, and thereby get certified for the Influence course.</h3> </p>
+						<p align="justify" style="font-size: 25px;"><h3 style="color:#F15938; font-weight:bold;"> Upload your video here, and thereby gain execellence in your certification for the Influence course.</h3> </p>
 
 
 
@@ -256,6 +323,10 @@ Instead of getting the candidates just over the finish line - somehow landing an
 					<?php
         include("config.php");
      
+	 
+	
+	 
+	 
         if(isset($_POST['but_upload'])){
             $maxsize = 500000000000; // 5MB
                        
@@ -274,7 +345,7 @@ Instead of getting the candidates just over the finish line - somehow landing an
                 
                 // Check file size
                 if(($_FILES['file']['size'] >= $maxsize) || ($_FILES["file"]["size"] == 0)) {
-                    echo "File too large. File must be less than 5MB.";
+                    echo "File too large!";
 					//echo $maxsize;
 					//echo gettype($maxsize);
                 }else{
@@ -308,9 +379,31 @@ Instead of getting the candidates just over the finish line - somehow landing an
 
 						
 						
-					<p style=" padding-top: 100px; font-size: 25px;"><img src="image/img3.jpg" alt="" ></p>
+				<br><br><br><br>	<br><br><br><br> 	<br><br><br><br>
 					
-					
+ <div class="intro">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="section_title text-center">
+                        <div>Final Assessment</div>
+                        <h1 style="font-size: 45px;"><b>Upload Assignment!</b></h1></h1><br><br><br><br>
+                        <h3><b>Life is a life-long assignment that must be constantly analyzed, clarified, figured out, and responded to appropriately.</b></h3><br><br><br><br>
+                    
+                    
+<center>
+            
+            <a href="ASSIGNMENT.pdf" class="button">Open</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            
+			<a href="download.php?file=ASSIGNMENT" target="_blank" class="button">Download</a></center>
+
+  
+</div>
+                    </div>
+
+                </div>
+            </div>
+            
+            </div>
 				</div>
 					
 					</div>
@@ -318,7 +411,7 @@ Instead of getting the candidates just over the finish line - somehow landing an
 			</div>
 		</div>		
 	</div>
-
+	<br><br><br><br>	<br><br>
 
 
 		<!-- Discover Slider -->
@@ -350,92 +443,52 @@ Instead of getting the candidates just over the finish line - somehow landing an
 
 	<!-- Testimonials -->
 
-	<div class="testimonials">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title text-center">
-						<div>Students</div>
-						<h1 style="font-size: 45px;"><b>Get Certified
-						</b></h1>
-					</div>
-				</div>
-			</div>
-			<div class="row testimonials_row">
-				<div class="col">
-					
-					<!-- Testimonials Slider -->
-					<div class="testimonials_slider_container">
-						<div class="owl-carousel owl-theme testimonials_slider">
 
-							<!-- Slide -->
-							<div>
-								<div class="testimonial_text text-center">
-									<p style="font-size: 25px;"><b>The Employability.life gets you certified for the courses you enroll in! </b></p>
-									
-								</div>
-								
-								<div class="intro_text text-center">
-						<p align="center" style="font-size: 22px; padding-top: 30px;">Partnerships with large corporations to recruit at scale.
-									Partnerships with sector-specific (such as IT) employment agencies in individual local markets.
-									Thought-leadership activities in explaining and validating the WRS as a faithful marker of 
-									candidate's ability to perform and lead in digital economy workplace </p>
-												
-									
-					
-					
-								</div>
-							</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<!--<br>
+	<br> Footer -->
 
-							
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Footer -->
-
-<footer class="footer">
+		<footer class="footer">
 		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/footer.jpg" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
 					<div class="footer_logo text-center">
-						<a href="index.php"><img src="image/bac_logo.jpg" alt="" height="150" width="200"></a>
+						<img src="image/bac_logo.jpg" alt="" height="150" width="200">
 					</div>
 					<div class="footer_content">
 						<div class="row">
 							<div class="col-lg-4 footer_col">
 								<div class="footer_info d-flex flex-column align-items-lg-end align-items-center justify-content-start">
 									<div class="text-center" >
-										<div style="color:white;font-size: 19px;" ><b>Phone:</b></div>
-										<div style="color:white; font-size: 18px;">+613 8327 3100</div>
+										<div style="color:white;">Phone:</div>
+										<div style="color:white;">+613 8327 3100</div>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-4 footer_col">
 								<div class="footer_info d-flex flex-column align-items-center justify-content-start">
 									<div class="text-center">
-										<div style="color:white; font-size: 19px;"><b>Address:</b></div>
-										<div style="color:white; font-size: 18px;">399 Lonsdale St, Melbourne VIC 3000, Australia</div>
+										<div style="color:white;">Address:</div>
+										<div style="color:white;">399 Lonsdale St, Melbourne VIC 3000, Australia</div>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-4 footer_col">
 								<div class="footer_info d-flex flex-column align-items-lg-start align-items-center justify-content-start">
 									<div class="text-center">
-										<div style="color:white; font-size: 19px;" ><b>Website</b></div>
-										<div><a href="http://employability.life/" style="color:white; font-size: 18px;">employability.life</a></div>
+										<div style="color:white;">Website</div>
+										<div><a href="http://employability.life/" style="color:white;">employability.life</a></div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="footer_bar text-center"><!-- Link back to ATMC can't be removed. Template is licensed under CC BY 3.0. -->
-<font color="white" style="font-size: 18px;">All rights reserved by Employability.life</font></div>
+<font color="white">All rights reserved by Employability.life</font></div>
 				</div>
 			</div>
 		</div>
@@ -455,6 +508,6 @@ Instead of getting the candidates just over the finish line - somehow landing an
 <script src="plugins/progressbar/progressbar.min.js"></script>
 <script src="plugins/parallax-js-master/parallax.min.js"></script>
 <script src="plugins/jquery-datepicker/jquery-ui.js"></script>
-<script src="js/custom.js"></script>
+<script src="js/about.js"></script>
 </body>
 </html>

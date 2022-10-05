@@ -115,7 +115,7 @@ function validateform()
 		{
 			document.getElementById("msg2").innerHTML = "";
 		}
-		alert("Welcome, you have send your feedback");
+		alert("Thank you for your valuable feedback!");
 }
 </script>
 </head>
@@ -156,9 +156,9 @@ function validateform()
 			$res=mysqli_query($con,"select * from courses");
 
 			//session_start();
-			if(isset($_SESSION['email']))
+			if(isset($_SESSION['fname']))
 			{
-				echo "Welcome ".$_SESSION['email'];
+				echo "Welcome ".$_SESSION['fname'];
 			?>
 			<br>
 			<center>
@@ -318,14 +318,14 @@ function validateform()
 							<p style="font-size:22px;">Give us your valuable feedback. Employability.Life will admire your response and take accepted actions as your your suggestion and request.</p>
 						</div>
 						<div class="contact_form_container">
-							<form method="POST" action="register.php" name="form" onsubmit="return validateform()">				
+							<form method="POST" action="contact_data.php" name="form" onsubmit="return validateform()">				
 							<center>
 								<div class="col-lg-10" style="font-size:22px;">
-								<input class="contact_input" " type="text" id="uname" placeholder="Your Name"> <br> <span id="msg1"></span>
-								<input class="contact_input"type="email" id="mail" placeholder="Your E-mail"> <br><span id="message"></span>
-								<input class="contact_input" type="text" name="message" id="message" placeholder="Your Message"> <br><span id="msg2"></span>
+									<input class="contact_input" " type="text" name="uname" id="uname" placeholder="Your Name"> <br> <span id="msg1"></span>
+									<input class="contact_input"type="email" name="mail" id="mail" placeholder="Your E-mail"> <br><span id="message2"></span>
+									<input class="contact_input" type="text" name="message" id="message" placeholder="Your Message"> <br><span id="msg2"></span>
 								
-								<input class='submit' type='button' name='submit' value='SUBMIT' />
+								<input class='submit' type='submit' name='submit' value='SUBMIT'>
 								</center>
 							</form>
 							</div>
