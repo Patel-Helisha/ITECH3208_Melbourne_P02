@@ -1,71 +1,31 @@
-<?php 
-
-$con=mysqli_connect("localhost","root","");
-if(!$con)
-{
-		echo "Not connected to server";
-}
-
-if(!mysqli_select_db($con,"employability"))
-{
-		echo "Not connected to database";
-}
-
+<?php
+		$conn=mysqli_connect("localhost","root","");
+		
+		if(!$conn)
+		{
+			die("Not connected to server");
+		}
+		
+		if(!mysqli_select_db($conn,"employability"))
+		{
+			die ("Database not selected");
+		}		
 if (isset($_POST['submit']))
 {	
 	session_start();
-	$email=$_POST['email'];
-	$plaintext_password=$_POST['password'];
-	$sel2=mysqli_query($con,"SELECT * FROM `register` WHERE email='$email'");
-	$row2 = mysqli_fetch_assoc($sel2);
-	$fname =$row2['fname'];
-	$pwd =$row2['password'];
-	$_SESSION['fname']=$fname;
-	$_SESSION['email']=$email;
-	
-	$digit = $_SESSION['digit'];
-
-	
-	$capt = $_POST['capt'];
-	//echo $capt;
-	//echo "<br>";
-	$textinput = $_POST['textinput'];
-	//echo $textinput;
-	
-	$verify = password_verify($plaintext_password, $pwd);
-	
-	
-	
-	$sel="select * from register where email='$email' and password='$pwd'";
-	//$sel1="select * from admin where email='$email' and password='$pass'";
-	$row=mysqli_query($con,$sel);
-	//$row1=mysqli_query($con,$sel1);
+	$name=$_POST['name'];
+	$password=$_POST['password'];
+	$_SESSION['name']=$name;
+	$sel="select * from admin where name='$name' and password='$password'";
+	$row=mysqli_query($conn,$sel);
 	$result=mysqli_num_rows($row);
-	//$_SESSION['email']=$email;
-	//$result1=mysqli_num_rows($row1);
-	if($result > 0 && $capt == $textinput)
+	if($result > 0)
 	{
-	
-		$_SESSION['email']=$email;
-		header("location:index1.php");
+		header("location:index.php");
 	}
-	
-	elseif($result > 0 && $capt != $textinput)
+	else
 	{
-		$message="Invalid  captcha code  | Enter valid code";
-		
-		echo "<script type='text/javascript'>alert('$message');";
-		echo "window.location.href = '/ITECH3208/user/log_in.php'</script>";
+		header("location:opps.html");
 	}
-	
-	else{
-		
-		$message="Invalid Details  | Enter valid details";
-		
-		echo "<script type='text/javascript'>alert('$message');";
-		echo "window.location.href = '/ITECH3208/user/log_in.php'</script>";
-		
-	}
-	
 }
-?> 
+?>

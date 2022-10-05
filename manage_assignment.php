@@ -21,40 +21,13 @@
     <link href="css/sb-admin.css" rel="stylesheet">
 	
 	
-	<style>
+<style>
 	
-.button-fail {
-  display: inline-block;
-  
-  padding: 10px 20px;
-  font-size: 18px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #b30047;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 4px #999;
-}
-
-.button-fail:hover {background-color: #E30F59;
-    color: #fff;
-}
-
-.button-fail:active {
-  background-color: #E30F85;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
-
-
 .button-success {
 	
   display: inline-block;
-  padding: 10px 24px;
-  font-size: 20px;
+  padding: 8px 20px;
+  font-size: 18px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -72,6 +45,31 @@
 
 .button-success:active {
   background-color: #b30047;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.button-fail {
+  display: inline-block;
+  padding: 8px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #C0392B;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px #999;
+}
+
+.button-fail:hover {background-color: #922B21;
+    color: #fff;
+}
+
+.button-fail:active {
+  background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
@@ -105,7 +103,6 @@
 }
 	
 	</style>
-	
 	
   </head>
 
@@ -141,7 +138,7 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Manage User</span></a>
         </li>
-		<li class="nav-item active">
+		<li class="nav-item">
           <a class="nav-link" href="manage_course.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Manage Courses</span></a>
@@ -161,12 +158,12 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Manage Reviews</span></a>
         </li>
-		<li class="nav-item ">
+		<li class="nav-item active">
           <a class="nav-link" href="manage_assignment.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Manage Assignments</span></a>
         </li>
-		<li class="nav-item">
+		<li class="nav-item ">
           <a class="nav-link" href="manage_result.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Manage Results</span></a>
@@ -189,7 +186,7 @@
         </li>
       </ul>
 
-      <div id="content-wrapper">
+ <div id="content-wrapper">
 
         <div class="container-fluid">
 
@@ -210,59 +207,63 @@
             <div class="card-body">
               <div class="table-responsive">
 			  
-			<center style="font-size:18px; "><h5>Insert New Course From Here!</h5><br><?php
-			  echo "<form action='add_course.php' method='POST'>";
-echo"<td>";echo "<input class='button-success' type='submit'  value='Insert' name='insert'>";echo"</td>";
-echo "</form>";?></center> 
-
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-					  <th>Course ID</th>
-                      <th>Course Name</th>
-                      <th>Course price</th>
-                      <th>Course Image</th>
-					  <th>Course Category</th>
-					  <th>Tutor</th>
-					  <th>Course Synopsis</th>
-                      <th>Update</th>
-                      <th>Delete</th>
+					  <th>VID</th>
+					  <th>User ID</th>
+                      <th>Name</th>
+                      <th>Location</th>
+					  <th>Status</th>
+					  <th>Action</th>
                     </tr>
 						<tbody>
-<?php
+											<?php
 											$con=mysqli_connect("localhost","root","","employability");
 
-											$res=mysqli_query($con,"select * from courses");
+											$res=mysqli_query($con,"select * from assignment");
 
 											while ($row=mysqli_fetch_array($res))
 											{
 											echo"<tr class='tr-shadow'>";
-											$cid=$row['cid'];
-											echo"<td>"; echo $row["cid"]; echo"</td>";
-											echo"<td>"; echo $row["cname"]; echo"</td>";
-											echo"<td>"; echo $row["c_price"]; echo"</td>";
-											echo"<td>"; echo $row["image"]; echo"</td>";
-											echo"<td>"; echo $row["category"]; echo"</td>";
-											echo"<td>"; echo $row["tid"]; echo"</td>";
-											echo"<td>"; echo $row["synopsis"]; echo"</td>";
-											echo "<form action='update_course.php' method='POST'>";
-											echo "<td><form><a href=update_course.php?cid=".$row['cid']."><input type='button' class='button-fail' name='update' value='Update' /></a></form></td>";
+											echo"<td>"; 
+											echo $row["aid"]; 
 											echo"</td>";
-
-											echo "<td><form><a href=delete_course.php?cid=".$row['cid']."><input type='button' class='button' style='font-weight:bold;' name='delete' value='Delete' /></a></form></td>";
-											echo "</form>";
+											echo"<td>"; 
+											echo $row["uid"]; 
+											echo"</td>";
+											echo"<td>"; 
+											echo $row["name"]; 
+											echo"</td>";
+											echo"<td>"; 
+											echo $row["location"]; 
+											echo"</td>";
+											echo"<td>"; 
+											
+											if($row['status']==1)
+											{
+													echo '<p><a href="status.php?aid='.$row['aid'].'&status=0" class="button-success">Enable</a></p>';
+											}else
+											
+											{
+													echo '<p><a href="status.php?aid='.$row['aid'].'&status=1" class="button-fail">Disable</a></p>';
+											}
+											
+											
+											echo"</td>";
+											echo "<td><form><a href=delete_assignment.php?aid=".$row['aid']."><input type='button' class='button' style='font-weight:bold;' name='Delete' value='Delete' /></a></form></td>";
 											echo"</tr>";
 											}
 											?>
-
 					</thead>
+                  </tbody>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
 
-            <p class="small text-center text-muted my-5">
+          <p class="small text-center text-muted my-5">
             <em>Employability.Life</em>
           </p>
 

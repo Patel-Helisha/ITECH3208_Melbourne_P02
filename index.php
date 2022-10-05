@@ -1,373 +1,427 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>EMPLOYABILITY.LIFE</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Marimar Hotel template project">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="styles/bootstrap-4.1.2/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.3.4/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.3.4/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.3.4/animate.css">
-<link href="plugins/jquery-datepicker/jquery-ui.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
-<link rel="stylesheet" type="text/css" href="styles/responsive.css">
-</head>
 
+  <head>
 <style>
-	td {
-padding: 15px;
+  a:link{
+    color:red;
+  }
+  h1 {
+  border-style: solid;
+  border-color: green;
 }
-
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 60%;
+div1 {
+  border-style: solid;
+  border-color: coral;
 }
-
-td, th {
-  
-  text-align: left;
-  padding: 8px;
-}
-
-a {
-	font-size: 20px;
-}
-
-  
-
 </style>
 
-<body>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            function drawChart() {
 
-<div class="super_container">
-	
-	<!-- Header -->
+                var jsonData = $.ajax({
+                    url: "getData.php",
+                    dataType: "json",
+                    async: false
+                }).responseText;
+               
+                var data = new google.visualization.DataTable(jsonData);
 
-	<header class="header">
-	<br>
-	
-		<div class="header_content d-flex flex-column align-items-center justify-content-lg-end justify-content-center" >
-			
-			
-			
-			<div>
-			
+                
+                var chart = new google.visualization.PieChart(document.getElementById('player_info'));
+                chart.draw(data, {width: 870, height: 400});
+            }
+            
+            google.charts.load('current', {'packages':['corechart']});
 
-			</center>
-			</div>
-
-			<!-- Main Nav -->
-			
-
-							<table >
-			
-  <tr>
-     <td rowspan="2" ><center><a href="index.php"><img src="image/emp_logo.png" alt="Logo" height="90" width="145"></a></center></td>
-
-     <td colspan="6"><center>
-	 <div style="font-size: 20px;">
-	 <?php	
-			session_start();
-			$con=mysqli_connect("localhost","root","","employability");
-			$res=mysqli_query($con,"select * from courses");
-
-			//session_start();
-			if(isset($_SESSION['fname']))
-			{
-				echo "Welcome ".$_SESSION['fname'];
-			?>
-			<br>
-			<center>
-			(<a href="logout.php">Logout</a>)
-			<?php
-			}
-			else
-			{
-			?>
-			
-			Welcome Guest, (<a href="log_in.php">Login</a>|<a href="register1.php">Register</a>)
-			<?php
-			}?>
-	 </div>
-	 </center></td>
-   	   
-		
-  </tr>
-  <tr>
-  	
-
-    <td class="active" ><center><a href="index.php" style="color:#F0B90D;">Home</a></center></td>
-    <td ><center><a href="about.php" style="color:white;">About Us</a></center></td>
-    <td><center><a href="course1.php" style="color:white;" "background-color:Tomato;">Courses</a></center></td>
-    <td><center><a href="review.php" style="color:white;">Reviews</a></center></td>
-    <td><center><a href="contact.php" style="color:white;">Contact Us</a></center></td>
-    <td><center><a href="faq.php" style="color:white;">FAQs</a></center></td>
-  </tr>
- 
-</table>
-
-				</ul>
-			</nav>
-				</ul>
-			</nav>
-
-				
+           
+            google.charts.setOnLoadCallback(drawChart);
+        </script>
 
 
-			<!-- Social -->
-			
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-			<!-- Header Right -->
-			<div class="header_right d-flex flex-row align-items-center justify-content-start">
-				
-				<!-- Search Activation Button -->
-				<div class="search_button">
-					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 512 512" enable-background="new 0 0 512 512" width="512px" height="512px">
-						<g>
-							<path d="M495,466.2L377.2,348.4c29.2-35.6,46.8-81.2,46.8-130.9C424,103.5,331.5,11,217.5,11C103.4,11,11,103.5,11,217.5   S103.4,424,217.5,424c49.7,0,95.2-17.5,130.8-46.7L466.1,495c8,8,20.9,8,28.9,0C503,487.1,503,474.1,495,466.2z M217.5,382.9   C126.2,382.9,52,308.7,52,217.5S126.2,52,217.5,52C308.7,52,383,126.3,383,217.5S308.7,382.9,217.5,382.9z" fill="#FFFFFF"></path>
-						</g>
-					</svg>
-				</div>
+    <title>EMPLOYABILITY.LIFE</title>
 
-				<!-- Header Link -->
-				
+    <!-- Bootstrap core CSS-->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-				<!-- Hamburger Button -->
-				<div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
-			</div>
+    <!-- Page level plugin CSS-->
+    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
-			<!-- Search Panel -->
-			<div class="search_panel">
-				<div class="search_panel_content d-flex flex-row align-items-center justify-content-start">
-					<img src="images/search.png" alt="">
-					<form action="search.php"  method="POST" class="search_form" name="search">
-						<input type="text"  name="search" class="search_input" placeholder="Type your search here" required="required">
-					</form>
-					<div class="search_close ml-auto d-flex flex-column align-items-center justify-content-center" name="search" value="search" id="submit"><div></div></div>
-				</div>
-			</div>
-		</div>
-			
-	</header>
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin.css" rel="stylesheet">
 
-	<!-- Logo Overlay -->
+  </head>
 
-	<div class="logo_overlay">
-		<div class="logo_overlay_content d-flex flex-column align-items-center justify-content-center">
-		<div class="logo"><a href="index.php"><img src="image/bac_logo.jpg" alt=""></a></div>
-		</div>
-	</div>
+  <body id="page-top">
 
-	<!-- Menu Overlay -->
+    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-	<div class="menu_overlay">
-		<div class="menu_overlay_content d-flex flex-row align-items-center justify-content-center">
-			
-			<!-- Hamburger Button -->
-			<div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
+      <a class="navbar-brand mr-1" href="index.php"> <img src="img/emp.jpg" alt="Employability" height="100" width="200" /></a>
 
-		</div>
-	</div>
+      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+        <i class="fas fa-bars"></i>
+      </button>
 
-	<!-- Menu -->
+      <!-- Navbar Search -->
+      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
 
-	<div class="menu">
-		<div class="menu_container d-flex flex-column align-items-center justify-content-center">
+      </form>
 
-			<!-- Menu Navigation -->
-			
-
-		</div>
-	</div>
-
-	<!-- Home -->
-
-	<div class="home">
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/home_bac.jpg" data-speed="0.8"></div>
-		<div class="home_container d-flex flex-column align-items-center justify-content-center">
-			
-		</div>
-	</div>
-
-		<!-- Intro -->
-
-	<div class="intro">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title text-center">
-						<div>Welcome</div>
-						<h1 style="font-size: 45px;"><b>Employability.life</b></h1>
-					</div>
-				</div>
-			</div>
-			<div class="row intro_row">
-				<div class="col-xl-98 col-lg-0 offset-xl-52 offset-lg-">
-					<div class="intro_text text-center">
-						<p align="justify" style="font-size: 25px;">The Employability.life, prepares you to grow and master the art of career progression. It’s the ultimate ‘robot-proof’ preparation for careers in the 
-						21st century — empowering you with self-mastery and enabling you to become a creative leader with the empathy and imagination that our societies need today. With our 
-						programme blending on-campus support centres alongside an online curriculum, we can provide you with an excellent education and the top-tier support you need to 
-						help you jump-start your career success. We take a whole-person approach and prepare learners to become confident professionals. Through Employability.life, you
-						will become self-aware and equipped with essential soft and technical skills — ready not just for an interview, but for the possibilities of a lifelong and 
-						rewarding professional career.</p>
-					</div>
-				</div>
-			</div>
-		</div>		
-	</div>
+      <!-- Navbar -->
 
 
+    </nav>
 
-		<!-- Discover Slider -->
-		<div class="discover_slider_container">
-			<div class="owl-carousel owl-theme discover_slider">
-				
-				<!-- Slide -->
-				<div class="slide">
-					<div class="background_image" style="background-image:url(image/img4.jpg)"></div>
-					
-				</div>
+    <div id="wrapper">
 
-				<!-- Slide -->
-				<div class="slide">
-					<div class="background_image" style="background-image:url(image/img1.jpg)"></div>
-					
-				</div>
+      <!-- Sidebar -->
+       <ul class="sidebar navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.php">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="manage_user.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Manage User</span></a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="manage_course.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Manage Courses</span></a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="manage_booking.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Manage Booking</span></a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="manage_tutor.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Manage Tutor</span></a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="manage_review.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Manage Reviews</span></a>
+        </li>
+		<li class="nav-item ">
+          <a class="nav-link" href="manage_assignment.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Manage Assignments</span></a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="manage_result.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Manage Results</span></a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="manage_feedback.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Manage Feedbacks</span></a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="manage_faq.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Manage FAQs</span></a>
+        </li>
+		<li class="nav-item dropdown">
+          <a class="nav-link" href="logout.php">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Logout</span>
+          </a>
+        </li>
+      </ul>
 
-				<!-- Slide -->
-				<div class="slide">
-					<div class="background_image" style="background-image:url(image/img6.png)"></div>
-					
-				</div>
+      <div id="content-wrapper">
 
-			</div>
-		</div>
+        <div class="container-fluid">
 
-	</div>
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Overview</li>
+          </ol>
 
-	<!-- Testimonials -->
+          <!-- Icon Cards-->
+          <div class="row">
+            <div class="col-xl-3 col-sm-6 mb-3">
+              <div class="card text-white bg-primary o-hidden h-100">
+                <div class="card-body">
+                  <div class="card-body-icon">
+                    <i class="fas fa-fw fa-comments"></i>
+                  </div>
+                  <div class="mr-5">Total Users!
+                   <?php 
+                    $con=mysqli_connect("localhost","root","","employability");
 
-	<div class="testimonials">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title text-center">
-						<div>Students</div>
-						<h1 style="font-size: 45px;"><b>Testimonials</b></h1>
-					</div>
-				</div>
-			</div>
-			<div class="row testimonials_row">
-				<div class="col">
-					
-					<!-- Testimonials Slider -->
-					<div class="testimonials_slider_container">
-						<div class="owl-carousel owl-theme testimonials_slider">
+                    $dash_users_query = "SELECT uid FROM register";
+                    $dash_users_query_run = mysqli_query($con,$dash_users_query);
+                    if($dash_users_query_run)
+                      {
+                        $users = mysqli_num_rows($dash_users_query_run);
+                      if($users>0)
+                    {
+echo'<h4 class="mb-0"> '.$users.' </h4>';
+                    }
+                    else{
+                    echo '<h4 class="mb-0"> No Data Found! </h4>';
+                  }}?>
+                    </div>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" href="manage_user.php">
+                  <span class="float-left">View Details</span>
+                  <span class="float-right">
+                    <i class="fas fa-angle-right"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+              <div class="card text-white bg-success o-hidden h-100">
+                <div class="card-body">
+                  <div class="card-body-icon">
+                    <i class="fas fa-fw fa-shopping-cart"></i>
+                  </div>
+                   <div class="mr-5">Tutors!
+                    <?php 
+                    $con=mysqli_connect("localhost","root","","employability");
 
-							<!-- Slide -->
-							<div>
-								<div class="testimonial_text text-center">
-									<p style="font-size: 24px;">Employability.life is one of the great platform for learning and exploring ones best potential. It provides best support and guidance to all the students.</p>
-								</div>
-								<div class="testimonial_author text-center">
-									<div class="testimonial_author_image"><img src="image/t1.png" alt=""></div>
-									<div class="testimonial_author_name" ><a href="#" style="font-size: 24px;">Jesica Jones,</a><span style="font-size: 24px;"> Student</span></div>
-								</div>
-							</div>
+                    $dash_users_query = "SELECT tid FROM tutor";
+                    $dash_users_query_run = mysqli_query($con,$dash_users_query);
+                    if($dash_users_query_run)
+                      {
+                        $users = mysqli_num_rows($dash_users_query_run);
+                      if($users>0)
+                    {
+echo'<h4 class="mb-0"> '.$users.' </h4>';
+                    }
+                    else{
+                    echo '<h4 class="mb-0"> No Data Found! </h4>';
+                  }}?></div>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" href="manage_tutor.php">
+                  <span class="float-left" >View Details</span>
+                  <span class="float-right">
+                    <i class="fas fa-angle-right"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+              <div class="card text-white bg-danger o-hidden h-100">
+                <div class="card-body">
+                  <div class="card-body-icon">
+                    <i class="fas fa-fw fa-life-ring"></i>
+                  </div>
+                   <div class="mr-5">Booked Consultations!
+				    <?php 
+                    $con=mysqli_connect("localhost","root","","employability");
 
-							<!-- Slide -->
-							<div>
-								<div class="testimonial_text text-center">
-									<p style="font-size: 24px;">All the tutors  of the courses are very supportive and experienced. Students are given chance to explore their inner creativity.</p>
-								</div>
-								<div class="testimonial_author text-center">
-									<div class="testimonial_author_image"><img src="image/t2.png" alt=""></div>
-									<div class="testimonial_author_name"><a href="#" style="font-size: 24px;">Donna Specter,</a><span style="font-size: 24px;"> Student</span></div>
-								</div>
-							</div>
+                    $dash_users_query = "SELECT id FROM booking_cal";
+                    $dash_users_query_run = mysqli_query($con,$dash_users_query);
+                    if($dash_users_query_run)
+                      {
+                        $users = mysqli_num_rows($dash_users_query_run);
+                      if($users>0)
+                    {
+echo'<h4 class="mb-0"> '.$users.' </h4>';
+                    }
+                    else{
+                    echo '<h4 class="mb-0"> No Data Found! </h4>';
+                  }}?>
+                    <h4 class="mb-0"></h4></div>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" href="manage_booking">
+                  <span class="float-left">View Details</span>
+                  <span class="float-right">
+                    <i class="fas fa-angle-right"></i>
+                  </span>
+                </a>
+              </div>
+            </div><div class="col-xl-3 col-sm-6 mb-3">
+              <div class="card text-white bg-primary o-hidden h-100">
+                <div class="card-body">
+                  <div class="card-body-icon">
+                    <i class="fas fa-fw fa-life-ring"></i>
+                  </div>
+                   <div class="mr-5">Completed Course!
+<?php 
+                    $con=mysqli_connect("localhost","root","","employability");
 
-							<!-- Slide -->
-							<div>
-								<div class="testimonial_text text-center">
-									<p style="font-size: 24px;">Employability.life is one of the great platform for learning and exploring ones best potential. It provides best support and guidance to all the students.</p>
-								</div>
-								<div class="testimonial_author text-center">
-									<div class="testimonial_author_image"><img src="image/t3.png" alt="" ></div>
-									<div class="testimonial_author_name"><a href="#" style="font-size: 24px;">Richard David,</a><span style="font-size: 24px;"> Student</span></div>
-								</div>
-							</div>
+                    $dash_users_query = "SELECT rid FROM result";
+                    $dash_users_query_run = mysqli_query($con,$dash_users_query);
+                    if($dash_users_query_run)
+                      {
+                        $users = mysqli_num_rows($dash_users_query_run);
+                      if($users>0)
+                    {
+echo'<h4 class="mb-0"> '.$users.' </h4>';
+                    }
+                    else{
+                    echo '<h4 class="mb-0"> No Data Found! </h4>';
+                  }}?></div>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" href="manage_result.php">
+                  <span class="float-left">View Details</span>
+                  <span class="float-right">
+                    <i class="fas fa-angle-right"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+          </div>
+           
+          <!-- Area Chart Example-->
+          <div class="card mb-3"><br>
+            <div class="card-header; text-align:center;" style="padding-left:750px;">
+              <i class="fas fa-chart-area" ></i>
+              Users Chart</div>
+            <div class="card-body">
+            <table><td> <?Php
+require "config.php";// Database connection
 
-	<!-- Footer -->
+if($stmt = $connection->query("SELECT fname,days FROM booking_cal")){
 
-	<footer class="footer">
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="image/footer.jpg" data-speed="0.8"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="footer_logo text-center">
-						<a href="index.php"><img src="image/bac_logo.jpg" alt="" height="150" width="200"></a>
-					</div>
-					<div class="footer_content">
-						<div class="row">
-							<div class="col-lg-4 footer_col">
-								<div class="footer_info d-flex flex-column align-items-lg-end align-items-center justify-content-start">
-									<div class="text-center" >
-										<div style="color:white;font-size: 19px;" ><b>Phone:</b></div>
-										<div style="color:white; font-size: 18px;">+613 8327 3100</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 footer_col">
-								<div class="footer_info d-flex flex-column align-items-center justify-content-start">
-									<div class="text-center">
-										<div style="color:white; font-size: 19px;"><b>Address:</b></div>
-										<div style="color:white; font-size: 18px;">399 Lonsdale St, Melbourne VIC 3000, Australia</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 footer_col">
-								<div class="footer_info d-flex flex-column align-items-lg-start align-items-center justify-content-start">
-									<div class="text-center">
-										<div style="color:white; font-size: 19px;" ><b>Website</b></div>
-										<div><a href="http://employability.life/" style="color:white; font-size: 18px;">employability.life</a></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="footer_bar text-center"><!-- Link back to ATMC can't be removed. Template is licensed under CC BY 3.0. -->
-<font color="white" style="font-size: 18px;">All rights reserved by Employability.life</font></div>
-				</div>
-			</div>
-		</div>
-	</footer>
-</div>
+   "No of records : ".$stmt->num_rows."<br>";
+$php_data_array = Array(); // create PHP array
 
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="styles/bootstrap-4.1.2/popper.js"></script>
-<script src="styles/bootstrap-4.1.2/bootstrap.min.js"></script>
-<script src="plugins/greensock/TweenMax.min.js"></script>
-<script src="plugins/greensock/TimelineMax.min.js"></script>
-<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
-<script src="plugins/greensock/animation.gsap.min.js"></script>
-<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
-<script src="plugins/OwlCarousel2-2.3.4/owl.carousel.js"></script>
-<script src="plugins/easing/easing.js"></script>
-<script src="plugins/progressbar/progressbar.min.js"></script>
-<script src="plugins/parallax-js-master/parallax.min.js"></script>
-<script src="plugins/jquery-datepicker/jquery-ui.js"></script>
-<script src="js/custom.js"></script>
-</body>
+//$row2 = mysqli_fetch_array($stmt,MYSQLI_NUM);
+
+
+while ($row = $stmt->fetch_row()) {
+    //"<tr><td>$row[0]</td><td>$row[1]</td></tr>";
+   $php_data_array[] = $row; // Adding to array
+   }
+
+}else{
+echo $connection->error;
+}
+//print_r( $php_data_array);
+// You can display the json_encode output here. 
+// echo json_encode($php_data_array); 
+
+// Transfor PHP array to JavaScript two dimensional array 
+echo "<script>
+        var my_2d = ".json_encode($php_data_array)."
+</script>";
+?>
+
+<h1>
+<div id="chart_div"></div></h1><b><center><div1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No of Days booked by Users &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      </div1></center></b>
+
+
+
+<script type="text/javascript"  src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {packages: ['corechart', 'bar']});
+      google.charts.setOnLoadCallback(drawChart);
+    
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'uid');
+        data.addColumn('number', 'days');
+    
+        for(i = 0; i < my_2d.length; i++)
+    data.addRow([my_2d[i][0], parseInt(my_2d[i][1])]);
+       var options = {
+          
+          hAxis: {title: 'User',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0},
+      width:750,
+      height:400
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+       }
+  </script></td>
+
+          <td>
+          <h1>  <div id="player_info"></div></h1><b><center><div1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scores achieved by Users&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div1></center></b></td></table>          </div>
+</div></div></div></body>
+
+        <!-- /.container-fluid -->
+
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Employability.life</span>
+            </div>
+          </div>
+        </footer>
+
+      </div>
+      <!-- /.content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+
+    <!-- Demo scripts for this page-->
+    <script src="js/demo/datatables-demo.js"></script>
+    <script src="js/demo/chart-area-demo.js"></script>
+
+  </body>
+
 </html>

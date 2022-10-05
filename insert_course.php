@@ -16,29 +16,22 @@ if (isset($_POST['submit']))
 	$image = $_FILES['image']['name'];
 	$name = $_POST['cname'];
 	$price = $_POST['c_price'];
-	$desc = $_POST['c_desc'];
 	$category = $_POST['category'];
 	$tid = $_POST['tid'];
 	$synopsis = $_POST['synopsis'];
 	$target = "img/".basename($image);
 	
-	$sql = "INSERT INTO `courses`(`cid`, `cname`, `c_price`, `image`, `c_desc`, `category`, `tid`, `synopsis`) VALUES(NULL, '$name','$price','$image','$desc','$category','$tid','$synopsis')";
+	$sql = "INSERT INTO `courses`(`cid`, `cname`, `c_price`, `image`, `category`, `tid`, `synopsis`) VALUES(NULL, '$name','$price','$image','$category','$tid','$synopsis')";
 	$sql2=mysqli_query($conn, $sql);
-	if($sql2)
+	if(($sql2) && (move_uploaded_file($_FILES['image']['tmp_name'], $target)))
 	{
-		echo"Inserted";
+		header('location:manage_course.php');
 	}
+	
+	
 	else
 	{
-		echo"Failed";
-	}
-	if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) 
-	{
-		echo "Image uploaded successfully";
-	}
-	else
-	{
-		echo "Failed to upload image";
+		echo "Failed to insert data.";
 	}
 
 	

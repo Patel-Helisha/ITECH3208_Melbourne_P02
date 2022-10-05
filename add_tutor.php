@@ -14,16 +14,18 @@
     <!-- core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
+    <!-- Page level plugin CSS-->
     <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
+    <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
-	
 	
 	<style>
 	
-.button-fail {
+	.button-fail {
   display: inline-block;
   
   padding: 10px 20px;
@@ -48,62 +50,6 @@
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-
-
-.button-success {
-	
-  display: inline-block;
-  padding: 10px 24px;
-  font-size: 20px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #3e8e41;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 4px #999;
-}
-
-.button-success:hover {background-color: #196F3D;
-    color: #fff;
-}
-
-.button-success:active {
-  background-color: #b30047;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
-
-
-.button {
-	
-  display: inline-block;
-  padding: 8px 20px;
-  font-size: 18px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #616A6B;
-  background-color: #CCD1D1;
-  border-width: 5px;
-  border-color: coral;
-  border-radius: 5px;
- 
-}
-
-.button:hover {background-color: #707B7C;
-    color: #CCD1D1;
-}
-
-.button {
-  background-color: #99A3A4
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
-	
 	</style>
 	
 	
@@ -113,16 +59,53 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="index.php"> <img src="img/emp.jpg" alt="Employability" height="100" width="200" /></a>
+       <a class="navbar-brand mr-1" href="index.html"> <img src="img/emp.jpg" alt="Employability" height="100" width="200" /></a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
       </button>
 
 
+      <!-- Navbar Search -->
+     
 
       <!-- Navbar -->
-      
+      <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown no-arrow mx-1">
+          <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-bell fa-fw"></i>
+            <span class="badge badge-danger">9+</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown no-arrow mx-1">
+          <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-envelope fa-fw"></i>
+            <span class="badge badge-danger">7</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+       <li class="nav-item dropdown no-arrow">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-circle fa-fw"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="insert file/profileupdate.php">Update Profile</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+          </div>
+        </li>
+      </ul>
 
     </nav>
 
@@ -131,17 +114,17 @@
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="index.php">
+          <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item ">
           <a class="nav-link" href="manage_user.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Manage User</span></a>
         </li>
-		<li class="nav-item active">
+		<li class="nav-item">
           <a class="nav-link" href="manage_course.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Manage Courses</span></a>
@@ -151,7 +134,7 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Manage Booking</span></a>
         </li>
-		<li class="nav-item">
+		<li class="nav-item active">
           <a class="nav-link" href="manage_tutor.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Manage Tutor</span></a>
@@ -167,16 +150,6 @@
             <span>Manage Assignments</span></a>
         </li>
 		<li class="nav-item">
-          <a class="nav-link" href="manage_result.php">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Manage Results</span></a>
-        </li>
-		<li class="nav-item">
-          <a class="nav-link" href="manage_feedback.php">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Manage Feedbacks</span></a>
-        </li>
-		<li class="nav-item">
           <a class="nav-link" href="manage_faq.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Manage FAQs</span></a>
@@ -189,6 +162,7 @@
         </li>
       </ul>
 
+
       <div id="content-wrapper">
 
         <div class="container-fluid">
@@ -196,7 +170,7 @@
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="index.php">Dashboard</a>
+              <a href="index.html">Dashboard</a>
             </li>
 			<li class="breadcrumb-item active">Login</li>
             <li class="breadcrumb-item active">Data Tables</li>
@@ -209,61 +183,31 @@
               Data Table</div>
             <div class="card-body">
               <div class="table-responsive">
+			  <div class="table-responsive table-responsive-data2">
 			  
-			<center style="font-size:18px; "><h5>Insert New Course From Here!</h5><br><?php
-			  echo "<form action='add_course.php' method='POST'>";
-echo"<td>";echo "<input class='button-success' type='submit'  value='Insert' name='insert'>";echo"</td>";
-echo "</form>";?></center> 
-
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-					  <th>Course ID</th>
-                      <th>Course Name</th>
-                      <th>Course price</th>
-                      <th>Course Image</th>
-					  <th>Course Category</th>
-					  <th>Tutor</th>
-					  <th>Course Synopsis</th>
-                      <th>Update</th>
-                      <th>Delete</th>
-                    </tr>
-						<tbody>
-<?php
-											$con=mysqli_connect("localhost","root","","employability");
-
-											$res=mysqli_query($con,"select * from courses");
-
-											while ($row=mysqli_fetch_array($res))
-											{
-											echo"<tr class='tr-shadow'>";
-											$cid=$row['cid'];
-											echo"<td>"; echo $row["cid"]; echo"</td>";
-											echo"<td>"; echo $row["cname"]; echo"</td>";
-											echo"<td>"; echo $row["c_price"]; echo"</td>";
-											echo"<td>"; echo $row["image"]; echo"</td>";
-											echo"<td>"; echo $row["category"]; echo"</td>";
-											echo"<td>"; echo $row["tid"]; echo"</td>";
-											echo"<td>"; echo $row["synopsis"]; echo"</td>";
-											echo "<form action='update_course.php' method='POST'>";
-											echo "<td><form><a href=update_course.php?cid=".$row['cid']."><input type='button' class='button-fail' name='update' value='Update' /></a></form></td>";
-											echo"</td>";
-
-											echo "<td><form><a href=delete_course.php?cid=".$row['cid']."><input type='button' class='button' style='font-weight:bold;' name='delete' value='Delete' /></a></form></td>";
-											echo "</form>";
-											echo"</tr>";
-											}
-											?>
-
-					</thead>
-                  </tbody>
-                </table>
+									<form action="insert_tutor.php" method="POST" enctype="multipart/form-data">
+									<input type="hidden" name="size" value="1000000">
+								
+									Tutor ID<br>
+									<input type="text" name="tid">
+									<br>
+									Tutor Name<br>
+									<input type="text" name="tname">
+									<br>
+									
+									<br>
+									<br>                            
+									<input type="submit" class="button-fail" name="submit" value="SUBMIT">
+									<br>
+									
+									</form>
+			 
               </div>
             </div>
           </div>
 
-            <p class="small text-center text-muted my-5">
-            <em>Employability.Life</em>
+          <p class="small text-center text-muted my-5">
+            <em>Employability.life</em>
           </p>
 
         </div>

@@ -1,15 +1,18 @@
-<?php
+<?Php
+$host_name = "localhost";
+$database = "employability"; // Change your database name
+$username = "root";          // Your database user id 
+$password = "";          // Your password
 
-$host = "localhost";    /* Host name */
-$user = "root";         /* User */
-$password = "";         /* Password */
-$dbname = "employability";   /* Database name */
+//error_reporting(0);// With this no error reporting will be there
+//////// Do not Edit below /////////
 
-// Create connection
-$con = mysqli_connect($host, $user, $password,$dbname);
+$connection = mysqli_connect($host_name, $username, $password, $database);
 
-// Check connection
-if (!$con) {
-    die("Connection failed: " . mysqli_connect_error());
+if (!$connection) {
+    echo "Error: Unable to connect to MySQL.<br>";
+    echo "<br>Debugging errno: " . mysqli_connect_errno();
+    echo "<br>Debugging error: " . mysqli_connect_error();
+    exit;
 }
-
+?>

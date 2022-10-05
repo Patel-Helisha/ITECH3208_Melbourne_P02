@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
- <head>
+  <head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,13 +20,48 @@
 
     <link href="css/sb-admin.css" rel="stylesheet">
 	
+	
+	<style>
+	
+
+
+.button {
+	
+  display: inline-block;
+  padding: 6px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #616A6B;
+  background-color: #CCD1D1;
+  border-width: 5px;
+  border-color: coral;
+  border-radius: 5px;
+ 
+}
+
+.button:hover {background-color: #707B7C;
+    color: #CCD1D1;
+}
+
+.button {
+  background-color: #99A3A4
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+	
+	</style>
+	
+	
   </head>
 
   <body id="page-top">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="index.html"> <img src="img/emp.jpg" alt="Employability" height="100" width="200" /></a>
+      <a class="navbar-brand mr-1" href="index.php"> <img src="img/emp.jpg" alt="Employability" height="100" width="200" /></a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -44,12 +79,12 @@
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="index.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
           </a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="manage_user.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Manage User</span></a>
@@ -69,10 +104,25 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Manage Tutor</span></a>
         </li>
-		<li class="nav-item">
+		<li class="nav-item active">
           <a class="nav-link" href="manage_review.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Manage Reviews</span></a>
+        </li>
+		<li class="nav-item ">
+          <a class="nav-link" href="manage_assignment.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Manage Assignments</span></a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="manage_result.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Manage Results</span></a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="manage_feedback.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Manage Feedbacks</span></a>
         </li>
 		<li class="nav-item">
           <a class="nav-link" href="manage_faq.php">
@@ -87,14 +137,14 @@
         </li>
       </ul>
 
-       <div id="content-wrapper">
+ <div id="content-wrapper">
 
         <div class="container-fluid">
 
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="index.html">Dashboard</a>
+              <a href="index.php">Dashboard</a>
             </li>
 			<li class="breadcrumb-item active">Login</li>
             <li class="breadcrumb-item active">Data Tables</li>
@@ -108,18 +158,18 @@
             <div class="card-body">
               <div class="table-responsive">
 			  
-
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                                   <th>User-ID</th>
-								   <th>User Name</th>
-                                   <th>Message</th>
-                                   <th>Date</th>
-								   <th>Time</th>
-								   <th>Action</th>
+					  <th>User ID</th>
+                      <th>User Name</th>
+                      <th>Message</th>
+					  <th>Date</th>
+					  <th>Time</th>
+					  <th>Action</th>
                     </tr>
-<?php
+						<tbody>
+											<?php
 											$con=mysqli_connect("localhost","root","","employability");
 
 											$res=mysqli_query($con,"select * from review");
@@ -133,30 +183,28 @@
 											echo"<td>"; 
 											echo $row["name"]; 
 											echo"</td>";
-											echo"<td>";
-											echo "<span class='block-email'>";
-											echo $row["message"]; 
-											echo "</span>";
-											echo"</td>";
 											echo"<td>"; 
+											echo $row["message"]; 
+											echo"</td>";
+											echo"<td>";
 											echo $row["date"]; 
 											echo"</td>";
 											echo"<td>"; 
 											echo $row["time"]; 
 											echo"</td>";
-											echo "<td><form><a href=delete_blog.php?b_id=".$row['b_id']."><input type='button' title='Delete' name='delete' value='Delete' /></a></form></td>";
+											echo "<td><form><a href=delete_review.php?b_id=".$row['b_id']."><input type='button' name='Delete' class='button' style='font-weight:bold;' value='Delete' /></a></form></td>";
 											echo"</tr>";
 											}
 											?>
-
 					</thead>
+                  </tbody>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
 
-      <p class="small text-center text-muted my-5">
+          <p class="small text-center text-muted my-5">
             <em>Employability.Life</em>
           </p>
 
@@ -222,4 +270,3 @@
   </body>
 
 </html>
-

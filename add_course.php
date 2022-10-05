@@ -23,6 +23,40 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
 	
+	
+	<style>
+
+
+.button-fail {
+  display: inline-block;
+  
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #b30047;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px #999;
+}
+
+.button-fail:hover {background-color: #E30F59;
+    color: #fff;
+}
+
+.button-fail:active {
+  background-color: #E30F85;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+	
+	</style>
+
+	
+	
   </head>
 
   <body id="page-top">
@@ -89,7 +123,7 @@
             <span>Dashboard</span>
           </a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item ">
           <a class="nav-link" href="manage_user.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Manage User</span></a>
@@ -104,22 +138,34 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Manage Booking</span></a>
         </li>
-				<li class="nav-item">
+		<li class="nav-item">
           <a class="nav-link" href="manage_tutor.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Manage Tutor</span></a>
         </li>
 		<li class="nav-item">
-          <a class="nav-link" href="manage_blog.php">
+          <a class="nav-link" href="manage_review.php">
             <i class="fas fa-fw fa-table"></i>
-            <span>Manage Blog</span></a>
+            <span>Manage Reviews</span></a>
+        </li>
+		<li class="nav-item ">
+          <a class="nav-link" href="manage_assignment.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Manage Assignments</span></a>
         </li>
 		<li class="nav-item">
-          <a class="nav-link" href="manage_feedback.php">
+          <a class="nav-link" href="manage_faq.php">
             <i class="fas fa-fw fa-table"></i>
-            <span>Manage Feedback</span></a>
+            <span>Manage FAQs</span></a>
+        </li>
+		<li class="nav-item dropdown">
+          <a class="nav-link" href="logout.php">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Logout</span>
+          </a>
         </li>
       </ul>
+
 
       <div id="content-wrapper">
 
@@ -147,16 +193,13 @@
 									<input type="hidden" name="size" value="1000000">
 								
 									Course Name<br>
-									<input type="text" name="lname">
+									<input type="text" name="cname">
 									<br>
 									Course Price<br>
-									<input type="text" name="l_price">
+									<input type="text" name="c_price">
 									<br>
 									Course Image<br>
 									<input type="file" name="image">
-									<br>
-									Course Description<br>
-									<input type="text" name="l_desc">
 									<br>
 									Category<br>
 									<input type="text" name="category">
@@ -168,7 +211,7 @@
 									<input type="text" name="synopsis">
 									<br>
 									<br>                            
-									<input type="submit" name="submit" value="submit">
+									<input type="submit" class="button-fail" name="submit" value="SUBMIT">
 									<br>
 									
 									</form>
@@ -178,7 +221,7 @@
           </div>
 
           <p class="small text-center text-muted my-5">
-            <em>ATMC</em>
+            <em>Employability.life</em>
           </p>
 
         </div>
@@ -188,7 +231,7 @@
         <footer class="sticky-footer">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Helisha</span>
+              <span>Tech Squad</span>
             </div>
           </div>
         </footer>

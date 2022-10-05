@@ -20,13 +20,48 @@
 
     <link href="css/sb-admin.css" rel="stylesheet">
 	
+	
+	<style>
+	
+
+
+.button {
+	
+  display: inline-block;
+  padding: 6px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #616A6B;
+  background-color: #CCD1D1;
+  border-width: 5px;
+  border-color: coral;
+  border-radius: 5px;
+ 
+}
+
+.button:hover {background-color: #707B7C;
+    color: #CCD1D1;
+}
+
+.button {
+  background-color: #99A3A4
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+	
+	</style>
+	
+	
   </head>
 
   <body id="page-top">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="index.html"> <img src="img/emp.jpg" alt="Employability" height="100" width="200" /></a>
+      <a class="navbar-brand mr-1" href="index.php"> <img src="img/emp.jpg" alt="Employability" height="100" width="200" /></a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -44,7 +79,7 @@
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="index.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
           </a>
@@ -74,6 +109,21 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Manage Reviews</span></a>
         </li>
+		<li class="nav-item ">
+          <a class="nav-link" href="manage_assignment.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Manage Assignments</span></a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="manage_result.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Manage Results</span></a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="manage_feedback.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Manage Feedbacks</span></a>
+        </li>
 		<li class="nav-item">
           <a class="nav-link" href="manage_faq.php">
             <i class="fas fa-fw fa-table"></i>
@@ -94,7 +144,7 @@
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="index.html">Dashboard</a>
+              <a href="index.php">Dashboard</a>
             </li>
 			<li class="breadcrumb-item active">Login</li>
             <li class="breadcrumb-item active">Data Tables</li>
@@ -112,19 +162,21 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-						<th>Lecture ID</th>
-                        <th>start date</th>
-                        <th>end date</th>
-						<th>days</th>
-						<th>user id</th>
-						<th>lecture id</th>
+						<th>ID</th>
+                        <th>Tutor</th>
+						<th>Student Name</th>
+                        <th>Dates</th>
+						<th>Times</th>
+						<th>Subject</th>
+						<th>EndDate</th>
+						<th>EndTime</th>
 						<th>Action</th>
                     </tr>
 						<tbody>
 <?php
 											$con=mysqli_connect("localhost","root","","employability");
 
-											$res=mysqli_query($con,"select * from booking_cal");
+											$res=mysqli_query($con,"select * from consultationbooking");
 
 											while ($row=mysqli_fetch_array($res))
 											{
@@ -133,23 +185,29 @@
 											echo $row["id"]; 
 											echo"</td>";
 											echo"<td>"; 
-											echo $row["start"]; 
+											echo $row["Tutor"]; 
 											echo"</td>";
 											echo"<td>"; 
-											echo $row["end"]; 
+											echo $row["name"]; 
+											echo"</td>";
+											echo"<td>"; 
+											echo $row["Dates"]; 
 											echo"</td>";
 											echo"<td>";
 											echo "<span class='block-email'>";
-											echo $row["days"]; 
+											echo $row["Times"]; 
 											echo "</span>";
 											echo"</td>";
 											echo"<td>"; 
-											echo $row["user_id"]; 
+											echo $row["subject"]; 
 											echo"</td>";
 											echo"<td>"; 
-											echo $row["c_id"]; 
+											echo $row["EndDate"]; 
 											echo"</td>";
-											echo "<td><form><a href=delete_booking.php?id=".$row['id']."><input type='button' title='Delete' name='delete' value='Delete' /></a></form></td>";
+											echo"<td>"; 
+											echo $row["EndTime"]; 
+											echo"</td>";
+											echo "<td><form><a href=delete_booking.php?id=".$row['id']."><input type='button' title='Delete' class='button' style='font-weight:bold;' name='delete' value='Delete' /></a></form></td>";
 											echo"</tr>";
 											}
 											?>

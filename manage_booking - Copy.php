@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+    <head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,64 +23,12 @@
 	
 	<style>
 	
-.button-fail {
-  display: inline-block;
-  
-  padding: 10px 20px;
-  font-size: 18px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #b30047;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 4px #999;
-}
-
-.button-fail:hover {background-color: #E30F59;
-    color: #fff;
-}
-
-.button-fail:active {
-  background-color: #E30F85;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
-
-
-.button-success {
-	
-  display: inline-block;
-  padding: 10px 24px;
-  font-size: 20px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #3e8e41;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 4px #999;
-}
-
-.button-success:hover {background-color: #196F3D;
-    color: #fff;
-}
-
-.button-success:active {
-  background-color: #b30047;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
 
 
 .button {
 	
   display: inline-block;
-  padding: 8px 20px;
+  padding: 6px 20px;
   font-size: 18px;
   cursor: pointer;
   text-align: center;
@@ -141,12 +89,12 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Manage User</span></a>
         </li>
-		<li class="nav-item active">
+		<li class="nav-item">
           <a class="nav-link" href="manage_course.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Manage Courses</span></a>
         </li>
-		<li class="nav-item">
+		<li class="nav-item active">
           <a class="nav-link" href="manage_booking.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Manage Booking</span></a>
@@ -189,7 +137,7 @@
         </li>
       </ul>
 
-      <div id="content-wrapper">
+ <div id="content-wrapper">
 
         <div class="container-fluid">
 
@@ -210,47 +158,48 @@
             <div class="card-body">
               <div class="table-responsive">
 			  
-			<center style="font-size:18px; "><h5>Insert New Course From Here!</h5><br><?php
-			  echo "<form action='add_course.php' method='POST'>";
-echo"<td>";echo "<input class='button-success' type='submit'  value='Insert' name='insert'>";echo"</td>";
-echo "</form>";?></center> 
 
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-					  <th>Course ID</th>
-                      <th>Course Name</th>
-                      <th>Course price</th>
-                      <th>Course Image</th>
-					  <th>Course Category</th>
-					  <th>Tutor</th>
-					  <th>Course Synopsis</th>
-                      <th>Update</th>
-                      <th>Delete</th>
+						<th>Lecture ID</th>
+                        <th>start date</th>
+                        <th>end date</th>
+						<th>days</th>
+						<th>user id</th>
+						<th>lecture id</th>
+						<th>Action</th>
                     </tr>
 						<tbody>
 <?php
 											$con=mysqli_connect("localhost","root","","employability");
 
-											$res=mysqli_query($con,"select * from courses");
+											$res=mysqli_query($con,"select * from booking_cal");
 
 											while ($row=mysqli_fetch_array($res))
 											{
 											echo"<tr class='tr-shadow'>";
-											$cid=$row['cid'];
-											echo"<td>"; echo $row["cid"]; echo"</td>";
-											echo"<td>"; echo $row["cname"]; echo"</td>";
-											echo"<td>"; echo $row["c_price"]; echo"</td>";
-											echo"<td>"; echo $row["image"]; echo"</td>";
-											echo"<td>"; echo $row["category"]; echo"</td>";
-											echo"<td>"; echo $row["tid"]; echo"</td>";
-											echo"<td>"; echo $row["synopsis"]; echo"</td>";
-											echo "<form action='update_course.php' method='POST'>";
-											echo "<td><form><a href=update_course.php?cid=".$row['cid']."><input type='button' class='button-fail' name='update' value='Update' /></a></form></td>";
+											echo"<td>"; 
+											echo $row["id"]; 
 											echo"</td>";
-
-											echo "<td><form><a href=delete_course.php?cid=".$row['cid']."><input type='button' class='button' style='font-weight:bold;' name='delete' value='Delete' /></a></form></td>";
-											echo "</form>";
+											echo"<td>"; 
+											echo $row["start"]; 
+											echo"</td>";
+											echo"<td>"; 
+											echo $row["end"]; 
+											echo"</td>";
+											echo"<td>";
+											echo "<span class='block-email'>";
+											echo $row["days"]; 
+											echo "</span>";
+											echo"</td>";
+											echo"<td>"; 
+											echo $row["uid"]; 
+											echo"</td>";
+											echo"<td>"; 
+											echo $row["cid"]; 
+											echo"</td>";
+											echo "<td><form><a href=delete_booking.php?id=".$row['id']."><input type='button' title='Delete' class='button' style='font-weight:bold;' name='delete' value='Delete' /></a></form></td>";
 											echo"</tr>";
 											}
 											?>
@@ -262,7 +211,7 @@ echo "</form>";?></center>
             </div>
           </div>
 
-            <p class="small text-center text-muted my-5">
+           <p class="small text-center text-muted my-5">
             <em>Employability.Life</em>
           </p>
 

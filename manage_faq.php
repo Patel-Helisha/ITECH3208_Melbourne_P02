@@ -20,13 +20,104 @@
 
     <link href="css/sb-admin.css" rel="stylesheet">
 	
+	
+	
+<style>
+	
+.button-fail {
+  display: inline-block;
+  
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #b30047;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px #999;
+}
+
+.button-fail:hover {background-color: #E30F59;
+    color: #fff;
+}
+
+.button-fail:active {
+  background-color: #E30F85;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+.button-success {
+	
+  display: inline-block;
+  padding: 10px 24px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #3e8e41;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px #999;
+}
+
+.button-success:hover {background-color: #196F3D;
+    color: #fff;
+}
+
+.button-success:active {
+  background-color: #b30047;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+.button {
+	
+  display: inline-block;
+  padding: 8px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #616A6B;
+  background-color: #CCD1D1;
+  border-width: 5px;
+  border-color: coral;
+  border-radius: 5px;
+ 
+}
+
+.button:hover {background-color: #707B7C;
+    color: #CCD1D1;
+}
+
+.button {
+  background-color: #99A3A4
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+	
+	</style>
+	
+
+
+	
+	
   </head>
 
   <body id="page-top">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="index.html"> <img src="img/emp.jpg" alt="Employability" height="100" width="200" /></a>
+      <a class="navbar-brand mr-1" href="index.php"> <img src="img/emp.jpg" alt="Employability" height="100" width="200" /></a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -44,12 +135,12 @@
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="index.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
           </a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item ">
           <a class="nav-link" href="manage_user.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Manage User</span></a>
@@ -74,7 +165,22 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Manage Reviews</span></a>
         </li>
+		<li class="nav-item ">
+          <a class="nav-link" href="manage_assignment.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Manage Assignments</span></a>
+        </li>
 		<li class="nav-item">
+          <a class="nav-link" href="manage_result.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Manage Results</span></a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="manage_feedback.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Manage Feedbacks</span></a>
+        </li>
+		<li class="nav-item active">
           <a class="nav-link" href="manage_faq.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Manage FAQs</span></a>
@@ -94,7 +200,7 @@
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="index.html">Dashboard</a>
+              <a href="index.php">Dashboard</a>
             </li>
 			<li class="breadcrumb-item active">Login</li>
             <li class="breadcrumb-item active">Data Tables</li>
@@ -108,12 +214,19 @@
             <div class="card-body">
               <div class="table-responsive">
 			  
+			  <center style="font-size:18px; "><h5>Insert New FAQ From Here!</h5><br><?php
+			  echo "<form action='add_faq.php' method='POST'>";
+echo"<td>";echo "<input class='button-success' type='submit'  value='Insert' name='insert'>";echo"</td>";
+echo "</form>";?></center> 
+			  
+			  
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
 					  <th>FID</th>
                       <th>Question</th>
                       <th>Answer</th>
+					  <th>Update</th>
 					  <th>Action</th>
                     </tr>
 						<tbody>
@@ -134,7 +247,12 @@
 											echo"<td>"; 
 											echo $row["answer"]; 
 											echo"</td>";
-											echo "<td><form><a href=delete_faq.php?fid=".$row['fid']."><input type='button' name='Delete' value='Delete' /></a></form></td>";
+											
+											echo "<form action='update_faq.php' method='POST'>";
+											echo "<td><form><a href=update_faq.php?fid=".$row['fid']."><input type='button' name='update' class='button-fail' value='Update' /></a></form></td>";
+											echo"</td>";
+											
+											echo "<td><form><a href=delete_faq.php?fid=".$row['fid']."><input type='button' name='Delete' class='button' style='font-weight:bold;' value='Delete' /></a></form></td>";
 											echo"</tr>";
 											}
 											?>

@@ -20,7 +20,7 @@ if (isset($_POST['submit']))
 	if($sql2)
 	{
 		echo"inserted";
-		header("refresh:0.1; url=add_tutor.php");
+		header('location:manage_tutor.php');
 	}
 	else
 	{

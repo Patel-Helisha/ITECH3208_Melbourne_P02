@@ -20,7 +20,6 @@
 
     <link href="css/sb-admin.css" rel="stylesheet">
 	
-	
 	<style>
 	
 .button-fail {
@@ -50,31 +49,6 @@
 }
 
 
-.button-success {
-	
-  display: inline-block;
-  padding: 10px 24px;
-  font-size: 20px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #3e8e41;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 4px #999;
-}
-
-.button-success:hover {background-color: #196F3D;
-    color: #fff;
-}
-
-.button-success:active {
-  background-color: #b30047;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
 
 
 .button {
@@ -113,7 +87,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="index.php"> <img src="img/emp.jpg" alt="Employability" height="100" width="200" /></a>
+      <a class="navbar-brand mr-1" href="index.html"> <img src="img/emp.jpg" alt="Employability" height="100" width="200" /></a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -131,17 +105,17 @@
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="index.php">
+          <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item ">
           <a class="nav-link" href="manage_user.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Manage User</span></a>
         </li>
-		<li class="nav-item active">
+		<li class="nav-item">
           <a class="nav-link" href="manage_course.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Manage Courses</span></a>
@@ -151,7 +125,7 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Manage Booking</span></a>
         </li>
-		<li class="nav-item">
+		<li class="nav-item active">
           <a class="nav-link" href="manage_tutor.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Manage Tutor</span></a>
@@ -167,16 +141,6 @@
             <span>Manage Assignments</span></a>
         </li>
 		<li class="nav-item">
-          <a class="nav-link" href="manage_result.php">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Manage Results</span></a>
-        </li>
-		<li class="nav-item">
-          <a class="nav-link" href="manage_feedback.php">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Manage Feedbacks</span></a>
-        </li>
-		<li class="nav-item">
           <a class="nav-link" href="manage_faq.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Manage FAQs</span></a>
@@ -189,14 +153,18 @@
         </li>
       </ul>
 
-      <div id="content-wrapper">
+    </nav>
+
+    <div id="wrapper">
+
+      <div id="content-wrapper" style="width:1675px;">
 
         <div class="container-fluid">
 
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="index.php">Dashboard</a>
+              <a href="index.html">Dashboard</a>
             </li>
 			<li class="breadcrumb-item active">Login</li>
             <li class="breadcrumb-item active">Data Tables</li>
@@ -209,60 +177,53 @@
               Data Table</div>
             <div class="card-body">
               <div class="table-responsive">
-			  
-			<center style="font-size:18px; "><h5>Insert New Course From Here!</h5><br><?php
-			  echo "<form action='add_course.php' method='POST'>";
-echo"<td>";echo "<input class='button-success' type='submit'  value='Insert' name='insert'>";echo"</td>";
-echo "</form>";?></center> 
 
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-					  <th>Course ID</th>
-                      <th>Course Name</th>
-                      <th>Course price</th>
-                      <th>Course Image</th>
-					  <th>Course Category</th>
-					  <th>Tutor</th>
-					  <th>Course Synopsis</th>
-                      <th>Update</th>
-                      <th>Delete</th>
-                    </tr>
-						<tbody>
+<form name="course" action="tutor_update.php" method="POST">
 <?php
-											$con=mysqli_connect("localhost","root","","employability");
+ $conn=mysqli_connect("localhost","root","","employability");
+  
+$tid=$_GET['tid'];
+$qry="select * from tutor where tid='$tid' ";
+$res=mysqli_query($conn,$qry);
+?>
 
-											$res=mysqli_query($con,"select * from courses");
+<div>
+<table>
 
-											while ($row=mysqli_fetch_array($res))
-											{
-											echo"<tr class='tr-shadow'>";
-											$cid=$row['cid'];
-											echo"<td>"; echo $row["cid"]; echo"</td>";
-											echo"<td>"; echo $row["cname"]; echo"</td>";
-											echo"<td>"; echo $row["c_price"]; echo"</td>";
-											echo"<td>"; echo $row["image"]; echo"</td>";
-											echo"<td>"; echo $row["category"]; echo"</td>";
-											echo"<td>"; echo $row["tid"]; echo"</td>";
-											echo"<td>"; echo $row["synopsis"]; echo"</td>";
-											echo "<form action='update_course.php' method='POST'>";
-											echo "<td><form><a href=update_course.php?cid=".$row['cid']."><input type='button' class='button-fail' name='update' value='Update' /></a></form></td>";
-											echo"</td>";
+<thead>
+	<tr>
+    <td>Tutor ID</td>
+    <td>Tutor Name</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<?php
+		while($arr=mysqli_fetch_array($res))
+		{
+	?>
+	
+	<td><input type="text" name="tid" value="<?php echo $arr[0]; ?>" /></td>
+	<td><input type="text" name="tname" value="<?php echo $arr[1]; ?>" /></td>
+	<!--<td><input type="hidden" name="hid" value="<?php //echo $arr[0]; ?>"></td>-->
+	
+	</tr>
+    </tbody>
+	</table>
+</div>
 
-											echo "<td><form><a href=delete_course.php?cid=".$row['cid']."><input type='button' class='button' style='font-weight:bold;' name='delete' value='Delete' /></a></form></td>";
-											echo "</form>";
-											echo"</tr>";
-											}
-											?>
+<br><br><br>
 
-					</thead>
-                  </tbody>
-                </table>
+<label>
+<input type='submit' class="button-fail" name='update' value='UPDATE'   /></a></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" class="button" style="font-weight:bold;" name="submit2" value="Cancel"><br><br>
+</label>
+</form>
+
               </div>
             </div>
           </div>
 
-            <p class="small text-center text-muted my-5">
+    <p class="small text-center text-muted my-5">
             <em>Employability.Life</em>
           </p>
 
@@ -278,9 +239,9 @@ echo "</form>";?></center>
           </div>
         </footer>
 
-      </div>
+      </div >
       <!-- /.content-wrapper -->
-
+	
     </div>
     <!-- /#wrapper -->
 
@@ -307,6 +268,12 @@ echo "</form>";?></center>
         </div>
       </div>
     </div>
+	
+	<?php
+	
+		}
+	
+	?>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -324,7 +291,8 @@ echo "</form>";?></center>
 
     <!-- Demo scripts for this page-->
     <script src="js/demo/datatables-demo.js"></script>
-
+	
   </body>
 
 </html>
+

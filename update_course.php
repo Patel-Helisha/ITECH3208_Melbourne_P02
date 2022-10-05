@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -20,6 +19,67 @@
     <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
     <link href="css/sb-admin.css" rel="stylesheet">
+	
+	<style>
+	
+.button-fail {
+  display: inline-block;
+  
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #b30047;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px #999;
+}
+
+.button-fail:hover {background-color: #E30F59;
+    color: #fff;
+}
+
+.button-fail:active {
+  background-color: #E30F85;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+
+
+.button {
+	
+  display: inline-block;
+  padding: 8px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #616A6B;
+  background-color: #CCD1D1;
+  border-width: 5px;
+  border-color: coral;
+  border-radius: 5px;
+ 
+}
+
+.button:hover {background-color: #707B7C;
+    color: #CCD1D1;
+}
+
+.button {
+  background-color: #99A3A4
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+	
+	</style>
+	
 	
   </head>
 
@@ -50,7 +110,7 @@
             <span>Dashboard</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item ">
           <a class="nav-link" href="manage_user.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Manage User</span></a>
@@ -74,6 +134,16 @@
           <a class="nav-link" href="manage_review.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Manage Reviews</span></a>
+        </li>
+		<li class="nav-item ">
+          <a class="nav-link" href="manage_assignment.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Manage Assignments</span></a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="manage_faq.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Manage FAQs</span></a>
         </li>
 		<li class="nav-item dropdown">
           <a class="nav-link" href="logout.php">
@@ -108,7 +178,7 @@
             <div class="card-body">
               <div class="table-responsive">
 
-<form method="POST">
+<form name="course" action="course_update.php" method="POST">
 <?php
  $conn=mysqli_connect("localhost","root","","employability");
   
@@ -122,12 +192,13 @@ $res=mysqli_query($conn,$qry);
 
 <thead>
 	<tr>
-    <td>Lecture ID</td>
-    <td>Lecture Name</td>
-	<td>Lecture Price</td>
-	<td>Lecture Image</td>
-    <td>Lecture Description</td>
-    <td>Lecture Category</td>
+    <td>Course ID</td>
+    <td>Course Name</td>
+	<td>Course Price</td>
+	<td>Course Image</td>
+    <td>Course Category</td>
+	<td>Course TID</td>
+	<td>Course Synopsis</td>
 </tr>
 </thead>
 <tbody>
@@ -136,24 +207,25 @@ $res=mysqli_query($conn,$qry);
 		while($arr=mysqli_fetch_array($res))
 		{
 	?>
+	
 	<td><input type="text" name="cid" value="<?php echo $arr[0]; ?>" /></td>
 	<td><input type="text" name="cname" value="<?php echo $arr[1]; ?>" /></td>
 	<td><input type="text" name="c_price" value="<?php echo $arr[2]; ?>" /></td>
 	<td><input type="text" name="image" value="<?php echo $arr[3]; ?>" /></td>
-	<td><input type="text" name="c_desc" value="<?php echo $arr[4]; ?>" /></td>
-	<td><input type="text" name="category" value="<?php echo $arr[5]; ?>" /></td>
+	<td><input type="text" name="category" value="<?php echo $arr[4]; ?>" /></td>
+	<td><input type="text" name="tid" value="<?php echo $arr[5]; ?>" /></td>
+	<td><input type="text" name="synopsis" value="<?php echo $arr[6]; ?>" /></td>
 	<!--<td><input type="hidden" name="hid" value="<?php //echo $arr[0]; ?>"></td>-->
+	
 	</tr>
     </tbody>
 	</table>
 </div>
 
 <br><br><br>
-<?php 
-	}
-?>
+
 <label>
-<input type='submit' name='update' value='UPDATE'   /></a></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="submit2" value="Cancel"><br><br>
+<input type='submit' class="button-fail" name='update' value='UPDATE'   /></a></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" class="button" style="font-weight:bold;" name="submit2" value="Cancel"><br><br>
 </label>
 </form>
 
@@ -206,6 +278,12 @@ $res=mysqli_query($conn,$qry);
         </div>
       </div>
     </div>
+	
+	<?php
+	
+		}
+	
+	?>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -223,40 +301,8 @@ $res=mysqli_query($conn,$qry);
 
     <!-- Demo scripts for this page-->
     <script src="js/demo/datatables-demo.js"></script>
-
+	
   </body>
 
 </html>
 
-<?php
-										
-										if(isset($_POST['update']))
-										{
-												$cn=mysqli_connect("localhost","root","","employability");
-												//$id=$_GET['id'];
-												$sel="select * from courses where cid='$cid'";
-												
-												
-												$cid=$_POST['cid'];
-												$cname=$_POST['cname'];
-												$c_price=$_POST['c_price'];
-												$image=$_POST['image'];
-												$c_desc=$_POST['c_desc'];
-												$category=$_POST['category'];
-												
-												$qry="update courses set cid='$cid', cname='$cname', c_price='$c_price', image='$image', 
-												c_desc='$c_desc', category='$category' where cid='$cid'";
-												
-												if(2>1)
-												 {
-													
-													 header("header:manage_course.php");
-													  
-												 }
-												 else
-												 {
-													 
-													 mysqli_error();
-												 }
-										}
-									?>
